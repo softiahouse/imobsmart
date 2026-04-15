@@ -1,0 +1,33 @@
+# ─── Dependências ─────────────────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# ─── Base de dados (nunca commitar dados reais) ───────────────────────────────
+backend/data/
+*.db
+*.db-shm
+*.db-wal
+
+# ─── Sessões WhatsApp ─────────────────────────────────────────────────────────
+backend/data/whatsapp/
+
+# ─── Variáveis de ambiente (contêm segredos) ─────────────────────────────────
+.env
+.env.local
+.env.production
+# Manter os exemplos:
+!.env.example
+!.env.production.example
+
+# ─── Build do frontend ────────────────────────────────────────────────────────
+frontend/dist/
+frontend/.vite/
+
+# ─── Logs e temporários ──────────────────────────────────────────────────────
+*.log
+logs/
+.DS_Store
+Thumbs.db
+
+# ─── Railway / Docker ────────────────────────────────────────────────────────
+.railway/
