@@ -97,6 +97,14 @@ server.listen(PORT, () => {
 ║   🌍 Env: ${process.env.NODE_ENV || 'development'}                 ║
 ╚═══════════════════════════════════════╝
   `);
+
+  // Auto-seed: popula o banco na primeira inicialização (se estiver vazio)
+  try {
+    const { runSeed } = require('./seed');
+    runSeed();
+  } catch (err) {
+    console.error('⚠️  Erro no auto-seed:', err.message);
+  }
 });
 
 module.exports = { app, server };
