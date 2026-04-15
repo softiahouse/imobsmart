@@ -1,7 +1,7 @@
-FROM node:20-alpine
+FROM node:20-slim
 
 # Dependências nativas para better-sqlite3 e Baileys
-RUN apk add --no-cache python3 make g++ libc6-compat
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
