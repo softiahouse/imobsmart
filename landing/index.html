@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soft IA House — CRM Inteligente para seu negócio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --indigo: #6366f1;
+      --indigo-dark: #4f46e5;
+      --indigo-light: #818cf8;
+      --navy: #1e3a5f;
+      --gold: #f59e0b;
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c27;
+      --text: #f0f0f8;
+      --muted: #8b8ba7;
+      --radius: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .logo {
+      font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, var(--indigo-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo span { color: var(--indigo); -webkit-text-fill-color: var(--indigo-light); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--indigo); color: #fff; border: none; cursor: pointer;
+      padding: 10px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+      transition: background .2s, transform .1s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--indigo-dark); transform: scale(1.03); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
+      color: var(--indigo-light); padding: 6px 16px; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--indigo-light); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
+      max-width: 900px; margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--indigo-light) 0%, #a78bfa 50%, var(--gold) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 580px;
+      line-height: 1.7; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--indigo) 0%, #7c3aed 100%);
+      color: #fff; border: none; cursor: pointer;
+      padding: 16px 36px; border-radius: 50px; font-size: 1rem; font-weight: 700;
+      transition: transform .15s, box-shadow .15s;
+      text-decoration: none; display: inline-block;
+      box-shadow: 0 8px 32px rgba(99,102,241,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(99,102,241,0.45); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.07); color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12); cursor: pointer;
+      padding: 16px 36px; border-radius: 50px; font-size: 1rem; font-weight: 600;
+      transition: background .15s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      margin-top: 64px; display: flex; align-items: center; gap: 24px;
+      color: var(--muted); font-size: 0.85rem;
+    }
+    .avatars { display: flex; }
+    .avatars span {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700;
+    }
+    .avatars span:first-child { margin-left: 0; }
+
+    /* ── SCREEN MOCKUP ── */
+    .mockup-wrap {
+      width: 100%; max-width: 1000px; margin: 80px auto 0;
+      position: relative; padding: 0 24px;
+    }
+    .mockup-frame {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .mockup-bar {
+      background: var(--surface2); padding: 12px 20px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .d1 { background: #ff5f57; }
+    .d2 { background: #febc2e; }
+    .d3 { background: #28c840; }
+    .mockup-url {
+      flex: 1; background: rgba(255,255,255,0.06); border-radius: 8px;
+      padding: 4px 12px; font-size: 0.75rem; color: var(--muted);
+      margin: 0 12px; text-align: center;
+    }
+    .mockup-inner {
+      display: grid; grid-template-columns: 220px 1fr;
+      min-height: 380px;
+    }
+    .mock-sidebar {
+      background: #0f0f18; padding: 24px 16px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .mock-brand { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; color: #fff; }
+    .mock-tagline { font-size: 0.65rem; color: var(--muted); margin-bottom: 24px; }
+    .mock-nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 12px;
+      font-size: 0.8rem; font-weight: 500; margin-bottom: 4px;
+      color: var(--muted);
+    }
+    .mock-nav-item.active { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
+    .mock-main { padding: 24px; }
+    .mock-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+    .mock-date { font-size: 0.75rem; color: var(--muted); margin-bottom: 20px; }
+    .mock-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+    .mock-card {
+      background: var(--surface2); border-radius: 14px;
+      padding: 14px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .mock-card-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 6px; }
+    .mock-card-val { font-size: 1.4rem; font-weight: 800; }
+    .mock-card-sub { font-size: 0.6rem; color: var(--muted); margin-top: 2px; }
+    .mock-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mock-chart-box, .mock-contacts-box {
+      background: var(--surface2); border-radius: 14px;
+      padding: 14px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .mock-box-title { font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; }
+    .mock-bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; }
+    .mock-bar { flex: 1; border-radius: 6px 6px 0 0; }
+    .contact-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .contact-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700; flex-shrink: 0;
+    }
+    .contact-info { flex: 1; }
+    .contact-name { font-size: 0.7rem; font-weight: 600; }
+    .contact-co { font-size: 0.6rem; color: var(--muted); }
+    .contact-badge {
+      font-size: 0.55rem; padding: 2px 7px; border-radius: 50px; font-weight: 600;
+    }
+    .badge-cliente { background: rgba(16,185,129,0.15); color: #10b981; }
+    .badge-lead { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
+
+    /* ── FEATURES ── */
+    section { padding: 100px 24px; }
+    .section-label {
+      text-align: center; color: var(--indigo-light);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); max-width: 520px;
+      margin: 0 auto 64px; line-height: 1.7;
+    }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; max-width: 1100px; margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 32px;
+      transition: border-color .2s, transform .2s;
+    }
+    .feature-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-4px); }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ── WHATSAPP HIGHLIGHT ── */
+    .highlight {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .highlight-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1;
+    }
+    .highlight-text p { color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .check-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.95rem; font-weight: 500;
+    }
+    .check-list li::before {
+      content: '✓'; width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(16,185,129,0.15); color: #10b981;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
+    }
+    .wapp-card {
+      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .wapp-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .wapp-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .wapp-name { font-weight: 700; font-size: 0.9rem; }
+    .wapp-status { font-size: 0.75rem; color: #25d366; }
+    .msg { margin-bottom: 12px; }
+    .msg-bubble {
+      display: inline-block; padding: 10px 14px; border-radius: 18px;
+      font-size: 0.82rem; line-height: 1.5; max-width: 260px;
+    }
+    .msg-in .msg-bubble { background: var(--surface2); border-radius: 4px 18px 18px 18px; }
+    .msg-out { text-align: right; }
+    .msg-out .msg-bubble {
+      background: linear-gradient(135deg, var(--indigo) 0%, #7c3aed 100%);
+      border-radius: 18px 4px 18px 18px;
+    }
+    .msg-ai {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; color: var(--gold); margin-top: 4px; justify-content: flex-end;
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 900px; margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 36px; position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--indigo);
+      background: linear-gradient(160deg, rgba(99,102,241,0.08) 0%, var(--surface) 60%);
+    }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--indigo), #7c3aed);
+      color: #fff; padding: 4px 16px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .plan-name { font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; }
+    .plan-price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+    .plan-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .plan-features li { font-size: 0.88rem; display: flex; gap: 10px; }
+    .plan-features li::before { content: '✓'; color: var(--indigo-light); font-weight: 800; }
+    .plan-btn {
+      width: 100%; padding: 14px; border-radius: 50px; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; border: none; transition: all .2s; text-decoration: none;
+      display: block; text-align: center;
+    }
+    .plan-btn-outline {
+      background: transparent; border: 1.5px solid rgba(255,255,255,0.15); color: var(--text);
+    }
+    .plan-btn-outline:hover { border-color: var(--indigo); color: var(--indigo-light); }
+    .plan-btn-solid {
+      background: linear-gradient(135deg, var(--indigo), #7c3aed);
+      color: #fff; box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+    }
+    .plan-btn-solid:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(99,102,241,0.45); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 1000px; margin: 0 auto;
+    }
+    .testimonial {
+      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; }
+    .testimonial p { color: #ccc; font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 800;
+    }
+    .t-name { font-weight: 700; font-size: 0.88rem; }
+    .t-role { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      text-align: center; padding: 100px 24px;
+    }
+    .cta-box {
+      max-width: 680px; margin: 0 auto;
+      background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(124,58,237,0.1) 100%);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 32px; padding: 64px 48px;
+    }
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px;
+    }
+    .cta-box p { color: var(--muted); margin-bottom: 36px; font-size: 1rem; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 48px; display: flex;
+      align-items: center; justify-content: space-between;
+      color: var(--muted); font-size: 0.82rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .highlight { grid-template-columns: 1fr; }
+      .mockup-inner { grid-template-columns: 1fr; }
+      .mock-sidebar { display: none; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Soft IA <span>House</span></div>
+  <div class="nav-links">
+    <a href="#features">Funcionalidades</a>
+    <a href="#whatsapp">WhatsApp</a>
+    <a href="#pricing">Preços</a>
+  </div>
+  <a href="https://app.softiahouse.com" class="nav-cta">Começar grátis →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="badge-dot"></span> CRM com IA integrada · IA integrada</div>
+  <h1>O CRM que<br/><em>transforma leads</em><br/>em clientes reais</h1>
+  <p>Gerencie contatos, pipeline de vendas e conversas de WhatsApp num único lugar — com inteligência artificial respondendo por você. / Gestiona contactos, ventas y WhatsApp con IA.</p>
+  <div class="hero-btns">
+    <a href="https://app.softiahouse.com" class="btn-primary">Experimentar agora grátis</a>
+    <a href="#features" class="btn-secondary">Ver funcionalidades</a>
+  </div>
+  <div class="social-proof">
+    <div class="avatars">
+      <span style="background:#6366f1">C</span>
+      <span style="background:#7c3aed">A</span>
+      <span style="background:#f59e0b">M</span>
+      <span style="background:#10b981">R</span>
+    </div>
+    <span>+200 empresas já usam o Soft IA House</span>
+  </div>
+
+  <!-- MOCKUP -->
+  <div class="mockup-wrap">
+    <div class="mockup-frame">
+      <div class="mockup-bar">
+        <div class="mockup-dot d1"></div>
+        <div class="mockup-dot d2"></div>
+        <div class="mockup-dot d3"></div>
+        <div class="mockup-url">app.softiahouse.com/dashboard</div>
+      </div>
+      <div class="mockup-inner">
+        <div class="mock-sidebar">
+          <div class="mock-brand">Minha Empresa</div>
+          <div class="mock-tagline">CRM Inteligente</div>
+          <div class="mock-nav-item active">📊 Dashboard</div>
+          <div class="mock-nav-item">👥 Contactos</div>
+          <div class="mock-nav-item">💼 Pipeline</div>
+          <div class="mock-nav-item">💬 WhatsApp</div>
+          <div class="mock-nav-item">🤖 Agente IA</div>
+          <div class="mock-nav-item">⚙️ Configuração</div>
+        </div>
+        <div class="mock-main">
+          <div class="mock-title">Dashboard</div>
+          <div class="mock-date">quinta-feira, 16 de abril de 2026</div>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-card-label">Total Contactos</div>
+              <div class="mock-card-val" style="color:#818cf8">142</div>
+              <div class="mock-card-sub">28 leads activos</div>
+            </div>
+            <div class="mock-card">
+              <div class="mock-card-label">Negociações</div>
+              <div class="mock-card-val" style="color:#f59e0b">38</div>
+              <div class="mock-card-sub">€48.200 pipeline</div>
+            </div>
+            <div class="mock-card">
+              <div class="mock-card-label">Conversas</div>
+              <div class="mock-card-val" style="color:#34d399">12</div>
+              <div class="mock-card-sub">3 sem resposta</div>
+            </div>
+            <div class="mock-card">
+              <div class="mock-card-label">Msgs IA hoje</div>
+              <div class="mock-card-val" style="color:#f472b6">47</div>
+              <div class="mock-card-sub">↑ 18% vs ontem</div>
+            </div>
+          </div>
+          <div class="mock-bottom">
+            <div class="mock-chart-box">
+              <div class="mock-box-title">Pipeline de Ventas</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:35%;background:#6366f1"></div>
+                <div class="mock-bar" style="height:55%;background:#f59e0b"></div>
+                <div class="mock-bar" style="height:80%;background:#6366f1"></div>
+                <div class="mock-bar" style="height:60%;background:#8b5cf6"></div>
+                <div class="mock-bar" style="height:45%;background:#10b981"></div>
+                <div class="mock-bar" style="height:25%;background:#ef4444"></div>
+              </div>
+            </div>
+            <div class="mock-contacts-box">
+              <div class="mock-box-title">Contactos Recientes</div>
+              <div class="contact-row">
+                <div class="contact-avatar" style="background:rgba(99,102,241,0.2);color:#818cf8">A</div>
+                <div class="contact-info">
+                  <div class="contact-name">Alejandro Pérez</div>
+                  <div class="contact-co">Club Ajedrez Valencia</div>
+                </div>
+                <span class="contact-badge badge-cliente">cliente</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-avatar" style="background:rgba(245,158,11,0.2);color:#f59e0b">L</div>
+                <div class="contact-info">
+                  <div class="contact-name">Laura Sánchez</div>
+                  <div class="contact-co">Colegio San Vicente</div>
+                </div>
+                <span class="contact-badge badge-lead">lead</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-avatar" style="background:rgba(16,185,129,0.2);color:#10b981">R</div>
+                <div class="contact-info">
+                  <div class="contact-name">Roberto García</div>
+                  <div class="contact-co">García & Asociados</div>
+                </div>
+                <span class="contact-badge badge-lead">lead</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">Funcionalidades · Funcionalidades</div>
+  <h2 class="section-title">Tudo que precisa para vender mais</h2>
+  <p class="section-sub">Uma plataforma completa para gerir o seu negócio, do primeiro contacto ao fecho da venda. / Todo lo que necesitas para cerrar más ventas.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(99,102,241,0.15)">📊</div>
+      <h3>Dashboard em tempo real</h3>
+      <p>Veja o estado do seu negócio num relance — pipeline, conversas ativas, mensagens de IA e métricas de vendas atualizadas ao segundo.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(245,158,11,0.15)">💼</div>
+      <h3>Pipeline Kanban visual</h3>
+      <p>Arraste e solte negócios entre etapas do funil. Veja o valor total em cada fase e a probabilidade de fecho de cada oportunidade.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(37,211,102,0.15)">💬</div>
+      <h3>WhatsApp integrado</h3>
+      <p>Receba e responda mensagens de WhatsApp diretamente no CRM, sem trocar de aba. Todas as conversas num único lugar.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(168,85,247,0.15)">🤖</div>
+      <h3>Agente IA personalizado</h3>
+      <p>Configure um assistente de IA com a personalidade da sua empresa. Ele responde clientes automaticamente, 24 horas por dia.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(239,68,68,0.15)">👥</div>
+      <h3>Gestão de contactos</h3>
+      <p>Base de dados completa de leads e clientes com histórico de interações, notas, tags e seguimento por etapa do ciclo de vida.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(16,185,129,0.15)">🏷️</div>
+      <h3>White-label total</h3>
+      <p>Customize cores, logo e domínio. Apresente o CRM com a identidade da sua marca — os seus clientes nem saberão que é o Soft IA House.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP HIGHLIGHT -->
+<section id="whatsapp" style="background:linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.04) 100%)">
+  <div class="highlight">
+    <div class="highlight-text">
+      <div class="section-label" style="text-align:left">WhatsApp + IA</div>
+      <h2>Responda clientes<br/><em style="font-style:normal;background:linear-gradient(135deg,#25d366,#128c7e);-webkit-background-clip:text;-webkit-text-fill-color:transparent">no WhatsApp</em><br/>com IA</h2>
+      <p>Conecte o seu número de WhatsApp e deixe a inteligência artificial responder por você. Configure o tom e as respostas — e foque-se no que importa.</p>
+      <ul class="check-list">
+        <li>Respostas automáticas 24/7 sem custo adicional</li>
+        <li>IA treinada com a voz da sua empresa</li>
+        <li>Intervenção manual quando necessário</li>
+        <li>Histórico completo de todas as conversas</li>
+        <li>Atribuição automática por agente</li>
+      </ul>
+    </div>
+    <div class="wapp-card">
+      <div class="wapp-header">
+        <div class="wapp-avatar">💬</div>
+        <div>
+          <div class="wapp-name">Minha Empresa — WhatsApp</div>
+          <div class="wapp-status">● Online agora</div>
+        </div>
+      </div>
+      <div class="msg msg-in">
+        <div class="msg-bubble">Olá! Queria saber mais sobre os vossos serviços 😊</div>
+      </div>
+      <div class="msg msg-out">
+        <div class="msg-bubble">Olá! Obrigado pelo interesse 🙏 Somos especializados em [serviço]. Como posso ajudá-lo hoje?</div>
+        <div class="msg-ai">🤖 Respondido pelo Agente IA • agora</div>
+      </div>
+      <div class="msg msg-in">
+        <div class="msg-bubble">Que preços têm?</div>
+      </div>
+      <div class="msg msg-out">
+        <div class="msg-bubble">Os nossos planos começam a partir de €29/mês. Posso enviar uma proposta personalizada? Preciso apenas do seu email 📧</div>
+        <div class="msg-ai">🤖 Respondido pelo Agente IA • agora</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Preços · Precios</div>
+  <h2 class="section-title">Simples e transparente</h2>
+  <p class="section-sub">Sem letras pequenas. Comece grátis e cresça connosco. / Sin letras pequeñas. Empieza gratis y crece con nosotros.</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">€29<span>/mês</span></div>
+      <div class="plan-desc">Para negócios a começar</div>
+      <ul class="plan-features">
+        <li>Até 500 contactos</li>
+        <li>Pipeline de vendas</li>
+        <li>WhatsApp integrado</li>
+        <li>1 utilizador</li>
+        <li>Suporte por email</li>
+      </ul>
+      <a href="https://app.softiahouse.com" class="plan-btn plan-btn-outline">Começar grátis</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="popular-badge">⚡ Mais popular</div>
+      <div class="plan-name">Professional</div>
+      <div class="plan-price">€79<span>/mês</span></div>
+      <div class="plan-desc">Para equipas em crescimento</div>
+      <ul class="plan-features">
+        <li>Contactos ilimitados</li>
+        <li>Agente IA incluído</li>
+        <li>Até 5 utilizadores</li>
+        <li>White-label completo</li>
+        <li>Suporte prioritário</li>
+        <li>Integrações avançadas</li>
+      </ul>
+      <a href="https://app.softiahouse.com" class="plan-btn plan-btn-solid">Começar agora →</a>
+    </div>
+    <div class="pricing-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price" style="font-size:2rem">Custom</div>
+      <div class="plan-desc">Para revendedores e grandes equipas</div>
+      <ul class="plan-features">
+        <li>Multi-tenant ilimitado</li>
+        <li>Utilizadores ilimitados</li>
+        <li>SLA garantido</li>
+        <li>Onboarding dedicado</li>
+        <li>API acesso completo</li>
+      </ul>
+      <a href="mailto:softiahouse@gmail.com" class="plan-btn plan-btn-outline">Falar com vendas</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-label">Depoimentos · Testimonios</div>
+  <h2 class="section-title">Quem já usa, recomenda</h2>
+  <p class="section-sub">Empresas reais a crescer com o Soft IA House.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"O CRM transformou a forma como gerimos os nossos membros. A IA responde às perguntas frequentes no WhatsApp e a equipa ficou com muito mais tempo livre."</p>
+      <div class="testimonial-author">
+        <div class="t-avatar" style="background:rgba(30,58,95,0.5);color:#c9a227">C</div>
+        <div>
+          <div class="t-name">Carlos Martínez</div>
+          <div class="t-role">Admin · FedChess Valencia</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"Finalmente um CRM que não precisa de 3 semanas para aprender. Em 2 horas já estava a usar tudo. O pipeline visual é simplesmente fantástico."</p>
+      <div class="testimonial-author">
+        <div class="t-avatar" style="background:rgba(99,102,241,0.2);color:#818cf8">A</div>
+        <div>
+          <div class="t-name">Ana López</div>
+          <div class="t-role">Gestora Comercial · PME Valencia</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"Vendemos o CRM white-label a 8 clientes nossos. É receita recorrente sem praticamente nenhum trabalho extra. O melhor investimento que fizemos."</p>
+      <div class="testimonial-author">
+        <div class="t-avatar" style="background:rgba(245,158,11,0.2);color:#f59e0b">M</div>
+        <div>
+          <div class="t-name">Miguel Torres</div>
+          <div class="t-role">CEO · Agência Digital</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Pronto para começar?<br/>Empieza hoy gratis.</h2>
+    <p>Configure o seu CRM em menos de 5 minutos. Sem cartão de crédito. Sem compromisso. / Sin tarjeta de crédito. Sin compromisos.</p>
+    <div class="hero-btns">
+      <a href="https://app.softiahouse.com" class="btn-primary">Criar conta grátis →</a>
+      <a href="mailto:softiahouse@gmail.com" class="btn-secondary">Falar com nós</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Soft IA <span>House</span></div>
+  <div>© 2026 Soft IA House. Todos os direitos reservados.</div>
+  <div style="display:flex;gap:20px">
+    <a href="mailto:softiahouse@gmail.com" style="color:var(--muted);text-decoration:none">Contacto</a>
+    <a href="https://app.softiahouse.com" style="color:var(--muted);text-decoration:none">Entrar</a>
+  </div>
+</footer>
+
+</body>
+</html>
