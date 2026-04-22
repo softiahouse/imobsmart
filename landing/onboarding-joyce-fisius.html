@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bem-vinda ao CRM · Clínica Fisius</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #6366f1 100%);
+      border-radius: 24px;
+      padding: 48px 40px;
+      color: #fff;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .header::after {
+      content: '';
+      position: absolute; bottom: -40px; right: 40px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .brand { font-size: 0.8rem; font-weight: 600; opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    .header h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+    .header h1 span { color: #a5b4fc; }
+    .header p { opacity: 0.85; line-height: 1.7; font-size: 0.95rem; max-width: 480px; }
+
+    /* CARDS */
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px;
+    }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .card h2 { font-size: 1.1rem; font-weight: 700; }
+    .card-sub { font-size: 0.8rem; color: #6e6e73; margin-top: 2px; }
+
+    /* ITEMS */
+    .item-list { display: flex; flex-direction: column; gap: 12px; }
+    .item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; border-radius: 14px;
+      background: #f5f5f7;
+    }
+    .item-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .item-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 3px; }
+    .item-desc { font-size: 0.82rem; color: #6e6e73; line-height: 1.5; }
+
+    /* CHECKLIST */
+    .check-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .check-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .check-box {
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid #d1d1d6; flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-text { font-size: 0.9rem; line-height: 1.5; }
+    .check-text strong { display: block; font-weight: 600; margin-bottom: 2px; }
+    .check-text span { color: #6e6e73; font-size: 0.82rem; }
+
+    /* AI AGENT */
+    .ai-card {
+      background: linear-gradient(135deg, #1e3a5f 0%, #4f46e5 100%);
+      border-radius: 20px; padding: 32px;
+      margin-bottom: 16px; color: #fff;
+    }
+    .ai-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15); padding: 4px 12px;
+      border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+      margin-bottom: 16px; letter-spacing: 0.5px;
+    }
+    .ai-card h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .ai-card p { opacity: 0.85; line-height: 1.7; font-size: 0.9rem; margin-bottom: 16px; }
+    .ai-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .ai-feat {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 10px 14px;
+      font-size: 0.82rem; font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* PRICING */
+    .price-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1.5px solid #86efac;
+      border-radius: 16px; padding: 24px;
+      margin-bottom: 20px;
+    }
+    .price-main { font-size: 2.5rem; font-weight: 900; color: #166534; letter-spacing: -1px; }
+    .price-main span { font-size: 1rem; font-weight: 500; color: #15803d; }
+    .price-label { font-size: 0.85rem; color: #166534; font-weight: 600; margin-bottom: 12px; }
+    .price-includes { font-size: 0.82rem; color: #15803d; }
+    .price-includes li { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .price-includes li::before { content: '✓'; font-weight: 800; }
+
+    .no-hidden {
+      background: #fff7ed; border: 1.5px solid #fed7aa;
+      border-radius: 12px; padding: 16px;
+      font-size: 0.85rem; color: #9a3412; font-weight: 500;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    /* CTA */
+    .cta-card {
+      background: #1d1d1f; border-radius: 20px;
+      padding: 32px; color: #fff; margin-bottom: 16px;
+      text-align: center;
+    }
+    .cta-card h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+    .cta-card p { color: #a1a1aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #6366f1, #7c3aed);
+      color: #fff; text-decoration: none;
+      padding: 14px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.4);
+    }
+    .access-box {
+      background: #f5f5f7; border-radius: 14px;
+      padding: 20px; margin-top: 20px; text-align: left;
+    }
+    .access-box h3 { font-size: 0.85rem; font-weight: 700; color: #6e6e73; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .access-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .access-label { font-size: 0.82rem; color: #6e6e73; }
+    .access-value { font-size: 0.88rem; font-weight: 600; font-family: monospace; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center; color: #6e6e73; font-size: 0.8rem;
+      margin-top: 40px; line-height: 1.7;
+    }
+    .footer strong { color: #1d1d1f; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">Soft IA House · CRM</div>
+    <h1>Bem-vinda, Joyce! 👋<br/><span>A Clínica Fisius tem CRM.</span></h1>
+    <p>Preparámos tudo para si. Abaixo encontra o resumo completo do seu novo sistema de gestão de clientes, agendamentos e atendimento automático via WhatsApp — com Inteligência Artificial incluída, sem custos surpresa.</p>
+  </div>
+
+  <!-- O QUE RECEBERÁ -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:#f0f0ff">🎁</div>
+      <div>
+        <h2>O que a Clínica Fisius recebe</h2>
+        <div class="card-sub">Plataforma completa, pronta a usar</div>
+      </div>
+    </div>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">📊</div>
+        <div>
+          <div class="item-title">Dashboard em tempo real</div>
+          <div class="item-desc">Veja o número de clientes, consultas agendadas, conversas ativas e mensagens enviadas pela IA — tudo numa só tela.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">👥</div>
+        <div>
+          <div class="item-title">Base de clientes ilimitada</div>
+          <div class="item-desc">Registe pacientes com nome, telefone, WhatsApp, histórico de tratamentos, notas e estado (lead / cliente ativo).</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💼</div>
+        <div>
+          <div class="item-title">Pipeline de consultas (Kanban)</div>
+          <div class="item-desc">Organize os atendimentos por etapas: Novo Contacto → Avaliação → Tratamento em Curso → Concluído. Veja o valor de cada cliente no funil.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">💬</div>
+        <div>
+          <div class="item-title">WhatsApp integrado</div>
+          <div class="item-desc">Receba e responda mensagens diretamente no CRM. Sem trocar de app, sem perder conversa. Tudo registado automaticamente.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">🤖</div>
+        <div>
+          <div class="item-title">Agente IA "Fisia" — Responde por si 24h</div>
+          <div class="item-desc">A sua assistente virtual responde clientes automaticamente no WhatsApp, agenda consultas e encaminha casos urgentes para si.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENTE IA -->
+  <div class="ai-card">
+    <div class="ai-badge">✨ Incluído no plano · Sem custo adicional</div>
+    <h2>Conheça a Fisia — a sua Assistente IA</h2>
+    <p>A Fisia é a assistente virtual da Clínica Fisius. Ela responde às mensagens dos seus clientes no WhatsApp 24 horas por dia, 7 dias por semana — com a personalidade e o tom que definir. Nenhum cliente fica sem resposta.</p>
+    <div class="ai-features">
+      <div class="ai-feat">⏰ Responde 24h/7 dias</div>
+      <div class="ai-feat">💬 WhatsApp automático</div>
+      <div class="ai-feat">📅 Informa sobre serviços</div>
+      <div class="ai-feat">🎯 Tom personalizado</div>
+      <div class="ai-feat">📋 Recolhe dados do cliente</div>
+      <div class="ai-feat">🔔 Alerta a equipa se urgente</div>
+    </div>
+  </div>
+
+  <!-- PREÇO -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:#f0fdf4">💳</div>
+      <div>
+        <h2>Investimento mensal</h2>
+        <div class="card-sub">Transparente, sem surpresas</div>
+      </div>
+    </div>
+    <div class="price-box">
+      <div class="price-label">Plano Professional · Clínica Fisius</div>
+      <div class="price-main">€79<span>/mês</span></div>
+      <ul class="price-includes" style="margin-top:16px">
+        <li>Clientes e pipeline ilimitados</li>
+        <li>Agente IA "Fisia" incluído</li>
+        <li>WhatsApp integrado</li>
+        <li>Dashboard e relatórios</li>
+        <li>Suporte prioritário</li>
+        <li>Domínio exclusivo da clínica</li>
+      </ul>
+    </div>
+    <div class="no-hidden">
+      <span style="font-size:1.2rem">🔒</span>
+      <div><strong>Sem custos escondidos.</strong> O valor de €79/mês inclui tudo o que está listado acima. A Inteligência Artificial (Fisia) está incluída — não é um extra. Não há taxas de setup nem custos por mensagem enviada.</div>
+    </div>
+  </div>
+
+  <!-- O QUE PRECISAMOS DE SI -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:#fff7ed">📋</div>
+      <div>
+        <h2>O que precisamos de si, Joyce</h2>
+        <div class="card-sub">Para ativar a sua conta em 24h</div>
+      </div>
+    </div>
+    <div class="item-list" style="gap:0">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Nome completo da clínica</strong>
+          <span>Como deve aparecer no sistema — ex: "Clínica Fisius"</span>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Número de WhatsApp da clínica</strong>
+          <span>O número que usa para receber clientes (será ligado ao CRM)</span>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Email para acesso</strong>
+          <span>Email com que vai fazer login no sistema</span>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Serviços e tratamentos oferecidos</strong>
+          <span>Para configurar a Fisia — o que ela deve saber responder (ex: drenagem, massagem, peeling, preços...)</span>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Horário de funcionamento</strong>
+          <span>Para a Fisia informar clientes sobre disponibilidade</span>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <strong>Tom de comunicação preferido</strong>
+          <span>Como quer que a Fisia se comunique — formal, carinhoso, neutro?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACESSO -->
+  <div class="cta-card">
+    <h2>O seu acesso ao CRM</h2>
+    <p>Depois de nos enviar os dados acima, ativamos a sua conta em menos de 24 horas. Receberá um email com as suas credenciais de acesso.</p>
+    <a href="https://app.softiahouse.com" class="cta-btn">Aceder ao CRM →</a>
+    <div class="access-box">
+      <h3>Detalhes de acesso (após ativação)</h3>
+      <div class="access-row">
+        <span class="access-label">Plataforma</span>
+        <span class="access-value">app.softiahouse.com</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">Email</span>
+        <span class="access-value">o seu email</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">Password inicial</span>
+        <span class="access-value">enviada por email</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">Agente IA</span>
+        <span class="access-value">Fisia · Clínica Fisius</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRÓXIMOS PASSOS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon" style="background:#f0f0ff">🚀</div>
+      <div>
+        <h2>Como funciona o processo</h2>
+        <div class="card-sub">Do zero ao CRM ativo em 3 passos</div>
+      </div>
+    </div>
+    <div class="item-list">
+      <div class="item">
+        <div class="item-icon">1️⃣</div>
+        <div>
+          <div class="item-title">Envie os dados solicitados</div>
+          <div class="item-desc">Responda à checklist acima por WhatsApp ou email. Leva menos de 5 minutos.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">2️⃣</div>
+        <div>
+          <div class="item-title">Nós configuramos tudo</div>
+          <div class="item-desc">Criamos a sua conta, configuramos a Fisia com os serviços da clínica e ligamos o WhatsApp. Prazo: até 24h.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-icon">3️⃣</div>
+        <div>
+          <div class="item-title">Sessão de onboarding gratuita</div>
+          <div class="item-desc">Fazemos uma videochamada de 30 minutos para lhe mostrar tudo e responder às suas dúvidas. Incluído no plano.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Dúvidas? Fale connosco diretamente.</p>
+    <p style="margin-top:8px"><strong>Soft IA House</strong> · softiahouse@gmail.com · <a href="https://softiahouse.com" style="color:#6366f1">softiahouse.com</a></p>
+    <p style="margin-top:16px;opacity:0.6">Este documento foi preparado especialmente para Joyce · Clínica Fisius · Plano Professional €79/mês</p>
+  </div>
+
+</div>
+</body>
+</html>
