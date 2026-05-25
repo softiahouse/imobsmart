@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soft IA House — CRM Inteligente para seu negócio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <title>SoftiaHouse — IA para tu negocio en Torrevieja</title>
+  <meta name="description" content="Instalamos agentes de inteligencia artificial en tu WhatsApp e Instagram. Atienden clientes, califican leads y agendan citas — las 24 horas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --indigo: #6366f1;
-      --indigo-dark: #4f46e5;
-      --indigo-light: #818cf8;
-      --navy: #1e3a5f;
-      --gold: #f59e0b;
-      --bg: #0a0a0f;
-      --surface: #13131a;
-      --surface2: #1c1c27;
-      --text: #f0f0f8;
-      --muted: #8b8ba7;
-      --radius: 20px;
+      --bg:        #f7f2ea;
+      --bg2:       #efe9dd;
+      --surface:   #ffffff;
+      --surface2:  #f5f0e6;
+      --surface3:  #ebe3d5;
+      --gold:      #c9973a;
+      --gold-lt:   #e4b86a;
+      --gold-dk:   #9c7129;
+      --gold-pale: #f5e8cc;
+      --text:      #1c1510;
+      --text2:     #3d3228;
+      --muted:     #7a6f64;
+      --muted2:    #c4b8a8;
+      --green:     #25d366;
+      --green-dk:  #1aab55;
+      --green-bg:  #e8f9ee;
+      --border:    rgba(180,155,110,0.2);
+      --shadow:    rgba(28,21,16,0.08);
+      --radius:    18px;
+      --radius-lg: 28px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
@@ -36,651 +49,887 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 18px 48px;
-      background: rgba(10,10,15,0.8);
+      background: rgba(247,242,234,0.88);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 0%, var(--indigo-light) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--text);
     }
-    .logo span { color: var(--indigo); -webkit-text-fill-color: var(--indigo-light); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .logo em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: color .2s;
+    }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
-      background: var(--indigo); color: #fff; border: none; cursor: pointer;
-      padding: 10px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
-      transition: background .2s, transform .1s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      padding: 11px 22px; border-radius: 50px;
+      font-size: 0.875rem; font-weight: 600;
       text-decoration: none;
+      transition: all .2s;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.25);
     }
-    .nav-cta:hover { background: var(--indigo-dark); transform: scale(1.03); }
+    .nav-cta:hover { background: var(--green-dk); transform: translateY(-1px); }
+    .nav-cta svg { width: 15px; height: 15px; }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      position: relative;
-      overflow: hidden;
+      text-align: center; padding: 130px 24px 80px;
+      position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
       width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(201,151,58,0.15) 0%, transparent 65%);
       pointer-events: none;
     }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
-      color: var(--indigo-light); padding: 6px 16px; border-radius: 50px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 28px;
-      text-transform: uppercase;
+    /* diagonal line texture */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,151,58,0.04) 40px,
+        rgba(201,151,58,0.04) 41px
+      );
+      pointer-events: none;
     }
-    .badge-dot { width: 7px; height: 7px; background: var(--indigo-light); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .badge {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(201,151,58,0.4);
+      background: var(--gold-pale);
+      color: var(--gold-dk); padding: 6px 18px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 32px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(0.8)} }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
-      max-width: 900px; margin-bottom: 24px;
+      position: relative; z-index: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900; line-height: 1.0; letter-spacing: -2px;
+      max-width: 820px; margin-bottom: 28px;
+      color: var(--text);
     }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--indigo-light) 0%, #a78bfa 50%, var(--gold) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
+    .hero h1 em { font-style: italic; color: var(--gold); display: block; }
+
     .hero p {
-      color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 580px;
-      line-height: 1.7; margin-bottom: 40px;
+      position: relative; z-index: 1;
+      color: var(--muted); font-size: clamp(1rem, 1.8vw, 1.15rem);
+      max-width: 540px; line-height: 1.75; margin-bottom: 44px;
     }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--indigo) 0%, #7c3aed 100%);
-      color: #fff; border: none; cursor: pointer;
-      padding: 16px 36px; border-radius: 50px; font-size: 1rem; font-weight: 700;
-      transition: transform .15s, box-shadow .15s;
-      text-decoration: none; display: inline-block;
-      box-shadow: 0 8px 32px rgba(99,102,241,0.35);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(99,102,241,0.45); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.07); color: var(--text);
-      border: 1px solid rgba(255,255,255,0.12); cursor: pointer;
-      padding: 16px 36px; border-radius: 50px; font-size: 1rem; font-weight: 600;
-      transition: background .15s;
-      text-decoration: none; display: inline-block;
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
 
-    /* ── SOCIAL PROOF ── */
-    .social-proof {
-      margin-top: 64px; display: flex; align-items: center; gap: 24px;
-      color: var(--muted); font-size: 0.85rem;
+    .hero-btns {
+      position: relative; z-index: 1;
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px;
     }
-    .avatars { display: flex; }
-    .avatars span {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 2px solid var(--bg);
-      margin-left: -10px; display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 700;
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: #fff;
+      padding: 18px 40px; border-radius: 50px;
+      font-size: 1.05rem; font-weight: 700;
+      text-decoration: none; transition: all .2s;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
     }
-    .avatars span:first-child { margin-left: 0; }
+    .btn-whatsapp:hover { background: var(--green-dk); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(37,211,102,0.4); }
+    .btn-whatsapp svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--muted);
+      padding: 18px 36px; border-radius: 50px;
+      font-size: 1rem; font-weight: 500; text-decoration: none;
+      border: 1.5px solid var(--muted2); transition: all .2s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--gold); }
 
-    /* ── SCREEN MOCKUP ── */
-    .mockup-wrap {
-      width: 100%; max-width: 1000px; margin: 80px auto 0;
-      position: relative; padding: 0 24px;
-    }
-    .mockup-frame {
+    .trust-bar {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 28px;
+      color: var(--muted); font-size: 0.82rem; font-weight: 500;
+      padding: 16px 32px;
       background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .trust-divider { width: 1px; height: 18px; background: var(--muted2); }
+    .trust-bar strong { color: var(--text2); }
+
+    /* ── PHONE MOCKUPS SECTION ── */
+    .phones-section {
+      padding: 100px 24px;
+      background: var(--text);
+      position: relative; overflow: hidden;
+    }
+    .phones-section::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,151,58,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .phones-section .section-label { color: var(--gold-lt); }
+    .phones-section .section-title { color: #f0ebe0; }
+    .phones-section .section-sub { color: #7a6f64; }
+
+    .phones-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 40px; max-width: 960px; margin: 60px auto 0;
+      align-items: start;
+    }
+    .phone-col { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .phone-label {
+      text-align: center;
+    }
+    .phone-label h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: #f0ebe0; margin-bottom: 6px;
+    }
+    .phone-label p { color: #7a6f64; font-size: 0.82rem; line-height: 1.5; }
+
+    /* CSS Phone Mockup */
+    .phone {
+      width: 200px;
+      background: #1a1a1f;
+      border-radius: 36px;
+      border: 6px solid #2a2a30;
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
     }
-    .mockup-bar {
-      background: var(--surface2); padding: 12px 20px;
+    .phone-notch {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 22px;
+      background: #1a1a1f;
+      border-radius: 0 0 16px 16px;
+      z-index: 10;
+    }
+    .phone-screen {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    /* WhatsApp Screen */
+    .wa-screen { background: #ece5dd; }
+    .wa-top {
+      background: #075e54; padding: 28px 12px 10px;
       display: flex; align-items: center; gap: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .d1 { background: #ff5f57; }
-    .d2 { background: #febc2e; }
-    .d3 { background: #28c840; }
-    .mockup-url {
-      flex: 1; background: rgba(255,255,255,0.06); border-radius: 8px;
-      padding: 4px 12px; font-size: 0.75rem; color: var(--muted);
-      margin: 0 12px; text-align: center;
-    }
-    .mockup-inner {
-      display: grid; grid-template-columns: 220px 1fr;
-      min-height: 380px;
-    }
-    .mock-sidebar {
-      background: #0f0f18; padding: 24px 16px;
-      border-right: 1px solid rgba(255,255,255,0.06);
-    }
-    .mock-brand { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; color: #fff; }
-    .mock-tagline { font-size: 0.65rem; color: var(--muted); margin-bottom: 24px; }
-    .mock-nav-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 12px; border-radius: 12px;
-      font-size: 0.8rem; font-weight: 500; margin-bottom: 4px;
-      color: var(--muted);
-    }
-    .mock-nav-item.active { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
-    .mock-main { padding: 24px; }
-    .mock-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
-    .mock-date { font-size: 0.75rem; color: var(--muted); margin-bottom: 20px; }
-    .mock-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
-    .mock-card {
-      background: var(--surface2); border-radius: 14px;
-      padding: 14px; border: 1px solid rgba(255,255,255,0.06);
-    }
-    .mock-card-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 6px; }
-    .mock-card-val { font-size: 1.4rem; font-weight: 800; }
-    .mock-card-sub { font-size: 0.6rem; color: var(--muted); margin-top: 2px; }
-    .mock-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .mock-chart-box, .mock-contacts-box {
-      background: var(--surface2); border-radius: 14px;
-      padding: 14px; border: 1px solid rgba(255,255,255,0.06);
-    }
-    .mock-box-title { font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; }
-    .mock-bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; }
-    .mock-bar { flex: 1; border-radius: 6px 6px 0 0; }
-    .contact-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .contact-avatar {
-      width: 26px; height: 26px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; font-weight: 700; flex-shrink: 0;
-    }
-    .contact-info { flex: 1; }
-    .contact-name { font-size: 0.7rem; font-weight: 600; }
-    .contact-co { font-size: 0.6rem; color: var(--muted); }
-    .contact-badge {
-      font-size: 0.55rem; padding: 2px 7px; border-radius: 50px; font-weight: 600;
-    }
-    .badge-cliente { background: rgba(16,185,129,0.15); color: #10b981; }
-    .badge-lead { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
-
-    /* ── FEATURES ── */
-    section { padding: 100px 24px; }
-    .section-label {
-      text-align: center; color: var(--indigo-light);
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    .section-title {
-      text-align: center; font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px;
-    }
-    .section-sub {
-      text-align: center; color: var(--muted); max-width: 520px;
-      margin: 0 auto 64px; line-height: 1.7;
-    }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; max-width: 1100px; margin: 0 auto;
-    }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius); padding: 32px;
-      transition: border-color .2s, transform .2s;
-    }
-    .feature-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-4px); }
-    .feature-icon {
-      width: 52px; height: 52px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 20px;
-    }
-    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
-
-    /* ── WHATSAPP HIGHLIGHT ── */
-    .highlight {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-    }
-    .highlight-text h2 {
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1;
-    }
-    .highlight-text p { color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .check-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.95rem; font-weight: 500;
-    }
-    .check-list li::before {
-      content: '✓'; width: 24px; height: 24px; border-radius: 50%;
-      background: rgba(16,185,129,0.15); color: #10b981;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
-    }
-    .wapp-card {
-      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius); padding: 24px;
-    }
-    .wapp-header {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .wapp-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
+    .wa-av {
+      width: 32px; height: 32px; border-radius: 50%;
       background: linear-gradient(135deg, #25d366, #128c7e);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
+      font-size: 0.9rem; flex-shrink: 0;
     }
-    .wapp-name { font-weight: 700; font-size: 0.9rem; }
-    .wapp-status { font-size: 0.75rem; color: #25d366; }
-    .msg { margin-bottom: 12px; }
-    .msg-bubble {
-      display: inline-block; padding: 10px 14px; border-radius: 18px;
-      font-size: 0.82rem; line-height: 1.5; max-width: 260px;
+    .wa-info { flex: 1; }
+    .wa-name { font-size: 0.72rem; font-weight: 700; color: #fff; }
+    .wa-st { font-size: 0.6rem; color: rgba(255,255,255,0.7); }
+    .wa-body { padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; min-height: 200px; }
+    .wa-msg { max-width: 80%; }
+    .wa-bubble {
+      display: inline-block; padding: 7px 10px; border-radius: 10px;
+      font-size: 0.65rem; line-height: 1.4; color: #1c1510;
     }
-    .msg-in .msg-bubble { background: var(--surface2); border-radius: 4px 18px 18px 18px; }
-    .msg-out { text-align: right; }
-    .msg-out .msg-bubble {
-      background: linear-gradient(135deg, var(--indigo) 0%, #7c3aed 100%);
-      border-radius: 18px 4px 18px 18px;
+    .wa-msg-in .wa-bubble { background: #fff; border-radius: 2px 10px 10px 10px; }
+    .wa-msg-out { align-self: flex-end; }
+    .wa-msg-out .wa-bubble { background: #d9fdd3; border-radius: 10px 2px 10px 10px; }
+    .wa-ai-tag {
+      font-size: 0.52rem; color: #25d366; margin-top: 2px; text-align: right;
     }
-    .msg-ai {
+    .wa-time { font-size: 0.5rem; color: #999; margin-top: 1px; text-align: right; }
+
+    /* Calendar Screen */
+    .cal-screen { background: #f8f8f8; }
+    .cal-top {
+      background: var(--gold); padding: 28px 12px 10px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cal-title { font-size: 0.75rem; font-weight: 700; color: #fff; }
+    .cal-sub { font-size: 0.55rem; color: rgba(255,255,255,0.8); }
+    .cal-body { padding: 10px 8px; }
+    .cal-month { font-size: 0.65rem; font-weight: 700; color: var(--text); margin-bottom: 6px; text-align: center; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-bottom: 10px; }
+    .cal-day-h { font-size: 0.5rem; color: var(--muted); text-align: center; font-weight: 600; }
+    .cal-day {
+      font-size: 0.55rem; text-align: center; padding: 3px 0;
+      border-radius: 50%; color: var(--text);
+    }
+    .cal-day.empty { color: transparent; }
+    .cal-day.today {
+      background: var(--gold); color: #fff; font-weight: 700;
+    }
+    .cal-day.booked { background: var(--green-bg); color: var(--green-dk); font-weight: 600; }
+    .cal-slots { display: flex; flex-direction: column; gap: 4px; }
+    .cal-slot {
       display: flex; align-items: center; gap: 6px;
-      font-size: 0.7rem; color: var(--gold); margin-top: 4px; justify-content: flex-end;
+      background: #fff; border-radius: 8px; padding: 5px 8px;
+      border: 1px solid #eee;
     }
+    .cal-slot-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .cal-slot-info { flex: 1; }
+    .cal-slot-time { font-size: 0.55rem; font-weight: 700; color: var(--text); }
+    .cal-slot-name { font-size: 0.5rem; color: var(--muted); }
+    .cal-slot-badge {
+      font-size: 0.45rem; padding: 1px 5px; border-radius: 50px; font-weight: 700;
+    }
+    .badge-ia { background: #e8f0fe; color: #1a73e8; }
+    .badge-ok { background: var(--green-bg); color: var(--green-dk); }
+
+    /* Instagram DM Screen */
+    .ig-screen { background: #fafafa; }
+    .ig-top {
+      background: #fff; padding: 28px 12px 10px;
+      border-bottom: 1px solid #eee;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ig-av {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .ig-name { font-size: 0.7rem; font-weight: 700; color: #1c1510; }
+    .ig-st { font-size: 0.56rem; color: #999; }
+    .ig-body { padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; min-height: 200px; background: #fafafa; }
+    .ig-msg { max-width: 80%; }
+    .ig-bubble {
+      display: inline-block; padding: 7px 10px; border-radius: 18px;
+      font-size: 0.63rem; line-height: 1.4;
+    }
+    .ig-msg-in .ig-bubble { background: #efefef; color: #1c1510; border-radius: 2px 18px 18px 18px; }
+    .ig-msg-out { align-self: flex-end; }
+    .ig-msg-out .ig-bubble {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff; border-radius: 18px 2px 18px 18px;
+    }
+    .ig-ai-tag { font-size: 0.5rem; color: #833ab4; margin-top: 2px; text-align: right; }
+    .ig-tag {
+      display: inline-flex; align-items: center; gap: 3px;
+      background: #fce4ec; color: #c62828;
+      font-size: 0.5rem; font-weight: 700; padding: 2px 6px; border-radius: 50px;
+      margin-top: 4px; align-self: flex-end;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    #problema { padding: 100px 24px; }
+    .section-label {
+      display: block; text-align: center;
+      color: var(--gold-dk); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700; letter-spacing: -1px; line-height: 1.15;
+      margin-bottom: 20px; text-align: center;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      text-align: center; color: var(--muted); max-width: 520px;
+      margin: 0 auto 56px; line-height: 1.8;
+    }
+
+    .problem-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 16px; max-width: 900px; margin: 0 auto;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px;
+      transition: border-color .2s, transform .2s;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .problem-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .problem-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+    .problem-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3;
+    }
+    .problem-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.65; }
 
     /* ── PRICING ── */
+    #servicios {
+      padding: 100px 24px;
+      background: var(--bg2);
+    }
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 20px; max-width: 1020px; margin: 56px auto 0;
     }
-    .pricing-card {
-      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius); padding: 36px; position: relative;
+    .pack {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 28px;
+      position: relative; display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px var(--shadow);
     }
-    .pricing-card.featured {
-      border-color: var(--indigo);
-      background: linear-gradient(160deg, rgba(99,102,241,0.08) 0%, var(--surface) 60%);
+    .pack:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(201,151,58,0.12); }
+    .pack.featured {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #fffbf3 0%, #fff 60%);
     }
-    .popular-badge {
+    .pack-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--indigo), #7c3aed);
-      color: #fff; padding: 4px 16px; border-radius: 50px;
-      font-size: 0.75rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
+      color: #fff; padding: 4px 18px; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+      white-space: nowrap;
     }
-    .plan-name { font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; }
-    .plan-price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
-    .plan-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 28px; }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .plan-features li { font-size: 0.88rem; display: flex; gap: 10px; }
-    .plan-features li::before { content: '✓'; color: var(--indigo-light); font-weight: 800; }
-    .plan-btn {
-      width: 100%; padding: 14px; border-radius: 50px; font-size: 0.95rem; font-weight: 700;
-      cursor: pointer; border: none; transition: all .2s; text-decoration: none;
-      display: block; text-align: center;
+    .pack-name {
+      font-size: 0.72rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
     }
-    .plan-btn-outline {
-      background: transparent; border: 1.5px solid rgba(255,255,255,0.15); color: var(--text);
+    .pack-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem; font-weight: 900; letter-spacing: -2px;
+      color: var(--text); margin-bottom: 4px; line-height: 1;
     }
-    .plan-btn-outline:hover { border-color: var(--indigo); color: var(--indigo-light); }
-    .plan-btn-solid {
-      background: linear-gradient(135deg, var(--indigo), #7c3aed);
-      color: #fff; box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+    .pack-price span { font-family: 'DM Sans',sans-serif; font-size: 1rem; font-weight: 400; color: var(--muted); }
+    .pack-desc { color: var(--muted); font-size: 0.875rem; margin-bottom: 24px; line-height: 1.6; }
+    .pack-features {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 10px; margin-bottom: 32px; flex: 1;
     }
-    .plan-btn-solid:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(99,102,241,0.45); }
+    .pack-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.875rem; line-height: 1.5;
+    }
+    .pack-features li::before {
+      content: '✓'; color: var(--gold); font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .pack-cta {
+      display: block; width: 100%; padding: 14px;
+      border-radius: 50px; font-size: 0.95rem; font-weight: 700;
+      text-align: center; text-decoration: none; cursor: pointer; transition: all .2s;
+    }
+    .pack-cta-ghost {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--muted2);
+    }
+    .pack-cta-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .pack-cta-solid {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dk));
+      color: #fff; border: none;
+      box-shadow: 0 6px 20px rgba(201,151,58,0.3);
+    }
+    .pack-cta-solid:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,151,58,0.4); }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 1000px; margin: 0 auto;
+    /* ── COMO FUNCIONA ── */
+    #como-funciona { padding: 100px 24px; text-align: center; }
+    .steps {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; max-width: 860px; margin: 56px auto 0;
+      position: relative;
     }
-    .testimonial {
-      background: var(--surface); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius); padding: 28px;
+    .steps::before {
+      content: '';
+      position: absolute; top: 30px; left: calc(16.5% + 16px); right: calc(16.5% + 16px);
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold-pale), var(--gold), var(--gold-pale));
     }
-    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; }
-    .testimonial p { color: #ccc; font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .t-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
+    .step { padding: 0 24px; text-align: center; }
+    .step-num {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid var(--gold);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; font-weight: 800;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--gold);
+      box-shadow: 0 4px 16px rgba(201,151,58,0.15);
     }
-    .t-name { font-weight: 700; font-size: 0.88rem; }
-    .t-role { font-size: 0.75rem; color: var(--muted); }
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .step p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+
+    /* ── CASE STUDY ── */
+    #resultados { padding: 80px 24px; background: var(--bg2); }
+    .case-wrap { max-width: 860px; margin: 0 auto; }
+    .case-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 48px;
+      box-shadow: 0 4px 24px var(--shadow);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .case-tag {
+      display: inline-block;
+      background: var(--gold-pale); color: var(--gold-dk);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 16px;
+    }
+    .case-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; line-height: 1.2;
+    }
+    .case-card > div > p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 24px; }
+
+    /* reuse wapp-demo but in light mode */
+    .wapp-demo {
+      background: #ece5dd;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .wapp-header {
+      background: #075e54; display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+    }
+    .wapp-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg,#25d366,#128c7e);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .wapp-name { font-weight: 700; font-size: 0.82rem; color: #fff; }
+    .wapp-status { font-size: 0.68rem; color: rgba(255,255,255,0.75); }
+    .chat-msgs { padding: 10px 10px; display: flex; flex-direction: column; gap: 7px; }
+    .cmsg { max-width: 80%; }
+    .cbubble {
+      display: inline-block; padding: 8px 11px; border-radius: 10px;
+      font-size: 0.75rem; line-height: 1.5;
+    }
+    .cmsg-in .cbubble { background: #fff; color: #1c1510; border-radius: 2px 10px 10px 10px; }
+    .cmsg-out { align-self: flex-end; }
+    .cmsg-out .cbubble { background: #d9fdd3; color: #1c1510; border-radius: 10px 2px 10px 10px; }
+    .cai-tag { font-size: 0.6rem; color: #25d366; margin-top: 2px; text-align: right; }
 
     /* ── CTA FINAL ── */
-    .cta-section {
-      text-align: center; padding: 100px 24px;
-    }
+    .cta-section { padding: 100px 24px; text-align: center; }
     .cta-box {
-      max-width: 680px; margin: 0 auto;
-      background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(124,58,237,0.1) 100%);
-      border: 1px solid rgba(99,102,241,0.25);
-      border-radius: 32px; padding: 64px 48px;
+      max-width: 660px; margin: 0 auto;
+      background: var(--text);
+      border-radius: 36px; padding: 64px 48px; position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,151,58,0.15) 0%, transparent 65%);
+      pointer-events: none;
     }
     .cta-box h2 {
+      position: relative;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px;
+      font-weight: 900; letter-spacing: -1px; margin-bottom: 18px; line-height: 1.1;
+      color: #f0ebe0;
     }
-    .cta-box p { color: var(--muted); margin-bottom: 36px; font-size: 1rem; line-height: 1.7; }
+    .cta-box h2 em { font-style: italic; color: var(--gold); }
+    .cta-box p {
+      position: relative; color: #7a6f64; margin-bottom: 40px;
+      font-size: 1rem; line-height: 1.75; max-width: 460px; margin-left: auto; margin-right: auto;
+    }
+    .cta-btns { position: relative; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #7a6f64;
+      padding: 18px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 500;
+      text-decoration: none; border: 1.5px solid #3d3228; transition: all .2s;
+    }
+    .btn-ghost-light:hover { color: #f0ebe0; border-color: #7a6f64; }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 40px 48px; display: flex;
-      align-items: center; justify-content: space-between;
-      color: var(--muted); font-size: 0.82rem;
+      border-top: 1px solid var(--border); padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      color: var(--muted); font-size: 0.8rem; background: var(--surface);
     }
+    footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--text); }
+    .footer-links { display: flex; gap: 24px; }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
+    /* ── FLOATING WA ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+      transition: transform .2s, box-shadow .2s;
+      animation: float-in .5s .5s both;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,0.55); }
+    .wa-float svg { width: 28px; height: 28px; }
+    @keyframes float-in { from{opacity:0;transform:scale(0.5)} to{opacity:1;transform:scale(1)} }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .highlight { grid-template-columns: 1fr; }
-      .mockup-inner { grid-template-columns: 1fr; }
-      .mock-sidebar { display: none; }
+      .phones-grid { grid-template-columns: 1fr; gap: 48px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left:auto; margin-right:auto; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .case-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
+      .cta-box { padding: 40px 20px; }
+      .trust-bar { flex-direction: column; gap: 8px; border-radius: var(--radius); text-align: center; padding: 16px 20px; }
+      .trust-divider { display: none; }
+    }
+    @media (max-width: 600px) {
+      .problem-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/34612266321?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20vuestros%20servicios%20de%20IA" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.549 5.873L.057 23.857a.5.5 0 00.636.608l6.218-1.98A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.17-1.447l-.37-.22-3.832 1.22 1.101-3.765-.241-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
 <!-- NAV -->
 <nav>
-  <div class="logo">Soft IA <span>House</span></div>
+  <div class="logo">Softia<em>House</em></div>
   <div class="nav-links">
-    <a href="#features">Funcionalidades</a>
-    <a href="#whatsapp">WhatsApp</a>
-    <a href="#pricing">Preços</a>
-    <a href="/equipo" style="color:#a78bfa;display:inline-flex;align-items:center;gap:6px">Equipa Softia <span style="background:linear-gradient(135deg,#6366f1,#7c3aed);color:#fff;font-size:0.6rem;font-weight:700;padding:2px 7px;border-radius:50px;letter-spacing:0.5px">NEW</span></a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#resultados">Resultados</a>
   </div>
-  <a href="https://app.softiahouse.com" class="nav-cta">Começar grátis →</a>
+  <a href="https://wa.me/34612266321?text=Hola%2C%20quiero%20una%20consulta%20gratuita" target="_blank" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.549 5.873L.057 23.857a.5.5 0 00.636.608l6.218-1.98A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.17-1.447l-.37-.22-3.832 1.22 1.101-3.765-.241-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Consulta gratis
+  </a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge"><span class="badge-dot"></span> CRM com IA integrada · IA integrada</div>
-  <h1>O CRM que<br/><em>transforma leads</em><br/>em clientes reais</h1>
-  <p>Gerencie contatos, pipeline de vendas e conversas de WhatsApp num único lugar — com inteligência artificial respondendo por você. / Gestiona contactos, ventas y WhatsApp con IA.</p>
+  <div class="badge"><span class="badge-dot"></span> Especialistas en IA · Torrevieja</div>
+  <h1>Tu negocio,<br/><em>atendiendo clientes</em><br/>las 24 horas</h1>
+  <p>Instalamos agentes de inteligencia artificial en tu WhatsApp e Instagram. Responden, califican leads y agendan citas — mientras tú te dedicas a lo que sabes hacer.</p>
   <div class="hero-btns">
-    <a href="https://app.softiahouse.com" class="btn-primary">Experimentar agora grátis</a>
-    <a href="#features" class="btn-secondary">Ver funcionalidades</a>
+    <a href="https://wa.me/34612266321?text=Hola%2C%20quiero%20saber%20c%C3%B3mo%20la%20IA%20puede%20ayudar%20a%20mi%20negocio" target="_blank" class="btn-whatsapp">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.549 5.873L.057 23.857a.5.5 0 00.636.608l6.218-1.98A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.17-1.447l-.37-.22-3.832 1.22 1.101-3.765-.241-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Hablar por WhatsApp
+    </a>
+    <a href="#servicios" class="btn-ghost">Ver servicios →</a>
   </div>
-  <div class="social-proof">
-    <div class="avatars">
-      <span style="background:#6366f1">C</span>
-      <span style="background:#7c3aed">A</span>
-      <span style="background:#f59e0b">M</span>
-      <span style="background:#10b981">R</span>
-    </div>
-    <span>+200 empresas já usam o Soft IA House</span>
+  <div class="trust-bar">
+    <span>🇪🇸 Basados en <strong>Torrevieja</strong></span>
+    <div class="trust-divider"></div>
+    <span>Español · <strong>English</strong></span>
+    <div class="trust-divider"></div>
+    <span>Activo en <strong>5 días laborables</strong></span>
+    <div class="trust-divider"></div>
+    <span>Sin permanencia <strong>primeros 3 meses</strong></span>
   </div>
+</section>
 
-  <!-- MOCKUP -->
-  <div class="mockup-wrap">
-    <div class="mockup-frame">
-      <div class="mockup-bar">
-        <div class="mockup-dot d1"></div>
-        <div class="mockup-dot d2"></div>
-        <div class="mockup-dot d3"></div>
-        <div class="mockup-url">app.softiahouse.com/dashboard</div>
-      </div>
-      <div class="mockup-inner">
-        <div class="mock-sidebar">
-          <div class="mock-brand">Minha Empresa</div>
-          <div class="mock-tagline">CRM Inteligente</div>
-          <div class="mock-nav-item active">📊 Dashboard</div>
-          <div class="mock-nav-item">👥 Contactos</div>
-          <div class="mock-nav-item">💼 Pipeline</div>
-          <div class="mock-nav-item">💬 WhatsApp</div>
-          <div class="mock-nav-item">🤖 Agente IA</div>
-          <div class="mock-nav-item">⚙️ Configuração</div>
-        </div>
-        <div class="mock-main">
-          <div class="mock-title">Dashboard</div>
-          <div class="mock-date">quinta-feira, 16 de abril de 2026</div>
-          <div class="mock-cards">
-            <div class="mock-card">
-              <div class="mock-card-label">Total Contactos</div>
-              <div class="mock-card-val" style="color:#818cf8">142</div>
-              <div class="mock-card-sub">28 leads activos</div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-label">Negociações</div>
-              <div class="mock-card-val" style="color:#f59e0b">38</div>
-              <div class="mock-card-sub">€48.200 pipeline</div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-label">Conversas</div>
-              <div class="mock-card-val" style="color:#34d399">12</div>
-              <div class="mock-card-sub">3 sem resposta</div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-label">Msgs IA hoje</div>
-              <div class="mock-card-val" style="color:#f472b6">47</div>
-              <div class="mock-card-sub">↑ 18% vs ontem</div>
+<!-- PHONE MOCKUPS — LO QUE HACEMOS -->
+<section class="phones-section">
+  <span class="section-label fade-up">La IA en acción</span>
+  <h2 class="section-title fade-up">Así trabaja la IA<br/><em style="color:var(--gold-lt)">para tu negocio</em></h2>
+  <p class="section-sub fade-up">No es teoría. Esto es lo que tu cliente ve cuando te escribe — respondido al instante, sin que hagas nada.</p>
+
+  <div class="phones-grid">
+
+    <!-- PHONE 1: WHATSAPP ATENDIMENTO -->
+    <div class="phone-col fade-up">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen wa-screen">
+          <div class="wa-top">
+            <div class="wa-av">🤖</div>
+            <div class="wa-info">
+              <div class="wa-name">Clínica Belleza · WhatsApp</div>
+              <div class="wa-st">● En línea</div>
             </div>
           </div>
-          <div class="mock-bottom">
-            <div class="mock-chart-box">
-              <div class="mock-box-title">Pipeline de Ventas</div>
-              <div class="mock-bars">
-                <div class="mock-bar" style="height:35%;background:#6366f1"></div>
-                <div class="mock-bar" style="height:55%;background:#f59e0b"></div>
-                <div class="mock-bar" style="height:80%;background:#6366f1"></div>
-                <div class="mock-bar" style="height:60%;background:#8b5cf6"></div>
-                <div class="mock-bar" style="height:45%;background:#10b981"></div>
-                <div class="mock-bar" style="height:25%;background:#ef4444"></div>
-              </div>
+          <div class="wa-body">
+            <div class="wa-msg wa-msg-in">
+              <div class="wa-bubble">Hola! ¿Tenéis hueco esta semana para un facial? 😊</div>
+              <div class="wa-time">21:34</div>
             </div>
-            <div class="mock-contacts-box">
-              <div class="mock-box-title">Contactos Recientes</div>
-              <div class="contact-row">
-                <div class="contact-avatar" style="background:rgba(99,102,241,0.2);color:#818cf8">A</div>
-                <div class="contact-info">
-                  <div class="contact-name">Alejandro Pérez</div>
-                  <div class="contact-co">Club Ajedrez Valencia</div>
-                </div>
-                <span class="contact-badge badge-cliente">cliente</span>
-              </div>
-              <div class="contact-row">
-                <div class="contact-avatar" style="background:rgba(245,158,11,0.2);color:#f59e0b">L</div>
-                <div class="contact-info">
-                  <div class="contact-name">Laura Sánchez</div>
-                  <div class="contact-co">Colegio San Vicente</div>
-                </div>
-                <span class="contact-badge badge-lead">lead</span>
-              </div>
-              <div class="contact-row">
-                <div class="contact-avatar" style="background:rgba(16,185,129,0.2);color:#10b981">R</div>
-                <div class="contact-info">
-                  <div class="contact-name">Roberto García</div>
-                  <div class="contact-co">García & Asociados</div>
-                </div>
-                <span class="contact-badge badge-lead">lead</span>
-              </div>
+            <div class="wa-msg wa-msg-out">
+              <div class="wa-bubble">¡Hola! Claro que sí 😊 Tenemos disponibilidad el miércoles a las 10h y el viernes a las 16h. ¿Cuál te viene mejor?</div>
+              <div class="wa-ai-tag">🤖 IA respondió · 21:34</div>
+            </div>
+            <div class="wa-msg wa-msg-in">
+              <div class="wa-bubble">El viernes perfecto!</div>
+            </div>
+            <div class="wa-msg wa-msg-out">
+              <div class="wa-bubble">¡Genial! Te he reservado el viernes a las 16h. Te mando confirmación por aquí 📅✨</div>
+              <div class="wa-ai-tag">🤖 IA respondió · 21:35</div>
             </div>
           </div>
         </div>
       </div>
+      <div class="phone-label">
+        <h4>Atención 24/7</h4>
+        <p>La IA responde en segundos — de noche, en fin de semana, siempre.</p>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- FEATURES -->
-<section id="features">
-  <div class="section-label">Funcionalidades · Funcionalidades</div>
-  <h2 class="section-title">Tudo que precisa para vender mais</h2>
-  <p class="section-sub">Uma plataforma completa para gerir o seu negócio, do primeiro contacto ao fecho da venda. / Todo lo que necesitas para cerrar más ventas.</p>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(99,102,241,0.15)">📊</div>
-      <h3>Dashboard em tempo real</h3>
-      <p>Veja o estado do seu negócio num relance — pipeline, conversas ativas, mensagens de IA e métricas de vendas atualizadas ao segundo.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(245,158,11,0.15)">💼</div>
-      <h3>Pipeline Kanban visual</h3>
-      <p>Arraste e solte negócios entre etapas do funil. Veja o valor total em cada fase e a probabilidade de fecho de cada oportunidade.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(37,211,102,0.15)">💬</div>
-      <h3>WhatsApp integrado</h3>
-      <p>Receba e responda mensagens de WhatsApp diretamente no CRM, sem trocar de aba. Todas as conversas num único lugar.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(168,85,247,0.15)">🤖</div>
-      <h3>Agente IA personalizado</h3>
-      <p>Configure um assistente de IA com a personalidade da sua empresa. Ele responde clientes automaticamente, 24 horas por dia.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(239,68,68,0.15)">👥</div>
-      <h3>Gestão de contactos</h3>
-      <p>Base de dados completa de leads e clientes com histórico de interações, notas, tags e seguimento por etapa do ciclo de vida.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(16,185,129,0.15)">🏷️</div>
-      <h3>White-label total</h3>
-      <p>Customize cores, logo e domínio. Apresente o CRM com a identidade da sua marca — os seus clientes nem saberão que é o Soft IA House.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHATSAPP HIGHLIGHT -->
-<section id="whatsapp" style="background:linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.04) 100%)">
-  <div class="highlight">
-    <div class="highlight-text">
-      <div class="section-label" style="text-align:left">WhatsApp + IA</div>
-      <h2>Responda clientes<br/><em style="font-style:normal;background:linear-gradient(135deg,#25d366,#128c7e);-webkit-background-clip:text;-webkit-text-fill-color:transparent">no WhatsApp</em><br/>com IA</h2>
-      <p>Conecte o seu número de WhatsApp e deixe a inteligência artificial responder por você. Configure o tom e as respostas — e foque-se no que importa.</p>
-      <ul class="check-list">
-        <li>Respostas automáticas 24/7 sem custo adicional</li>
-        <li>IA treinada com a voz da sua empresa</li>
-        <li>Intervenção manual quando necessário</li>
-        <li>Histórico completo de todas as conversas</li>
-        <li>Atribuição automática por agente</li>
-      </ul>
-    </div>
-    <div class="wapp-card">
-      <div class="wapp-header">
-        <div class="wapp-avatar">💬</div>
-        <div>
-          <div class="wapp-name">Minha Empresa — WhatsApp</div>
-          <div class="wapp-status">● Online agora</div>
+    <!-- PHONE 2: AGENDAMENTO -->
+    <div class="phone-col fade-up">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen cal-screen">
+          <div class="cal-top">
+            <div>
+              <div class="cal-title">Agenda Automática</div>
+              <div class="cal-sub">Gestionada por IA</div>
+            </div>
+            <span style="font-size:1.2rem">📅</span>
+          </div>
+          <div class="cal-body">
+            <div class="cal-month">Mayo 2026</div>
+            <div class="cal-grid">
+              <div class="cal-day-h">L</div><div class="cal-day-h">M</div><div class="cal-day-h">X</div>
+              <div class="cal-day-h">J</div><div class="cal-day-h">V</div><div class="cal-day-h">S</div><div class="cal-day-h">D</div>
+              <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
+              <div class="cal-day">1</div><div class="cal-day booked">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+              <div class="cal-day">5</div><div class="cal-day booked">6</div><div class="cal-day">7</div>
+              <div class="cal-day booked">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div>
+              <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day booked">14</div>
+              <div class="cal-day">15</div><div class="cal-day booked">16</div><div class="cal-day">17</div>
+              <div class="cal-day today">25</div><div class="cal-day">26</div><div class="cal-day booked">27</div><div class="cal-day">28</div>
+            </div>
+            <div class="cal-slots">
+              <div class="cal-slot">
+                <div class="cal-slot-dot" style="background:var(--green)"></div>
+                <div class="cal-slot-info">
+                  <div class="cal-slot-time">10:00 — María García</div>
+                  <div class="cal-slot-name">Facial hidratación</div>
+                </div>
+                <span class="cal-slot-badge badge-ia">IA</span>
+              </div>
+              <div class="cal-slot">
+                <div class="cal-slot-dot" style="background:var(--gold)"></div>
+                <div class="cal-slot-info">
+                  <div class="cal-slot-time">12:30 — Laura M.</div>
+                  <div class="cal-slot-name">Depilación láser</div>
+                </div>
+                <span class="cal-slot-badge badge-ok">OK</span>
+              </div>
+              <div class="cal-slot">
+                <div class="cal-slot-dot" style="background:#1a73e8"></div>
+                <div class="cal-slot-info">
+                  <div class="cal-slot-time">16:00 — Sofia R.</div>
+                  <div class="cal-slot-name">Masaje relajante</div>
+                </div>
+                <span class="cal-slot-badge badge-ia">IA</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="msg msg-in">
-        <div class="msg-bubble">Olá! Queria saber mais sobre os vossos serviços 😊</div>
+      <div class="phone-label">
+        <h4>Agenda llena sola</h4>
+        <p>La IA agenda, confirma y manda recordatorios. Tú solo recibes los clientes.</p>
       </div>
-      <div class="msg msg-out">
-        <div class="msg-bubble">Olá! Obrigado pelo interesse 🙏 Somos especializados em [serviço]. Como posso ajudá-lo hoje?</div>
-        <div class="msg-ai">🤖 Respondido pelo Agente IA • agora</div>
+    </div>
+
+    <!-- PHONE 3: INSTAGRAM CAPTAÇÃO -->
+    <div class="phone-col fade-up">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ig-screen">
+          <div class="ig-top">
+            <div class="ig-av">📸</div>
+            <div>
+              <div class="ig-name">clinica_belleza · DM</div>
+              <div class="ig-st">Instagram · En línea</div>
+            </div>
+          </div>
+          <div class="ig-body">
+            <div class="ig-msg ig-msg-in">
+              <div class="ig-bubble">Vi vuestro post sobre el tratamiento antiedad, ¿cuánto cuesta? 👀</div>
+            </div>
+            <div class="ig-msg ig-msg-out">
+              <div class="ig-bubble">¡Hola! El tratamiento antiedad completo está desde 120€. ¿Te gustaría que te enviáramos toda la info con antes/después? 💆‍♀️</div>
+              <div class="ig-ai-tag">🤖 IA · respondió al instante</div>
+            </div>
+            <div class="ig-msg ig-msg-in">
+              <div class="ig-bubble">Sí por favor! Y cómo puedo pedir cita?</div>
+            </div>
+            <div class="ig-msg ig-msg-out">
+              <div class="ig-bubble">¡Perfecto! Te paso a WhatsApp para mandarte todo y elegir tu cita 🗓️</div>
+              <div class="ig-ai-tag">🤖 IA · respondió al instante</div>
+            </div>
+            <span class="ig-tag">🔥 Lead captado · IA</span>
+          </div>
+        </div>
       </div>
-      <div class="msg msg-in">
-        <div class="msg-bubble">Que preços têm?</div>
+      <div class="phone-label">
+        <h4>Captación en Instagram</h4>
+        <p>Cada comentario o DM es una oportunidad. La IA no deja escapar ninguna.</p>
       </div>
-      <div class="msg msg-out">
-        <div class="msg-bubble">Os nossos planos começam a partir de €29/mês. Posso enviar uma proposta personalizada? Preciso apenas do seu email 📧</div>
-        <div class="msg-ai">🤖 Respondido pelo Agente IA • agora</div>
-      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section id="problema">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <span class="section-label fade-up">El problema</span>
+    <h2 class="section-title fade-up">¿Cuántos clientes<br/><em>pierdes cada día</em>?</h2>
+    <p class="section-sub fade-up">Un cliente manda un mensaje a las 9 de la noche. Nadie responde. Al día siguiente, ya contrató con tu competencia.</p>
+  </div>
+  <div class="problem-cards">
+    <div class="problem-card fade-up">
+      <span class="problem-icon">🕐</span>
+      <h4>Respuesta lenta = cliente perdido</h4>
+      <p>El 78% de los clientes elige al negocio que responde primero. Cada hora sin respuesta es dinero que se va.</p>
+    </div>
+    <div class="problem-card fade-up">
+      <span class="problem-icon">📲</span>
+      <h4>WhatsApp sin gestión</h4>
+      <p>Mensajes sin leer, preguntas repetidas, leads que nunca se convierten. Es tu mayor canal y nadie lo gestiona bien.</p>
+    </div>
+    <div class="problem-card fade-up">
+      <span class="problem-icon">📅</span>
+      <h4>Agenda desorganizada</h4>
+      <p>Citas por mensaje, cancelaciones de última hora, huecos vacíos. Un sistema inteligente llena tu agenda solo.</p>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <div class="section-label">Preços · Precios</div>
-  <h2 class="section-title">Simples e transparente</h2>
-  <p class="section-sub">Sem letras pequenas. Comece grátis e cresça connosco. / Sin letras pequeñas. Empieza gratis y crece con nosotros.</p>
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div style="text-align:center">
+    <span class="section-label fade-up">Nuestros servicios</span>
+    <h2 class="section-title fade-up">Elige tu nivel de<br/><em>automatización</em></h2>
+    <p class="section-sub fade-up">Sin permanencia los primeros 3 meses. Si no ves resultados, cancelamos sin coste.</p>
+  </div>
   <div class="pricing-grid">
-    <div class="pricing-card">
-      <div class="plan-name">Basic</div>
-      <div class="plan-price">€29<span>/mês</span></div>
-      <div class="plan-desc">Para negócios a começar</div>
-      <ul class="plan-features">
-        <li>Até 500 contactos</li>
-        <li>Pipeline de vendas</li>
-        <li>WhatsApp integrado</li>
-        <li>1 utilizador</li>
-        <li>Suporte por email</li>
+    <div class="pack fade-up">
+      <div class="pack-name">Starter</div>
+      <div class="pack-price">450<span>€/mes</span></div>
+      <p class="pack-desc">Para negocios que quieren empezar a automatizar su atención al cliente.</p>
+      <ul class="pack-features">
+        <li>Agente IA en tu WhatsApp Business</li>
+        <li>Respuestas automáticas 24/7</li>
+        <li>Calificación de leads entrantes</li>
+        <li>Agendación de citas automática</li>
+        <li>Informe mensual de resultados</li>
       </ul>
-      <a href="https://app.softiahouse.com" class="plan-btn plan-btn-outline">Começar grátis</a>
+      <a href="https://wa.me/34612266321?text=Me%20interesa%20el%20pack%20Starter" target="_blank" class="pack-cta pack-cta-ghost">Solicitar info →</a>
     </div>
-    <div class="pricing-card featured">
-      <div class="popular-badge">⚡ Mais popular</div>
-      <div class="plan-name">Professional</div>
-      <div class="plan-price">€79<span>/mês</span></div>
-      <div class="plan-desc">Para equipas em crescimento</div>
-      <ul class="plan-features">
-        <li>Contactos ilimitados</li>
-        <li>Agente IA incluído</li>
-        <li>Até 5 utilizadores</li>
-        <li>White-label completo</li>
-        <li>Suporte prioritário</li>
-        <li>Integrações avançadas</li>
+    <div class="pack featured fade-up">
+      <div class="pack-badge">⚡ Más popular</div>
+      <div class="pack-name">Growth</div>
+      <div class="pack-price">900<span>€/mes</span></div>
+      <p class="pack-desc">Estrategia completa de captación y atención. Para crecer de verdad.</p>
+      <ul class="pack-features">
+        <li>Todo lo del plan Starter</li>
+        <li>Estrategia de captación con IA</li>
+        <li>Automatización en Instagram DM</li>
+        <li>Seguimiento de leads inactivos</li>
+        <li>Optimización mensual del agente</li>
+        <li>Soporte prioritario</li>
       </ul>
-      <a href="https://app.softiahouse.com" class="plan-btn plan-btn-solid">Começar agora →</a>
+      <a href="https://wa.me/34612266321?text=Me%20interesa%20el%20pack%20Growth" target="_blank" class="pack-cta pack-cta-solid">Empezar ahora →</a>
     </div>
-    <div class="pricing-card">
-      <div class="plan-name">Enterprise</div>
-      <div class="plan-price" style="font-size:2rem">Custom</div>
-      <div class="plan-desc">Para revendedores e grandes equipas</div>
-      <ul class="plan-features">
-        <li>Multi-tenant ilimitado</li>
-        <li>Utilizadores ilimitados</li>
-        <li>SLA garantido</li>
-        <li>Onboarding dedicado</li>
-        <li>API acesso completo</li>
+    <div class="pack fade-up">
+      <div class="pack-name">Full</div>
+      <div class="pack-price">1.500<span>€/mes</span></div>
+      <p class="pack-desc">Solución completa gestionada. Tú solo recibes clientes confirmados.</p>
+      <ul class="pack-features">
+        <li>Todo lo del plan Growth</li>
+        <li>Análisis estratégico mensual</li>
+        <li>Reunión de resultados incluida</li>
+        <li>Ajustes y mejoras continuas</li>
+        <li>Integraciones adicionales</li>
+        <li>Acceso a nuevas funcionalidades IA</li>
       </ul>
-      <a href="mailto:softiahouse@gmail.com" class="plan-btn plan-btn-outline">Falar com vendas</a>
+      <a href="https://wa.me/34612266321?text=Me%20interesa%20el%20pack%20Full" target="_blank" class="pack-cta pack-cta-ghost">Solicitar info →</a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section>
-  <div class="section-label">Depoimentos · Testimonios</div>
-  <h2 class="section-title">Quem já usa, recomenda</h2>
-  <p class="section-sub">Empresas reais a crescer com o Soft IA House.</p>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"O CRM transformou a forma como gerimos os nossos membros. A IA responde às perguntas frequentes no WhatsApp e a equipa ficou com muito mais tempo livre."</p>
-      <div class="testimonial-author">
-        <div class="t-avatar" style="background:rgba(30,58,95,0.5);color:#c9a227">C</div>
-        <div>
-          <div class="t-name">Carlos Martínez</div>
-          <div class="t-role">Admin · FedChess Valencia</div>
-        </div>
-      </div>
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div style="text-align:center;max-width:700px;margin:0 auto;">
+    <span class="section-label fade-up">El proceso</span>
+    <h2 class="section-title fade-up">Activo en <em>5 días</em></h2>
+    <p class="section-sub fade-up">Sin complicaciones técnicas. Nosotros lo instalamos todo.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">1</div>
+      <h4>Diagnóstico</h4>
+      <p>Analizamos tu negocio, tus canales y tus clientes. Diseñamos la IA específica para ti.</p>
     </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"Finalmente um CRM que não precisa de 3 semanas para aprender. Em 2 horas já estava a usar tudo. O pipeline visual é simplesmente fantástico."</p>
-      <div class="testimonial-author">
-        <div class="t-avatar" style="background:rgba(99,102,241,0.2);color:#818cf8">A</div>
-        <div>
-          <div class="t-name">Ana López</div>
-          <div class="t-role">Gestora Comercial · PME Valencia</div>
-        </div>
-      </div>
+    <div class="step fade-up">
+      <div class="step-num">2</div>
+      <h4>Configuración</h4>
+      <p>Instalamos y entrenamos el agente con tu voz, tus servicios y tus precios.</p>
     </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"Vendemos o CRM white-label a 8 clientes nossos. É receita recorrente sem praticamente nenhum trabalho extra. O melhor investimento que fizemos."</p>
-      <div class="testimonial-author">
-        <div class="t-avatar" style="background:rgba(245,158,11,0.2);color:#f59e0b">M</div>
-        <div>
-          <div class="t-name">Miguel Torres</div>
-          <div class="t-role">CEO · Agência Digital</div>
+    <div class="step fade-up">
+      <div class="step-num">3</div>
+      <h4>Resultados</h4>
+      <p>Tu IA empieza a atender clientes. Tú recibes leads calificados y citas agendadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="resultados">
+  <div class="case-wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="section-label fade-up">Caso real</span>
+      <h2 class="section-title fade-up">Lo que <em>conseguimos</em><br/>para nuestros clientes</h2>
+    </div>
+    <div class="case-card fade-up">
+      <div>
+        <span class="case-tag">Caso de éxito</span>
+        <h3>TheAIAutoPoster</h3>
+        <p>Plataforma de marketing digital internacional que necesitaba gestionar leads en varios idiomas sin equipo de ventas. Implementamos un agente IA para calificación automática, seguimiento y conversión de leads entrantes.</p>
+        <a href="https://wa.me/34612266321?text=Quiero%20resultados%20como%20TheAIAutoPoster" target="_blank" class="btn-whatsapp" style="display:inline-flex;padding:14px 28px;font-size:0.9rem;margin-top:8px;">
+          <svg viewBox="0 0 24 24" fill="white" style="width:18px;height:18px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.549 5.873L.057 23.857a.5.5 0 00.636.608l6.218-1.98A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.17-1.447l-.37-.22-3.832 1.22 1.101-3.765-.241-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Quiero estos resultados
+        </a>
+      </div>
+      <div class="wapp-demo">
+        <div class="wapp-header">
+          <div class="wapp-av">🤖</div>
+          <div>
+            <div class="wapp-name">SoftiaHouse AI</div>
+            <div class="wapp-status">● En línea ahora</div>
+          </div>
+        </div>
+        <div class="chat-msgs">
+          <div class="cmsg cmsg-in"><div class="cbubble">Hola, ¿cuánto cobráis por el tratamiento facial?</div></div>
+          <div class="cmsg cmsg-out">
+            <div class="cbubble">¡Hola! 😊 Desde 45€. ¿Me dices qué tipo de piel tienes para recomendarte lo mejor?</div>
+            <div class="cai-tag">🤖 IA respondió automáticamente</div>
+          </div>
+          <div class="cmsg cmsg-in"><div class="cbubble">Piel seca, con manchas.</div></div>
+          <div class="cmsg cmsg-out">
+            <div class="cbubble">Te recomiendo hidratación profunda + despigmentación (89€). ¿Te agendo esta semana? 📅</div>
+            <div class="cai-tag">🤖 IA respondió automáticamente</div>
+          </div>
         </div>
       </div>
     </div>
@@ -689,17 +938,39 @@
 
 <!-- CTA FINAL -->
 <section class="cta-section">
-  <div class="cta-box">
-    <h2>Pronto para começar?<br/>Empieza hoy gratis.</h2>
-    <p>Configure o seu CRM em menos de 5 minutos. Sem cartão de crédito. Sem compromisso. / Sin tarjeta de crédito. Sin compromisos.</p>
-    <div class="hero-btns">
-      <a href="https://app.softiahouse.com" class="btn-primary">Criar conta grátis →</a>
-      <a href="mailto:softiahouse@gmail.com" class="btn-secondary">Falar com nós</a>
+  <div class="cta-box fade-up">
+    <h2>¿Listo para no perder<br/><em>más clientes</em>?</h2>
+    <p>Hablamos 15 minutos por WhatsApp. Te explicamos exactamente qué resultado puedes esperar para tu negocio — sin compromiso.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/34612266321?text=Quiero%20una%20consulta%20gratuita%20de%2015%20minutos" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24" fill="white" style="width:20px;height:20px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.137.564 4.14 1.549 5.873L.057 23.857a.5.5 0 00.636.608l6.218-1.98A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.95 9.95 0 01-5.17-1.447l-.37-.22-3.832 1.22 1.101-3.765-.241-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Consulta gratuita por WhatsApp
+      </a>
+      <a href="mailto:softiahouse@gmail.com" class="btn-ghost-light">Enviar email →</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="logo">Soft IA <span>House</span></div>
-  <div>© 2026 Soft IA House. Todos os direitos reservados.<
+  <div class="logo">Softia<em>House</em></div>
+  <div>© 2026 SoftiaHouse · Torrevieja, España</div>
+  <div class="footer-links">
+    <a href="mailto:softiahouse@gmail.com">softiahouse@gmail.com</a>
+    <a href="https://wa.me/34612266321" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
