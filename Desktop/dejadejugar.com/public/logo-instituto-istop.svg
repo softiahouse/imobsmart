@@ -1,0 +1,18 @@
+<svg width="100%" viewBox="0 0 680 160" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Logo Instituto ISTOP</title>
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#2DD4BF"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(220, 20)">
+    <path d="M60 0 L120 22 L120 72 Q120 110 60 130 Q0 110 0 72 L0 22 Z"
+      fill="none" stroke="url(#shieldGrad)" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="38" y="38" width="16" height="54" rx="4" fill="url(#shieldGrad)"/>
+    <rect x="66" y="38" width="16" height="54" rx="4" fill="url(#shieldGrad)"/>
+  </g>
+  <line x1="390" y1="30" x2="390" y2="130" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="410" y="72" font-family="Georgia, serif" font-size="15" font-weight="400" fill="#6B7280" letter-spacing="3">INSTITUTO</text>
+  <text x="410" y="108" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#2D6A11" letter-spacing="2">ISTOP</text>
+</svg>
