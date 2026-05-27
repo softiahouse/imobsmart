@@ -13,11 +13,11 @@ export default function NovaSenha() {
   const handleSubmit = async () => {
     setErro('')
     if (senha.length < 6) {
-      setErro('A senha deve ter pelo menos 6 caracteres.')
+      setErro('La contraseña debe tener al menos 6 caracteres.')
       return
     }
     if (senha !== confirma) {
-      setErro('As senhas não coincidem.')
+      setErro('Las contraseñas no coinciden.')
       return
     }
 
@@ -26,7 +26,7 @@ export default function NovaSenha() {
     setCarregando(false)
 
     if (error) {
-      setErro('Erro ao atualizar a senha. Tente novamente.')
+      setErro('Error al actualizar la contraseña. Inténtalo de nuevo.')
     } else {
       setSucesso(true)
       setTimeout(() => navigate('/painel', { replace: true }), 2500)
@@ -36,7 +36,7 @@ export default function NovaSenha() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'var(--cream, #f5f0e8)',
+      background: 'var(--creme, #F7F6F2)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -53,28 +53,28 @@ export default function NovaSenha() {
         textAlign: 'center'
       }}>
         <h1 style={{ color: 'var(--navy, #1a2e44)', fontFamily: 'DM Serif Display, serif', fontSize: '1.8rem', marginBottom: '0.5rem' }}>
-          Nova senha
+          Nueva contraseña
         </h1>
         <p style={{ color: '#666', marginBottom: '2rem', fontSize: '0.95rem' }}>
-          Escolha uma senha segura para a sua conta.
+          Elige una contraseña segura para tu cuenta.
         </p>
 
         {sucesso ? (
           <p style={{ color: 'green', fontWeight: 600 }}>
-            ✅ Senha atualizada! Redirecionando...
+            ✅ ¡Contraseña actualizada! Redirigiendo...
           </p>
         ) : (
           <>
             <input
               type="password"
-              placeholder="Nova senha"
+              placeholder="Nueva contraseña"
               value={senha}
               onChange={e => setSenha(e.target.value)}
               style={inputStyle}
             />
             <input
               type="password"
-              placeholder="Confirmar senha"
+              placeholder="Confirmar contraseña"
               value={confirma}
               onChange={e => setConfirma(e.target.value)}
               style={{ ...inputStyle, marginTop: '0.75rem' }}
@@ -90,7 +90,7 @@ export default function NovaSenha() {
               style={{
                 marginTop: '1.5rem',
                 width: '100%',
-                background: 'var(--green, #27ae60)',
+                background: 'var(--azul, #1A3A6B)',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '8px',
@@ -100,7 +100,7 @@ export default function NovaSenha() {
                 opacity: carregando ? 0.7 : 1
               }}
             >
-              {carregando ? 'Salvando...' : 'Salvar nova senha'}
+              {carregando ? 'Guardando...' : 'Guardar nueva contraseña'}
             </button>
           </>
         )}
