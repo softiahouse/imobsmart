@@ -7,15 +7,15 @@ const css = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
 
   :root {
-    --verde: #3B6D11;
-    --verde-claro: #EAF3DE;
-    --verde-suave: #EEF4E6;
-    --vermelho: #993C1D;
-    --creme: #F7F5F0;
-    --texto: #2C2C2A;
-    --texto-sec: #5F5E5A;
-    --texto-ter: #888780;
-    --borda: #E0DDD8;
+    --verde: #1A3A6B;
+    --verde-claro: #E8EFF8;
+    --verde-suave: #F0F4FF;
+    --vermelho: #C8962A;
+    --creme: #F7F6F2;
+    --texto: #1A1A2E;
+    --texto-sec: #4A4A6A;
+    --texto-ter: #8A8AA0;
+    --borda: #D8DFF0;
     --fonte-titulo: 'DM Serif Display', Georgia, serif;
     --fonte-corpo: 'DM Sans', system-ui, sans-serif;
   }
@@ -180,7 +180,7 @@ const css = `
   /* DEPOIMENTOS */
   .lp-depo { background: var(--verde-suave); }
   .lp-depo-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; margin-bottom: 32px; }
-  .lp-depo-card { background: #fff; border: 1px solid #CDDDB8; border-radius: 12px; padding: 32px 24px; position: relative; }
+  .lp-depo-card { background: #fff; border: 1px solid #C8CCDC; border-radius: 12px; padding: 32px 24px; position: relative; }
   .lp-depo-quote {
     font-family: var(--fonte-titulo); font-size: 56px; color: var(--verde-claro);
     position: absolute; top: 12px; left: 20px; line-height: 1;
@@ -222,7 +222,7 @@ const css = `
   }
   .lp-familiares-lista li::before { content: '→'; color: var(--verde); flex-shrink: 0; }
   .lp-familiares-form {
-    background: var(--verde-suave); border: 1px solid #CDDDB8;
+    background: var(--verde-suave); border: 1px solid #C8CCDC;
     border-radius: 16px; padding: 40px 32px;
   }
   .lp-familiares-form h3 { font-family: var(--fonte-titulo); font-size: 24px; font-weight: 400; margin-bottom: 8px; }
@@ -284,7 +284,7 @@ const css = `
   }
   .lp-footer-brand p { font-size: 13px; line-height: 1.7; max-width: 300px; margin-top: 12px; }
   .lp-footer-logo { font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.8); }
-  .lp-footer-logo span { color: #7CB95A; }
+  .lp-footer-logo span { color: #C8962A; }
   .lp-footer-col h4 { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 16px; }
   .lp-footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
   .lp-footer-col a:hover { color: rgba(255,255,255,.8); }
@@ -373,7 +373,7 @@ const css = `
   .lp-blog-card:hover {
     transform: translateY(-4px);
     border-color: var(--verde);
-    box-shadow: 0 8px 28px rgba(59,109,17,0.08);
+    box-shadow: 0 8px 28px rgba(26,58,107,0.08);
   }
   .lp-blog-card-img {
     width: 100%; height: 180px;
@@ -433,11 +433,11 @@ const css = `
 `
 
 const faqs = [
-  { p: 'O programa substitui tratamento psicológico?', r: 'Não. O programa é psicoeducacional e complementar. Para casos de dependência grave, o acompanhamento com profissional de saúde mental é fundamental. O ISTOP pode ser utilizado em paralelo ao tratamento.' },
-  { p: 'Preciso comprar todos os módulos de uma vez?', r: 'O programa é vendido por módulo, de forma sequencial. Cada módulo é adquirido separadamente, mas a ordem é obrigatória: o Módulo 2 só pode ser comprado após o Módulo 1, o Módulo 3 após o 2, e assim por diante. Essa sequência existe porque cada etapa prepara você para a próxima.' },
-  { p: 'O programa funciona para qualquer tipo de aposta?', r: 'Sim. O método foi desenvolvido para comportamentos compulsivos com apostas em geral — esportes, cassinos online, jogos de azar — com foco especial nas plataformas digitais (bets).' },
-  { p: 'Quanto tempo por dia preciso dedicar?', r: 'Cada aula leva entre 15 e 25 minutos. As atividades práticas levam cerca de 3 minutos. O programa foi desenhado para ser compatível com a rotina de quem trabalha.' },
-  { p: 'Tenho acesso vitalício após a compra?', r: 'Não. Após a compra de cada módulo, você tem 120 dias para concluí-lo. O prazo é individual por módulo — não existe limite de tempo global para o programa completo.' },
+  { p: '¿El programa sustituye el tratamiento psicológico?', r: 'No. El programa es psicoeducativo y complementario. Para casos de dependencia grave, el acompañamiento con un profesional de salud mental es fundamental. El ISTOP puede utilizarse en paralelo al tratamiento.' },
+  { p: '¿Necesito comprar todos los módulos de una vez?', r: 'El programa se vende por módulo, de forma secuencial. Cada módulo se adquiere por separado, pero el orden es obligatorio: el Módulo 2 solo puede comprarse tras el Módulo 1, el Módulo 3 tras el 2, y así sucesivamente.' },
+  { p: '¿El programa funciona para cualquier tipo de apuesta?', r: 'Sí. El método fue desarrollado para comportamientos compulsivos con apuestas en general — deportes, casinos online, juegos de azar — con especial enfoque en las plataformas digitales.' },
+  { p: '¿Cuánto tiempo al día necesito dedicar?', r: 'Cada clase lleva entre 15 y 25 minutos. Las actividades prácticas llevan unos 3 minutos. El programa fue diseñado para ser compatible con la rutina de quien trabaja.' },
+  { p: '¿Tengo acceso de por vida tras la compra?', r: 'No. Tras la compra de cada módulo, tienes 120 días para completarlo. El plazo es individual por módulo.' },
 ]
 
 export default function LandingPage() {
@@ -486,13 +486,13 @@ export default function LandingPage() {
         <div className="lp-hero-grid">
         <div className="lp-hero-inner">
           <h1 className="lp-hero-title">
-            <span className="lp-pare">PARE</span>{' '}
-            <span className="lp-viva">VIVA</span>
+            <span className="lp-pare">DEJA</span>{' '}
+            <span className="lp-viva">VIVE</span>
           </h1>
           <div className="lp-circles">
             {[
-              ['I', 'Interrupção'], ['S', 'Sensibilização'], ['T', 'Transformação'],
-              ['O', 'Organização'], ['P', 'Prevenção'],
+              ['I', 'Interrupción'], ['S', 'Sensibilización'], ['T', 'Transformación'],
+              ['O', 'Organización'], ['P', 'Prevención'],
             ].map(([l, n]) => (
               <div key={l} className="lp-circle-wrap">
                 <div className="lp-circle">{l}</div>
@@ -500,11 +500,11 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <p className="lp-hero-subtitle">"Quando o jogo deixa de ser diversão e começa a controlar sua vida."</p>
-          <p className="lp-hero-desc">Um caminho para parar de apostar, elaborar suas perdas e reconstruir sua vida — com base científica e acolhimento real.</p>
+          <p className="lp-hero-subtitle">"Cuando el juego deja de ser diversión y empieza a controlar tu vida."</p>
+          <p className="lp-hero-desc">Un camino para dejar de apostar, elaborar tus pérdidas y reconstruir tu vida — con base científica y acompañamiento real.</p>
           <div className="lp-hero-btns">
-            <Link to="/quiz" className="lp-btn-primary">Teste para Jogador</Link>
-            <Link to="/quiz/familias" className="lp-btn-secondary">Teste para Familiar</Link>
+            <Link to="/quiz" className="lp-btn-primary">Test para Jugador</Link>
+            <Link to="/quiz/familias" className="lp-btn-secondary">Test para Familiar</Link>
           </div>
           {/* Botão CTA principal */}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
@@ -529,7 +529,7 @@ export default function LandingPage() {
                 transition: "background 0.2s, box-shadow 0.2s",
               }}
             >
-              {temModulo1 ? "Continue sua jornada →" : "Inicie sua jornada →"}
+              {temModulo1 ? "Continúa tu camino →" : "Inicia tu camino →"}
             </button>
           </div>
         </div>
@@ -537,7 +537,7 @@ export default function LandingPage() {
           <aside className="lp-hero-sidebar">
             <div className="lp-hero-sidebar-header">
               <span>📰</span>
-              <span>Últimos do blog</span>
+              <span>Últimas del blog</span>
             </div>
             {ultimosPosts.map((p) => (
               <Link key={p.id} to={`/blog/${p.slug}`} className="lp-hero-sidebar-post">
@@ -546,7 +546,7 @@ export default function LandingPage() {
               </Link>
             ))}
             <Link to="/blog" className="lp-hero-sidebar-link">
-              Ver todos os artigos →
+              Ver todos los artículos →
             </Link>
           </aside>
         )}
@@ -567,11 +567,11 @@ export default function LandingPage() {
           }}
           onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
         >
-          <span style={{ fontSize: "0.7rem", color: "#3B6D11", fontFamily: "DM Sans, sans-serif", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Ver mais
+          <span style={{ fontSize: "0.7rem", color: "#1A3A6B", fontFamily: "DM Sans, sans-serif", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            Ver más
           </span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9L12 15L18 9" stroke="#3B6D11" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 9L12 15L18 9" stroke="#1A3A6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
 
@@ -586,17 +586,17 @@ export default function LandingPage() {
       {/* ESPELHO DA DOR */}
       <section className="lp-section lp-dor">
         <div className="lp-container">
-          <span className="lp-section-label">Você se reconhece?</span>
-          <h2 className="lp-section-title">O jogo prometeu algo que não entregou.</h2>
-          <p className="lp-section-sub">Milhões de pessoas vivem esse ciclo em silêncio. Você não está sozinho.</p>
+          <span className="lp-section-label">¿Te reconoces?</span>
+          <h2 className="lp-section-title">El juego prometió algo que no entregó.</h2>
+          <p className="lp-section-sub">Millones de personas viven este ciclo en silencio. No estás solo.</p>
           <div className="lp-dor-grid">
             {[
-              '"Só mais uma rodada para recuperar o que perdi."',
-              '"Jogo por diversão, mas às vezes fico horas sem perceber."',
-              '"Já menti para minha família sobre quanto gastei."',
-              '"Quando ganho, reinvisto tudo. Quando perco, dobro a aposta."',
-              '"Penso em apostas mesmo quando estou trabalhando."',
-              '"Tentei parar várias vezes. Mas sempre volto."',
+              '"Solo una ronda más para recuperar lo que perdí."',
+              '"Juego por diversión, pero a veces paso horas sin darme cuenta."',
+              '"Ya he mentido a mi familia sobre cuánto gasté."',
+              '"Cuando gano, lo reinvierto todo. Cuando pierdo, doblo la apuesta."',
+              '"Pienso en apuestas incluso cuando estoy trabajando."',
+              '"He intentado parar varias veces. Pero siempre vuelvo."',
             ].map((t, i) => (
               <div key={i} className="lp-dor-card">
                 <div className="lp-dor-dot" />
@@ -604,21 +604,21 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <p className="lp-dor-fechamento">Esses pensamentos não são fraqueza. São sinais de um ciclo que pode ser interrompido.</p>
+          <p className="lp-dor-fechamento">Estos pensamientos no son debilidad. Son señales de un ciclo que puede interrumpirse.</p>
         </div>
       </section>
 
       {/* CREDIBILIDADE */}
       <section className="lp-section lp-cred">
         <div className="lp-container">
-          <span className="lp-section-label">Por que o ISTOP funciona</span>
-          <h2 className="lp-section-title">Base científica.<br />Acolhimento real.</h2>
-          <p className="lp-section-sub">O método ISTOP foi desenvolvido com base em evidências de psicologia comportamental e neurociência aplicada à dependência.</p>
+          <span className="lp-section-label">Por qué el ISTOP funciona</span>
+          <h2 className="lp-section-title">Base científica.<br />Acompañamiento real.</h2>
+          <p className="lp-section-sub">El método ISTOP fue desarrollado con base en evidencias de psicología conductual y neurociencia aplicada a la dependencia.</p>
           <div className="lp-stats-grid">
             {[
-              ['85%', 'dos apostadores compulsivos nunca buscam ajuda por não saber por onde começar'],
-              ['6 em 10', 'pessoas que completam programas psicoeducacionais reduzem ou cessam o comportamento'],
-              ['15 min', 'é o tempo médio que um impulso intenso dura — se você não agir sobre ele'],
+              ['85%', 'de los apostadores compulsivos nunca buscan ayuda por no saber por dónde empezar'],
+              ['6 de 10', 'personas que completan programas psicoeducativos reducen o cesan el comportamiento'],
+              ['15 min', 'es el tiempo promedio que dura un impulso intenso — si no actúas sobre él'],
             ].map(([n, d], i) => (
               <div key={i} className="lp-stat-card">
                 <div className="lp-stat-num">{n}</div>
@@ -627,10 +627,10 @@ export default function LandingPage() {
             ))}
           </div>
           <div style={{ fontSize: 13, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--texto-ter)', marginBottom: 20 }}>
-            Fundamentos do método
+            Fundamentos del método
           </div>
           <div className="lp-badges">
-            {['Terapia Cognitivo-Comportamental', 'Neurociência da Dependência', 'Prevenção de Recaída', 'Regulação Emocional', 'Psicoeducação'].map(b => (
+            {['Terapia Cognitivo-Conductual', 'Neurociencia de la Dependencia', 'Prevención de Recaída', 'Regulación Emocional', 'Psicoeducación'].map(b => (
               <span key={b} className="lp-badge">{b}</span>
             ))}
           </div>
@@ -640,16 +640,16 @@ export default function LandingPage() {
       {/* MÉTODO */}
       <section className="lp-section lp-metodo" id="metodo">
         <div className="lp-container">
-          <span className="lp-section-label">O método</span>
-          <h2 className="lp-section-title">Cinco etapas. Uma direção.</h2>
-          <p className="lp-section-sub" style={{ marginBottom: 48 }}>Cada letra do ISTOP representa uma etapa real de transformação — não uma promessa vaga.</p>
+          <span className="lp-section-label">El método</span>
+          <h2 className="lp-section-title">Cinco etapas. Una dirección.</h2>
+          <p className="lp-section-sub" style={{ marginBottom: 48 }}>Cada letra del ISTOP representa una etapa real de transformación — no una promesa vaga.</p>
           <div className="lp-metodo-grid">
             {[
-              ['I', 'Interrupção', 'Reconhecer o ciclo e dar o primeiro passo consciente para sair do piloto automático.'],
-              ['S', 'Sensibilização', 'Identificar gatilhos emocionais, situacionais e relacionais que alimentam o impulso.'],
-              ['T', 'Transformação', 'Desenvolver ferramentas de autorregulação e criar espaço entre o gatilho e a ação.'],
-              ['O', 'Organização', 'Reorganizar a rotina, os hábitos e o ambiente para sustentar a mudança.'],
-              ['P', 'Prevenção', 'Consolidar o que foi aprendido e construir sistemas de proteção duradouros.'],
+              ['I', 'Interrupción', 'Reconocer el ciclo y dar el primer paso consciente para salir del piloto automático.'],
+              ['S', 'Sensibilización', 'Identificar desencadenantes emocionales, situacionales y relacionales que alimentan el impulso.'],
+              ['T', 'Transformación', 'Desarrollar herramientas de autorregulación y crear espacio entre el desencadenante y la acción.'],
+              ['O', 'Organización', 'Reorganizar la rutina, los hábitos y el entorno para sostener el cambio.'],
+              ['P', 'Prevención', 'Consolidar lo aprendido y construir sistemas de protección duraderos.'],
             ].map(([l, n, d], i) => (
               <div key={l} className="lp-metodo-card" style={{ background: coresIstop[i % coresIstop.length] }}>
                 <div className="lp-metodo-letra">{l}</div>
@@ -664,14 +664,14 @@ export default function LandingPage() {
       {/* DEPOIMENTOS */}
       <section className="lp-section lp-depo">
         <div className="lp-container">
-          <span className="lp-section-label">Histórias</span>
-          <h2 className="lp-section-title">De quem reconheceu o problema</h2>
+          <span className="lp-section-label">Historias</span>
+          <h2 className="lp-section-title">De quienes reconocieron el problema</h2>
           <div className="lp-depo-grid">
             {[
-              'Comecei apostando por diversão, mas logo estava usando o dinheiro do aluguel tentando recuperar perdas.',
-              'O jogo virou uma forma de fugir do estresse. Quando percebi, estava gastando parte do meu salário.',
-              'Depois do divórcio comecei a apostar escondido à noite. Só percebi o problema quando vieram as dívidas.',
-              'Eu acreditava que a sorte iria mudar. Mas na verdade estava presa no ciclo do jogo.',
+              'Empecé apostando por diversión, pero pronto estaba usando el dinero del alquiler intentando recuperar pérdidas.',
+              'El juego se convirtió en una forma de escapar del estrés. Cuando me di cuenta, estaba gastando parte de mi sueldo.',
+              'Después del divorcio empecé a apostar a escondidas por las noches. Solo noté el problema cuando llegaron las deudas.',
+              'Creía que la suerte iba a cambiar. Pero en realidad estaba atrapado en el ciclo del juego.',
             ].map((t, i) => (
               <div key={i} className="lp-depo-card">
                 <span className="lp-depo-quote">"</span>
@@ -679,23 +679,23 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-          <p className="lp-depo-nota">Histórias baseadas em casos reais descritos no livro <em>Jogos Online — Vício de Bolso</em>.</p>
+          <p className="lp-depo-nota">Historias basadas en casos reales descritos en el libro <em>Juegos Online — Adicción de Bolsillo</em>.</p>
         </div>
       </section>
 
       {/* PROGRAMA */}
       <section className="lp-section lp-programa" id="programa">
         <div className="lp-container">
-          <span className="lp-section-label">O programa</span>
+          <span className="lp-section-label">El programa</span>
           <h2 className="lp-section-title">Cinco etapas.</h2>
-          <p className="lp-section-sub">Uma jornada de transformação real — no seu ritmo, no seu tempo.</p>
+          <p className="lp-section-sub">Un camino de transformación real — a tu ritmo, en tu tiempo.</p>
           <div className="lp-modulos-grid">
             {[
-              { n: 1, nome: 'Interrupção', desc: 'Você começa entendendo como o ciclo do jogo se instala — e dá o primeiro passo para sair do piloto automático.', info: '3 aulas · Contrato de Interrupção' },
-              { n: 2, nome: 'Sensibilização', desc: 'Você identifica o que aciona o impulso: emoções, pensamentos, ambientes. O comportamento ganha nome — e perde força.', info: '5 aulas · Mapa de Gatilhos ISTOP' },
-              { n: 3, nome: 'Autorregulação', desc: 'Você aprende a criar uma pausa entre o gatilho e a ação. Aqui começa o controle real — construído por você, para você.', info: '5 aulas · Plano Pessoal de Manejo' },
-              { n: 4, nome: 'Reorganização', desc: 'Hábitos antigos são substituídos por novos padrões. Você reconstrói sua rotina com base em comportamentos que fortalecem a mudança.', info: '5 aulas · Estrutura de Rotina' },
-              { n: 5, nome: 'Manutenção da Mudança e Prevenção de Recaídas', desc: 'Consolide as mudanças iniciadas no programa e desenvolva estratégias para reduzir o risco de recaída ao longo do tempo.', info: '5 aulas · Protocolo de Prevenção de Recaída · Certificado' },
+              { n: 1, nome: 'Interrupción', desc: 'Empiezas entendiendo cómo se instala el ciclo del juego — y das el primer paso para salir del piloto automático.', info: '3 clases · Contrato de Interrupción' },
+              { n: 2, nome: 'Sensibilización', desc: 'Identificas qué activa el impulso: emociones, pensamientos, ambientes. El comportamiento adquiere nombre — y pierde fuerza.', info: '5 clases · Mapa de Desencadenantes ISTOP' },
+              { n: 3, nome: 'Autorregulación', desc: 'Aprendes a crear una pausa entre el desencadenante y la acción. Aquí comienza el control real — construido por ti, para ti.', info: '5 clases · Plan Personal de Manejo' },
+              { n: 4, nome: 'Reorganización', desc: 'Los hábitos antiguos son sustituidos por nuevos patrones. Reconstruyes tu rutina con comportamientos que refuerzan el cambio.', info: '5 clases · Estructura de Rutina' },
+              { n: 5, nome: 'Mantenimiento del Cambio y Prevención de Recaídas', desc: 'Consolida los cambios iniciados y desarrolla estrategias para reducir el riesgo de recaída a lo largo del tiempo.', info: '5 clases · Protocolo de Prevención de Recaída · Certificado' },
             ].map((m, i) => (
               <div key={m.n} className="lp-modulo-card" style={{ background: coresModulos[i % coresModulos.length] }}>
                 <div className="lp-modulo-num">Módulo {m.n}</div>
@@ -706,8 +706,8 @@ export default function LandingPage() {
             ))}
           </div>
           <div className="lp-ferramentas">
-            <div className="lp-ferramentas-titulo">Ferramentas incluídas no programa</div>
-            {['Mapa de Gatilhos ISTOP', 'Plano Pessoal de Manejo do Impulso', 'Protocolo de Prevenção de Recaída', 'Certificado de Conclusão'].map(f => (
+            <div className="lp-ferramentas-titulo">Herramientas incluidas en el programa</div>
+            {['Mapa de Desencadenantes ISTOP', 'Plan Personal de Manejo del Impulso', 'Protocolo de Prevención de Recaída', 'Certificado de Finalización'].map(f => (
               <div key={f} className="lp-ferramenta-item">{f}</div>
             ))}
           </div>
@@ -717,8 +717,8 @@ export default function LandingPage() {
       {/* FAQ */}
       <section className="lp-section lp-faq">
         <div className="lp-container">
-          <span className="lp-section-label">Dúvidas frequentes</span>
-          <h2 className="lp-section-title" style={{ marginBottom: 48 }}>Perguntas frequentes</h2>
+          <span className="lp-section-label">Preguntas frecuentes</span>
+          <h2 className="lp-section-title" style={{ marginBottom: 48 }}>Preguntas frecuentes</h2>
           <div className="lp-faq-list">
             {faqs.map((f, i) => (
               <div key={i} className="lp-faq-item">
@@ -738,9 +738,9 @@ export default function LandingPage() {
         <section className="lp-section lp-blog-section">
           <div className="lp-container">
             <span className="lp-section-label">Recursos gratuitos</span>
-            <h2 className="lp-section-title">Do blog</h2>
+            <h2 className="lp-section-title">Del blog</h2>
             <p className="lp-section-sub">
-              Artigos baseados em evidência para quem quer entender o ciclo do jogo — leitura grátis, sem cadastro.
+              Artículos basados en evidencia para quienes quieren entender el ciclo del juego — lectura gratis, sin registro.
             </p>
             <div className="lp-blog-grid">
               {ultimosPosts.map((p) => (
@@ -754,13 +754,13 @@ export default function LandingPage() {
                     <div className="lp-blog-card-cat">{p.categoria}</div>
                     <h3 className="lp-blog-card-title">{p.titulo}</h3>
                     {p.resumo && <p className="lp-blog-card-resumo">{p.resumo}</p>}
-                    <span className="lp-blog-card-link">Ler artigo →</span>
+                    <span className="lp-blog-card-link">Leer artículo →</span>
                   </div>
                 </Link>
               ))}
             </div>
             <div className="lp-blog-section-cta">
-              <Link to="/blog">Ver todos os artigos →</Link>
+              <Link to="/blog">Ver todos los artículos →</Link>
             </div>
           </div>
         </section>
@@ -768,12 +768,12 @@ export default function LandingPage() {
 
       {/* CTA FINAL */}
       <section className="lp-cta-final">
-        <span className="lp-section-label">Comece agora</span>
-        <h2 className="lp-section-title">O primeiro passo não precisa ser grande.</h2>
-        <p>Comece pelo Módulo 1. Entenda como o ciclo funciona. Dê o primeiro passo.</p>
+        <span className="lp-section-label">Empieza ahora</span>
+        <h2 className="lp-section-title">El primer paso no tiene que ser grande.</h2>
+        <p>Empieza por el Módulo 1. Entiende cómo funciona el ciclo. Da el primer paso.</p>
         <div className="lp-cta-btns">
-          <Link to="/quiz" className="lp-btn-light">Teste para Jogador</Link>
-          <Link to="/quiz/familias" className="lp-btn-outline-light">Teste para Familiar</Link>
+          <Link to="/quiz" className="lp-btn-light">Test para Jugador</Link>
+          <Link to="/quiz/familias" className="lp-btn-outline-light">Test para Familiar</Link>
         </div>
       </section>
 
@@ -781,17 +781,17 @@ export default function LandingPage() {
       <footer className="lp-footer">
         <div className="lp-footer-inner">
           <div className="lp-footer-brand">
-            <div className="lp-footer-logo">Instituto <span>ISTOP</span></div>
-            <p>Plataforma científica de saúde mental focada em prevenção e tratamento do vício em apostas online.</p>
+            <div className="lp-footer-logo">Instituto <span>ISTOP</span> España</div>
+            <p>Plataforma científica de salud mental enfocada en la prevención y el tratamiento de la adicción a las apuestas online.</p>
           </div>
           <div className="lp-footer-col">
             <h4>Programa</h4>
             {[
-              'Módulo 1 — Interrupção',
-              'Módulo 2 — Sensibilização',
-              'Módulo 3 — Autorregulação',
-              'Módulo 4 — Reorganização',
-              'Módulo 5 — Manutenção',
+              'Módulo 1 — Interrupción',
+              'Módulo 2 — Sensibilización',
+              'Módulo 3 — Autorregulación',
+              'Módulo 4 — Reorganización',
+              'Módulo 5 — Mantenimiento',
             ].map((label) => (
               <button key={label} type="button" onClick={() => scrollTo('programa')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'block', fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 10, fontFamily: 'inherit', padding: 0, textAlign: 'left' }}>
                 {label}
@@ -800,13 +800,13 @@ export default function LandingPage() {
           </div>
           <div className="lp-footer-col">
             <h4>Instituto</h4>
-            <button type="button" onClick={() => scrollTo('metodo')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'block', fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 10, fontFamily: 'inherit', padding: 0, textAlign: 'left' }}>Sobre o método</button>
+            <button type="button" onClick={() => scrollTo('metodo')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'block', fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 10, fontFamily: 'inherit', padding: 0, textAlign: 'left' }}>Sobre el método</button>
             <button type="button" onClick={() => scrollTo('familiares')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'block', fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 10, fontFamily: 'inherit', padding: 0, textAlign: 'left' }}>Para familiares</button>
           </div>
         </div>
         <div className="lp-footer-bottom">
-          <span>© 2025 Instituto ISTOP. Todos os direitos reservados.</span>
-          <span>Método ISTOP — Instituto ISTOP</span>
+          <span>© 2025 Instituto ISTOP España. Todos los derechos reservados.</span>
+          <span>Método ISTOP — Instituto ISTOP España</span>
         </div>
       </footer>
     </div>
