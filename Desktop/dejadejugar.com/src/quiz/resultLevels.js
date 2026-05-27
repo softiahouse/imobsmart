@@ -1,11 +1,11 @@
-/** Faixas: 0–12, 13–24, 25–36, 37–48 */
+/** Rangos: 0–12, 13–24, 25–36, 37–48 */
 
 export function getLevel(score) {
   if (score <= 12) {
     return {
       key: 'baixo',
-      label: 'Baixo risco',
-      color: '#3B6D11',
+      label: 'Bajo riesgo',
+      color: '#1A3A6B',
     }
   }
   if (score <= 24) {
@@ -25,30 +25,30 @@ export function getLevel(score) {
   return {
     key: 'critico',
     label: 'Crítico',
-    color: '#993C1D',
+    color: '#C8962A',
   }
 }
 
 const copyPersonal = {
   baixo:
-    'Seu resultado indica baixo risco neste momento. Isso não substitui uma avaliação clínica, mas é um bom sinal. Continue cuidando do seu tempo, das finanças e do bem-estar — e saiba que estamos aqui se quiser fortalecer hábitos saudáveis.',
+    'Tu resultado indica bajo riesgo en este momento. No sustituye una evaluación clínica, pero es una buena señal. Sigue cuidando tu tiempo, tus finanzas y tu bienestar — y sabe que estamos aquí si quieres reforzar hábitos saludables.',
   moderado:
-    'Há sinais que merecem atenção. Muitas pessoas passam por fases de maior envolvimento sem perceber. Reconhecer isso já é um passo. Buscar informação, apoio e ferramentas pode ajudar a evitar que o padrão cresça.',
+    'Hay señales que merecen atención. Muchas personas pasan por etapas de mayor implicación sin darse cuenta. Reconocerlo ya es un paso. Buscar información, apoyo y herramientas puede ayudar a evitar que el patrón crezca.',
   alto:
-    'Seu resultado aponta um nível de risco elevado: o jogo pode estar impactando várias áreas da sua vida. Você não está sozinho. Pedir ajuda é um ato de coragem — e existem caminhos baseados em ciência para recuperar o controle.',
+    'Tu resultado apunta a un nivel de riesgo elevado: el juego puede estar impactando varias áreas de tu vida. No estás solo. Pedir ayuda es un acto de valentía — y existen caminos basados en ciencia para recuperar el control.',
   critico:
-    'Seu resultado indica um nível crítico de urgência. Recomendamos fortemente buscar apoio profissional (saúde mental, serviços especializados) além do programa. O PareDeJogar pode complementar sua jornada com educação e estrutura, mas não substitui atendimento clínico quando necessário.',
+    'Tu resultado indica un nivel crítico de urgencia. Recomendamos encarecidamente buscar apoyo profesional (salud mental, servicios especializados) además del programa. El DejaDeJugar puede complementar tu camino con educación y estructura, pero no sustituye atención clínica cuando es necesaria.',
 }
 
 const copyFamily = {
   baixo:
-    'Com base nas respostas, o que você observa sugere baixo risco neste momento. Continue o diálogo com empatia e atenção. Se algo mudar ou se a preocupação crescer, voltar a avaliar e buscar orientação é sempre válido.',
+    'En base a tus respuestas, lo que observas sugiere bajo riesgo en este momento. Mantén el diálogo con empatía y atención. Si algo cambia o la preocupación crece, volver a evaluar y buscar orientación siempre es válido.',
   moderado:
-    'O que você percebe indica sinais moderados que merecem atenção. Apoiar alguém com jogo problemático pede limites, escuta e, muitas vezes, ajuda especializada para a família. Você não precisa carregar isso sozinho.',
+    'Lo que percibes indica señales moderadas que merecen atención. Apoyar a alguien con juego problemático requiere límites, escucha y, muchas veces, ayuda especializada para la familia. No tienes que cargar esto solo.',
   alto:
-    'Suas observações sugerem um impacto relevante na vida da pessoa e, possivelmente, da família. Buscar orientação — para ela e para vocês — pode fazer diferença. Cuidar de você também conta.',
+    'Tus observaciones sugieren un impacto relevante en la vida de esa persona y, posiblemente, de la familia. Buscar orientación — para ella y para vosotros — puede marcar la diferencia. Cuidarte también cuenta.',
   critico:
-    'O resultado indica um cenário de alta preocupação. Priorize segurança emocional e financeira da família e considere apoio profissional urgente. O programa pode oferecer educação e ferramentas, mas situações graves exigem rede de saúde e serviços adequados.',
+    'El resultado indica un escenario de alta preocupación. Prioriza la seguridad emocional y financiera de la familia y considera apoyo profesional urgente. El programa puede ofrecer educación y herramientas, pero las situaciones graves requieren una red de salud y servicios adecuados.',
 }
 
 export function getResultMessage(levelKey, quizType) {

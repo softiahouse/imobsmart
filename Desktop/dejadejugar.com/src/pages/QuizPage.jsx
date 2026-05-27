@@ -4,8 +4,8 @@ import { PERSONAL_QUESTIONS } from '../quiz/questions'
 export default function QuizPage() {
   return (
     <QuizFlow
-      title="Autoavaliação pessoal"
-      subtitle="Responda com sinceridade. Não há respostas certas ou erradas — o objetivo é clareza sobre o seu momento."
+      title="Autoevaluación personal"
+      subtitle="Responde con sinceridad. No hay respuestas correctas o incorrectas — el objetivo es claridad sobre tu momento."
       questions={PERSONAL_QUESTIONS}
       quizType="personal"
     />

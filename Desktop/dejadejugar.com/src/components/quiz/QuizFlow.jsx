@@ -36,7 +36,7 @@ export default function QuizFlow({ title, subtitle, questions, quizType }) {
 
         <div className="quiz-progress-wrap">
           <div className="quiz-progress-label">
-            <span>Progresso</span>
+            <span>Progreso</span>
             <span>
               {answered} de {total}
             </span>
@@ -48,10 +48,10 @@ export default function QuizFlow({ title, subtitle, questions, quizType }) {
 
         <div className="quiz-card">
           <p className="quiz-q-index">
-            Pergunta {index + 1} de {total}
+            Pregunta {index + 1} de {total}
           </p>
           <p className="quiz-question-text">{q}</p>
-          <p className="quiz-scale-legend">Escala: 0 = Nunca · 4 = Quase sempre</p>
+          <p className="quiz-scale-legend">Escala: 0 = Nunca · 4 = Casi siempre</p>
           <div className="quiz-options">
             {SCALE_OPTIONS.map(({ value, label }) => (
               <button key={value} type="button" className="quiz-option" onClick={() => handleSelect(value)}>
