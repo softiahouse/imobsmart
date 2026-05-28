@@ -1,27 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { background-color: #FAFAF8; color: #1A1A1A; }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .section-divider {
+    @apply w-12 h-px bg-gold mb-6;
+  }
+  .section-label {
+    @apply text-[10px] tracking-[4px] uppercase text-gold mb-3 font-sans;
+  }
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl font-light leading-tight mb-5;
   }
 }
