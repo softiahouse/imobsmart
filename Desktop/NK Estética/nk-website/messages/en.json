@@ -80,9 +80,9 @@
     "title": "Our",
     "titleItalic": "clients",
     "items": [
-      { "text": "Incredible experience. The results exceeded my expectations and the treatment was exceptional from the very first moment.", "name": "María G.", "service": "Facial Harmonisation" },
-      { "text": "Top-level professionals. They explained the whole process in detail and I felt safe throughout.", "name": "Sarah L.", "service": "Botulinum Toxin" },
-      { "text": "Wonderful clinic, excellent professionals. Natural results and personalised care.", "name": "Ana P.", "service": "Biostimulators" }
+      { "text": "I was nervous before my first treatment, but the team made me feel completely at ease. The results are subtle and natural — exactly what I was looking for. Truly outstanding.", "name": "Sarah L.", "service": "Botulinum Toxin" },
+      { "text": "As a British expat in Torrevieja, I was thrilled to find a clinic offering consultations in English. The professionalism and results are on par with any top London clinic.", "name": "James R.", "service": "Facial Treatments" },
+      { "text": "I've visited clinics across Europe and NK is genuinely one of the best. The AI skin analysis gave me insights I'd never had before. The team is exceptional.", "name": "Elena M.", "service": "Aesthetic Technology" }
     ]
   },
   "contact": {
@@ -95,7 +95,7 @@
     "email": "contacto@clinicasnk.com",
     "phoneLabel": "WhatsApp",
     "hoursLabel": "Opening Hours",
-    "hours": "Monday – Saturday: 9am – 8pm\nSunday: by appointment",
+    "hours": "Monday – Friday: 10am – 6pm",
     "whatsappBtn": "Book via WhatsApp",
     "formName": "Full name",
     "formPhone": "Phone / WhatsApp",

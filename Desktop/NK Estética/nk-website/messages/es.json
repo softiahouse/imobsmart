@@ -80,9 +80,9 @@
     "title": "Nuestros",
     "titleItalic": "clientes",
     "items": [
-      { "text": "Increíble experiencia. Los resultados superaron mis expectativas y el trato fue excepcional desde el primer momento.", "name": "María G.", "service": "Harmonización Facial" },
-      { "text": "Profesionales de primer nivel. Me explicaron todo el proceso con detalle y me sentí segura en todo momento.", "name": "Sarah L.", "service": "Toxina Botulínica" },
-      { "text": "Clínica maravillosa, profesionales excelentes. Resultados naturales y atención personalizada en tu idioma.", "name": "Ana P.", "service": "Bioestimuladores" }
+      { "text": "Vine buscando resultados naturales y eso es exactamente lo que encontré. Natasha y su equipo entendieron a la perfección lo que necesitaba. Sin duda, la mejor decisión que he tomado.", "name": "María G.", "service": "Harmonización Facial" },
+      { "text": "Llevo dos años siendo paciente de NK y nunca me han decepcionado. Profesionalismo, discreción y resultados que hablan por sí solos. No cambio de clínica por nada.", "name": "Alejandro P.", "service": "Toxina Botulínica" },
+      { "text": "Siendo brasileña en España, fue fundamental encontrar una clínica que atiende en mi idioma. La calidad de los tratamientos es excepcional y me siento completamente segura.", "name": "Ana P.", "service": "Bioestimuladores de Colágeno" }
     ]
   },
   "contact": {
@@ -95,7 +95,7 @@
     "email": "contacto@clinicasnk.com",
     "phoneLabel": "WhatsApp",
     "hoursLabel": "Horario",
-    "hours": "Lunes – Sábado: 9h – 20h\nDomingo: con cita previa",
+    "hours": "Lunes – Viernes: 10h – 18h",
     "whatsappBtn": "Reservar por WhatsApp",
     "formName": "Nombre completo",
     "formPhone": "Teléfono / WhatsApp",

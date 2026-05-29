@@ -1,0 +1,17 @@
+.git
+.gitignore
+.next
+.env*
+!.env.example
+node_modules
+npm-debug.log
+README.md
+Dockerfile
+.dockerignore
+docs
+__tests__
+*.test.ts
+*.test.tsx
+jest.config.*
+ecosystem.config.js
+nginx.conf.example
