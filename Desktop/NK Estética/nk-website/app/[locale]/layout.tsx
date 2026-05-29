@@ -2,12 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import '../globals.css';
 
-const locales = ['es', 'en', 'pt'];
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+export function generateStaticParams(): Array<{ locale: string }> {
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -26,6 +25,7 @@ export async function generateMetadata({
     pt: 'Clínica de medicina estética avançada em Torrevieja. Harmonização facial, botox, bioestimuladores e mais. Atendimento em ES, EN e PT.',
   };
   return {
+    metadataBase: new URL('https://nkmedicina.es'),
     title: titles[locale] ?? titles.es,
     description: descriptions[locale] ?? descriptions.es,
     openGraph: {
@@ -41,7 +41,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  if (!locales.includes(locale)) notFound();
+  if (!(routing.locales as readonly string[]).includes(locale)) notFound();
   const messages = await getMessages();
 
   return (
