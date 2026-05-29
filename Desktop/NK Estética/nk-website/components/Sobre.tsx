@@ -14,15 +14,21 @@ export default function Sobre() {
   return (
     <section id="about" className="bg-white py-24 px-8 md:px-20">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Image */}
-        <div className="relative h-[480px] md:h-[560px]">
+        {/* Image — Natasha */}
+        <div className="relative h-[520px] md:h-[600px]">
           <Image
-            src="/fotos/sala-espera.jpg"
-            alt="NK Medicina Estética — Sala de espera"
+            src="/fotos/natasha.jpg"
+            alt="Natasha Knaus — Fundadora e CEO da NK Medicina Estética"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
+          {/* Name/title overlay at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-dark/90 to-transparent px-6 py-5">
+            <p className="font-serif text-lg text-white leading-tight">{t('founderName')}</p>
+            <p className="text-[10px] tracking-[3px] uppercase text-gold-light mt-1">{t('founderTitle')}</p>
+          </div>
+          {/* Decorative gold border */}
           <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold-light -z-10" />
         </div>
 
