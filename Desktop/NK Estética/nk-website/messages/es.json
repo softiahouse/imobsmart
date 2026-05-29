@@ -43,13 +43,13 @@
     "subtitle": "Desde harmonización facial hasta medicina estética vascular — ofrecemos la gama más completa de tratamientos estéticos de Torrevieja.",
     "categories": [
       { "title": "Harmonización Facial", "desc": "Ácido hialurónico, rinomodelación, contorno mandibular, rejuvenecimiento", "count": "9 trat." },
-      { "title": "Toxina Botulínica", "desc": "Botox facial, Brow Lift, bruxismo, Nefertiti Lift, sorriso gengival", "count": "5 trat." },
+      { "title": "Toxina Botulínica", "desc": "Botox facial, Brow Lift, bruxismo, Nefertiti Lift, sonrisa gingival", "count": "5 trat." },
       { "title": "Bioestimuladores", "desc": "Sculptra, Radiesse, bioestimulación de colágeno, flacidez", "count": "4 trat." },
-      { "title": "Tratamientos Faciales", "desc": "Hydrafacial, peelings, microagulhamento, manchas, acne", "count": "7 trat." },
-      { "title": "Estética Corporal", "desc": "Gordura localizada, celulite, flacidez, remodelação corporal", "count": "6 trat." },
-      { "title": "Aparatología Estética", "desc": "Radiofrequência, laser estético, plasma, LED terapia, cavitación", "count": "21 trat." },
-      { "title": "Salud Capilar", "desc": "Queda capilar, bioestimulação, mesoterapia capilar", "count": "3 trat." },
-      { "title": "Medicina Vascular", "desc": "Escleroterapia, vasinhos, microvasos, avaliación vascular", "count": "4 trat." }
+      { "title": "Tratamientos Faciales", "desc": "Hydrafacial, peelings, microagujas, manchas, acné", "count": "7 trat." },
+      { "title": "Estética Corporal", "desc": "Grasa localizada, celulitis, flacidez, remodelación corporal", "count": "6 trat." },
+      { "title": "Aparatología Estética", "desc": "Radiofrecuencia, laser estético, plasma, LED terapia, cavitación", "count": "21 trat." },
+      { "title": "Salud Capilar", "desc": "Caída capilar, bioestimulación, mesoterapia capilar", "count": "3 trat." },
+      { "title": "Medicina Vascular", "desc": "Escleroterapia, capilares, microvasos, evaluación vascular", "count": "4 trat." }
     ]
   },
   "banner": {
@@ -70,8 +70,8 @@
     "feature1Desc": "Scanner de análisis de piel con inteligencia artificial para diagnósticos precisos",
     "feature2Title": "Laser CO2 & Estético",
     "feature2Desc": "Rejuvenecimiento avanzado, cicatrices y manchas con equipos certificados",
-    "feature3Title": "Radiofrequência & Ultrassom",
-    "feature3Desc": "Flacidez corporal e facial con tecnología no invasiva de alta eficacia"
+    "feature3Title": "Radiofrecuencia & Ultrasonido",
+    "feature3Desc": "Flacidez corporal y facial con tecnología no invasiva de alta eficacia"
   },
   "testimonials": {
     "label": "Lo que dicen",
@@ -80,7 +80,7 @@
     "items": [
       { "text": "Increíble experiencia. Los resultados superaron mis expectativas y el trato fue excepcional desde el primer momento.", "name": "María G.", "service": "Harmonización Facial" },
       { "text": "Profesionales de primer nivel. Me explicaron todo el proceso con detalle y me sentí segura en todo momento.", "name": "Sarah L.", "service": "Toxina Botulínica" },
-      { "text": "Clínica maravilhosa, profissionais excelentes. Resultados naturais e atendimento personalizado em português.", "name": "Ana P.", "service": "Bioestimuladores" }
+      { "text": "Clínica maravillosa, profesionales excelentes. Resultados naturales y atención personalizada en tu idioma.", "name": "Ana P.", "service": "Bioestimuladores" }
     ]
   },
   "contact": {
