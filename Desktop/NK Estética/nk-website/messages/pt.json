@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "services": "Serviços",
+    "about": "Sobre Nós",
+    "gallery": "Galeria",
+    "technology": "Tecnologia",
+    "contact": "Contacto",
+    "book": "Agendar Consulta"
+  },
+  "hero": {
+    "label": "Medicina Estética Avançada · Torrevieja",
+    "title": "Sua melhor versão",
+    "titleItalic": "te espera",
+    "subtitle": "Tratamentos de medicina estética avançada com tecnologia de última geração. Resultados reais, cuidado personalizado.",
+    "cta": "Agendar Consulta",
+    "ctaSecondary": "Ver Serviços"
+  },
+  "strip": {
+    "item1": "Medicina Estética Avançada",
+    "item2": "Tecnologia de Última Geração",
+    "item3": "ES · EN · PT",
+    "item4": "Av. Habaneras 115, Torrevieja"
+  },
+  "about": {
+    "label": "Sobre Nós",
+    "title": "Excelência estética,",
+    "titleItalic": "resultado real",
+    "text1": "NK Medicina Estética é uma clínica especializada em tratamentos estéticos avançados, com foco em resultados naturais e personalizados. Cada protocolo é desenhado individualmente para realçar a sua beleza única.",
+    "text2": "Atendemos em espanhol, inglês e português — o seu conforto é a nossa prioridade.",
+    "stat1Num": "15+",
+    "stat1Label": "Especialidades",
+    "stat2Num": "ES EN PT",
+    "stat2Label": "Idiomas",
+    "stat3Num": "100%",
+    "stat3Label": "Personalizado",
+    "stat4Num": "Torrevieja",
+    "stat4Label": "Av. Habaneras 115"
+  },
+  "services": {
+    "label": "Nossos Tratamentos",
+    "title": "Tudo que o seu",
+    "titleItalic": "corpo merece",
+    "subtitle": "Da harmonização facial à medicina estética vascular — oferecemos a gama mais completa de tratamentos estéticos de Torrevieja.",
+    "categories": [
+      { "title": "Harmonização Facial", "desc": "Ácido hialurônico, rinomodelação, contorno mandibular, rejuvenescimento", "count": "9 trat." },
+      { "title": "Toxina Botulínica", "desc": "Botox facial, Brow Lift, bruxismo, Nefertiti Lift, sorriso gengival", "count": "5 trat." },
+      { "title": "Bioestimuladores", "desc": "Sculptra, Radiesse, bioestimulação de colágeno, flacidez", "count": "4 trat." },
+      { "title": "Tratamentos Faciais", "desc": "Hydrafacial, peelings, microagulhamento, manchas, acne", "count": "7 trat." },
+      { "title": "Estética Corporal", "desc": "Gordura localizada, celulite, flacidez, remodelação corporal", "count": "6 trat." },
+      { "title": "Aparatologia Estética", "desc": "Radiofrequência, laser estético, plasma, LED terapia, cavitação", "count": "21 trat." },
+      { "title": "Saúde Capilar", "desc": "Queda capilar, bioestimulação, mesoterapia capilar", "count": "3 trat." },
+      { "title": "Medicina Vascular", "desc": "Escleroterapia, vasinhos, microvasos, avaliação vascular", "count": "4 trat." }
+    ]
+  },
+  "banner": {
+    "title": "¡Luce espectacular!",
+    "subtitle": "Agende a sua consulta hoje"
+  },
+  "gallery": {
+    "label": "Nossa Clínica",
+    "title": "Um espaço criado",
+    "titleItalic": "para você"
+  },
+  "technology": {
+    "label": "Tecnologia",
+    "title": "Equipamentos de última",
+    "titleItalic": "geração",
+    "text": "Investimos nas tecnologias mais avançadas do mercado estético para garantir resultados superiores com máxima segurança.",
+    "feature1Title": "Análise Facial por IA",
+    "feature1Desc": "Scanner de análise de pele com inteligência artificial para diagnósticos precisos",
+    "feature2Title": "Laser CO2 & Estético",
+    "feature2Desc": "Rejuvenescimento avançado, cicatrizes e manchas com equipamentos certificados",
+    "feature3Title": "Radiofrequência & Ultrassom",
+    "feature3Desc": "Flacidez corporal e facial com tecnologia não invasiva de alta eficácia"
+  },
+  "testimonials": {
+    "label": "O que dizem",
+    "title": "Nossos",
+    "titleItalic": "clientes",
+    "items": [
+      { "text": "Experiência incrível. Os resultados superaram minhas expectativas e o atendimento foi excepcional desde o primeiro momento.", "name": "María G.", "service": "Harmonização Facial" },
+      { "text": "Profissionais de altíssimo nível. Explicaram todo o processo com detalhes e me senti segura o tempo todo.", "name": "Sarah L.", "service": "Toxina Botulínica" },
+      { "text": "Clínica maravilhosa, profissionais excelentes. Resultados naturais e atendimento personalizado em português.", "name": "Ana P.", "service": "Bioestimuladores" }
+    ]
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Visite-nos em",
+    "titleItalic": "Torrevieja",
+    "addressLabel": "Endereço",
+    "address": "Avenida Habaneras, 115\nTorrevieja, Alicante",
+    "phoneLabel": "WhatsApp",
+    "hoursLabel": "Horário",
+    "hours": "Segunda – Sábado: 9h – 20h\nDomingo: com hora marcada",
+    "whatsappBtn": "Reservar pelo WhatsApp",
+    "formName": "Nome completo",
+    "formPhone": "Telefone / WhatsApp",
+    "formService": "Serviço de interesse",
+    "formServiceDefault": "Selecione um serviço",
+    "formMessage": "Mensagem (opcional)",
+    "formSubmit": "Enviar Consulta",
+    "formSending": "A enviar...",
+    "formSuccess": "Mensagem enviada! Entraremos em contacto em breve.",
+    "formError": "Erro ao enviar. Escreva-nos pelo WhatsApp."
+  },
+  "footer": {
+    "description": "NK Medicina Estética Avançada — A sua clínica de confiança em Torrevieja.",
+    "servicesTitle": "Serviços",
+    "clinicTitle": "Clínica",
+    "languagesTitle": "Idiomas",
+    "copyright": "© 2026 NK Medicina Estética · Torrevieja"
+  }
+}

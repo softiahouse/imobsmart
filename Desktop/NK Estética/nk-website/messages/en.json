@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About Us",
+    "gallery": "Gallery",
+    "technology": "Technology",
+    "contact": "Contact",
+    "book": "Book Appointment"
+  },
+  "hero": {
+    "label": "Advanced Aesthetic Medicine · Torrevieja",
+    "title": "Your best self",
+    "titleItalic": "awaits you",
+    "subtitle": "Advanced aesthetic medicine treatments with cutting-edge technology. Real results, personalised care.",
+    "cta": "Book Appointment",
+    "ctaSecondary": "View Services"
+  },
+  "strip": {
+    "item1": "Advanced Aesthetic Medicine",
+    "item2": "Cutting-Edge Technology",
+    "item3": "ES · EN · PT",
+    "item4": "Av. Habaneras 115, Torrevieja"
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Aesthetic excellence,",
+    "titleItalic": "real results",
+    "text1": "NK Medicina Estética is a clinic specialised in advanced aesthetic treatments, focused on natural and personalised results. Each protocol is designed individually to enhance your unique beauty.",
+    "text2": "We offer services in Spanish, English and Portuguese — your comfort is our priority.",
+    "stat1Num": "15+",
+    "stat1Label": "Specialties",
+    "stat2Num": "ES EN PT",
+    "stat2Label": "Languages",
+    "stat3Num": "100%",
+    "stat3Label": "Personalised",
+    "stat4Num": "Torrevieja",
+    "stat4Label": "Av. Habaneras 115"
+  },
+  "services": {
+    "label": "Our Treatments",
+    "title": "Everything your",
+    "titleItalic": "body deserves",
+    "subtitle": "From facial harmonisation to vascular aesthetic medicine — we offer the most complete range of aesthetic treatments in Torrevieja.",
+    "categories": [
+      { "title": "Facial Harmonisation", "desc": "Hyaluronic acid, rhinomodelation, jaw contouring, rejuvenation", "count": "9 trt." },
+      { "title": "Botulinum Toxin", "desc": "Facial Botox, Brow Lift, bruxism, Nefertiti Lift, gummy smile", "count": "5 trt." },
+      { "title": "Collagen Biostimulators", "desc": "Sculptra, Radiesse, collagen biostimulation, sagging skin", "count": "4 trt." },
+      { "title": "Facial Treatments", "desc": "Hydrafacial, peels, microneedling, dark spots, acne", "count": "7 trt." },
+      { "title": "Body Aesthetics", "desc": "Localised fat, cellulite, sagging, body remodelling", "count": "6 trt." },
+      { "title": "Aesthetic Technology", "desc": "Radiofrequency, aesthetic laser, plasma, LED therapy, cavitation", "count": "21 trt." },
+      { "title": "Hair Health", "desc": "Hair loss, biostimulation, scalp mesotherapy", "count": "3 trt." },
+      { "title": "Vascular Medicine", "desc": "Sclerotherapy, spider veins, microvessels, vascular assessment", "count": "4 trt." }
+    ]
+  },
+  "banner": {
+    "title": "Look spectacular!",
+    "subtitle": "Book your consultation today"
+  },
+  "gallery": {
+    "label": "Our Clinic",
+    "title": "A space created",
+    "titleItalic": "for you"
+  },
+  "technology": {
+    "label": "Technology",
+    "title": "State-of-the-art",
+    "titleItalic": "equipment",
+    "text": "We invest in the most advanced technologies in the aesthetic market to guarantee superior results with maximum safety.",
+    "feature1Title": "AI Facial Analysis",
+    "feature1Desc": "Artificial intelligence skin analysis scanner for precise diagnostics",
+    "feature2Title": "CO2 & Aesthetic Laser",
+    "feature2Desc": "Advanced rejuvenation, scars and dark spots with certified equipment",
+    "feature3Title": "Radiofrequency & Ultrasound",
+    "feature3Desc": "Body and facial sagging with high-efficacy non-invasive technology"
+  },
+  "testimonials": {
+    "label": "What they say",
+    "title": "Our",
+    "titleItalic": "clients",
+    "items": [
+      { "text": "Incredible experience. The results exceeded my expectations and the treatment was exceptional from the very first moment.", "name": "María G.", "service": "Facial Harmonisation" },
+      { "text": "Top-level professionals. They explained the whole process in detail and I felt safe throughout.", "name": "Sarah L.", "service": "Botulinum Toxin" },
+      { "text": "Wonderful clinic, excellent professionals. Natural results and personalised care.", "name": "Ana P.", "service": "Biostimulators" }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Visit us in",
+    "titleItalic": "Torrevieja",
+    "addressLabel": "Address",
+    "address": "Avenida Habaneras, 115\nTorrevieja, Alicante",
+    "phoneLabel": "WhatsApp",
+    "hoursLabel": "Opening Hours",
+    "hours": "Monday – Saturday: 9am – 8pm\nSunday: by appointment",
+    "whatsappBtn": "Book via WhatsApp",
+    "formName": "Full name",
+    "formPhone": "Phone / WhatsApp",
+    "formService": "Service of interest",
+    "formServiceDefault": "Select a service",
+    "formMessage": "Message (optional)",
+    "formSubmit": "Send Enquiry",
+    "formSending": "Sending...",
+    "formSuccess": "Message sent! We will contact you shortly.",
+    "formError": "Error sending. Please write to us on WhatsApp."
+  },
+  "footer": {
+    "description": "NK Advanced Aesthetic Medicine — Your trusted clinic in Torrevieja.",
+    "servicesTitle": "Services",
+    "clinicTitle": "Clinic",
+    "languagesTitle": "Languages",
+    "copyright": "© 2026 NK Medicina Estética · Torrevieja"
+  }
+}
