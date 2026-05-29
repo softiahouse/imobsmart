@@ -48,19 +48,36 @@ export default function Contato() {
           <div className="w-12 h-px bg-gold-light mb-10" />
 
           <div className="flex flex-col gap-7">
-            {[
-              { icon: '📍', label: t('addressLabel'), text: t('address') },
-              { icon: '📱', label: t('phoneLabel'), text: '+34 621 661 700' },
-              { icon: '🕐', label: t('hoursLabel'), text: t('hours') },
-            ].map((item) => (
-              <div key={item.label} className="flex gap-4 items-start">
-                <span className="text-gold text-lg mt-0.5">{item.icon}</span>
-                <div>
-                  <h4 className="text-[11px] font-semibold text-white uppercase tracking-wide mb-1">{item.label}</h4>
-                  <p className="text-sm text-white/70 leading-relaxed whitespace-pre-line">{item.text}</p>
-                </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-gold text-lg mt-0.5">📍</span>
+              <div>
+                <h4 className="text-[11px] font-semibold text-white uppercase tracking-wide mb-1">{t('addressLabel')}</h4>
+                <p className="text-sm text-white/70 leading-relaxed whitespace-pre-line">{t('address')}</p>
               </div>
-            ))}
+            </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-gold text-lg mt-0.5">✉</span>
+              <div>
+                <h4 className="text-[11px] font-semibold text-white uppercase tracking-wide mb-1">{t('emailLabel')}</h4>
+                <a href={`mailto:${t('email')}`} className="text-sm text-white/70 hover:text-gold-light transition-colors">
+                  {t('email')}
+                </a>
+              </div>
+            </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-gold text-lg mt-0.5">📱</span>
+              <div>
+                <h4 className="text-[11px] font-semibold text-white uppercase tracking-wide mb-1">{t('phoneLabel')}</h4>
+                <p className="text-sm text-white/70">+34 621 661 700</p>
+              </div>
+            </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-gold text-lg mt-0.5">🕐</span>
+              <div>
+                <h4 className="text-[11px] font-semibold text-white uppercase tracking-wide mb-1">{t('hoursLabel')}</h4>
+                <p className="text-sm text-white/70 leading-relaxed whitespace-pre-line">{t('hours')}</p>
+              </div>
+            </div>
           </div>
 
           <a

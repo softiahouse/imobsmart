@@ -1,11 +1,11 @@
 # nginx config example for NK Medicina Estética
 # Copy to: /etc/nginx/sites-available/nkestetica
 # Then: ln -s /etc/nginx/sites-available/nkestetica /etc/nginx/sites-enabled/
-# Then: certbot --nginx -d nkmedicina.es -d www.nkmedicina.es
+# Then: certbot --nginx -d clinicasnk.com -d www.clinicasnk.com
 
 server {
     listen 80;
-    server_name nkmedicina.es www.nkmedicina.es;
+    server_name clinicasnk.com www.clinicasnk.com;
     # Certbot will add SSL redirect here automatically
 
     location / {

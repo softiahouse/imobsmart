@@ -91,6 +91,8 @@
     "titleItalic": "Torrevieja",
     "addressLabel": "Address",
     "address": "Avenida Habaneras, 115\nTorrevieja, Alicante",
+    "emailLabel": "Email",
+    "email": "contacto@clinicasnk.com",
     "phoneLabel": "WhatsApp",
     "hoursLabel": "Opening Hours",
     "hours": "Monday – Saturday: 9am – 8pm\nSunday: by appointment",

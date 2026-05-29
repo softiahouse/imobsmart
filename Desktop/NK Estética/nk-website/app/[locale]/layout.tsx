@@ -25,7 +25,7 @@ export async function generateMetadata({
     pt: 'Clínica de medicina estética avançada em Torrevieja. Harmonização facial, botox, bioestimuladores e mais. Atendimento em ES, EN e PT.',
   };
   return {
-    metadataBase: new URL('https://nkmedicina.es'),
+    metadataBase: new URL('https://clinicasnk.com'),
     title: titles[locale] ?? titles.es,
     description: descriptions[locale] ?? descriptions.es,
     openGraph: {
