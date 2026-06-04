@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — SoftiaHouse</title>
+  <meta name="description" content="Artículos sobre inteligencia artificial, automatización y marketing digital para negocios en España." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f2ea; --bg2: #efe9dd; --surface: #ffffff; --surface2: #f5f0e6;
+      --gold: #c9973a; --gold-lt: #e4b86a; --gold-dk: #9c7129; --gold-pale: #f5e8cc;
+      --text: #1c1510; --text2: #3d3228; --muted: #7a6f64; --muted2: #c4b8a8;
+      --green: #25d366; --green-dk: #1aab55;
+      --border: rgba(180,155,110,0.2); --shadow: rgba(28,21,16,0.08);
+      --radius: 18px; --radius-lg: 28px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(247,242,234,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .logo em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      padding: 11px 22px; border-radius: 50px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+      transition: all .2s; box-shadow: 0 4px 16px rgba(37,211,102,0.25);
+    }
+    .nav-cta:hover { background: var(--green-dk); transform: translateY(-1px); }
+
+    /* HERO BLOG */
+    .blog-hero {
+      padding: 140px 48px 60px;
+      text-align: center;
+      max-width: 800px; margin: 0 auto;
+    }
+    .blog-hero .tag {
+      display: inline-block;
+      background: var(--gold-pale); color: var(--gold-dk);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .blog-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .blog-hero h1 em { font-style: italic; color: var(--gold); }
+    .blog-hero p { color: var(--muted); font-size: 1.1rem; line-height: 1.7; }
+
+    /* GRID */
+    .blog-grid {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 48px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,21,16,0.13); }
+    .card-img {
+      width: 100%; height: 200px; object-fit: cover;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .card-tag {
+      display: inline-block;
+      background: var(--gold-pale); color: var(--gold-dk);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 50px;
+      margin-bottom: 12px; align-self: flex-start;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; line-height: 1.35;
+      margin-bottom: 12px; color: var(--text);
+    }
+    .card-excerpt { color: var(--muted); font-size: 0.9rem; line-height: 1.65; flex: 1; }
+    .card-meta {
+      margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.8rem; color: var(--muted2);
+    }
+    .card-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* EMPTY STATE */
+    .empty { text-align: center; padding: 80px 20px; color: var(--muted); grid-column: 1/-1; }
+    .empty h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--text); color: var(--muted2);
+      text-align: center; padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold-lt); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .blog-hero { padding: 120px 24px 40px; }
+      .blog-grid { padding: 0 20px 60px; grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-bg" style="position:fixed;inset:0;z-index:-1;background:var(--bg);">
+    <div style="position:absolute;top:-200px;left:30%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(201,151,58,.12) 0%,transparent 65%);"></div>
+  </div>
+
+  <nav>
+    <a href="/" class="logo">Softia<em>House</em></a>
+    <div class="nav-links">
+      <a href="/#servicios">Servicios</a>
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/#precios">Precios</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://wa.me/34000000000" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.505A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.368l-.358-.213-3.76.893.953-3.653-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      Contactar
+    </a>
+  </nav>
+
+  <div class="blog-hero">
+    <span class="tag">✨ Recursos gratuitos</span>
+    <h1>Blog de <em>IA & Automatización</em></h1>
+    <p>Artículos semanales sobre inteligencia artificial, marketing digital y automatización para negocios en España.</p>
+  </div>
+
+  <div class="blog-grid" id="blog-grid">
+    <!-- ARTICLES_START -->
+    <a class="card" href="/blog/por-que-tu-negocio-necesita-ia-en-whatsapp.html">
+      <div class="card-img">🤖</div>
+      <div class="card-body">
+        <span class="card-tag">IA</span>
+        <div class="card-title">Por qué tu negocio en España necesita un agente de IA en WhatsApp ahora mismo</div>
+        <div class="card-excerpt">Cada mensaje sin respuesta es un cliente que se va a la competencia. Descubre cómo un agente de inteligencia artificial en WhatsApp puede transformar tu negocio local sin complicaciones técnicas.</div>
+        <div class="card-meta">
+          <span>📅 4 de junio de 2026</span>
+          <span>⏱ 5 min</span>
+        </div>
+      </div>
+    </a>
+    <!-- ARTICLES_END -->
+  </div>
+
+  <footer>
+    <p>© 2026 SoftiaHouse · <a href="/">Inicio</a> · <a href="mailto:hola@softiahouse.com">hola@softiahouse.com</a></p>
+  </footer>
+
+</body>
+</html>
