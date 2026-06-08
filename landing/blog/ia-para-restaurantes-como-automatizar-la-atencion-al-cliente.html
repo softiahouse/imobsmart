@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA para restaurantes: cómo automatizar la atención al cliente y no perder reservas en España — SoftiaHouse</title>
+  <meta name="description" content="¿Cuántas llamadas pierde tu restaurante al día? Descubre cómo un asistente con inteligencia artificial puede gestionar reservas, responder preguntas frecuentes y captar clientes 24/7 sin que pierdas ni una mesa." />
+  <link rel="canonical" href="https://softiahouse.com/blog/ia-para-restaurantes-como-automatizar-la-atencion-al-cliente.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f2ea; --bg2: #efe9dd; --surface: #ffffff;
+      --gold: #c9973a; --gold-lt: #e4b86a; --gold-dk: #9c7129; --gold-pale: #f5e8cc;
+      --text: #1c1510; --text2: #3d3228; --muted: #7a6f64; --muted2: #c4b8a8;
+      --green: #25d366; --green-dk: #1aab55;
+      --border: rgba(180,155,110,0.2); --shadow: rgba(28,21,16,0.08);
+      --radius: 18px; --radius-lg: 28px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(247,242,234,0.88); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .logo em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff; padding: 11px 22px; border-radius: 50px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+      transition: all .2s; box-shadow: 0 4px 16px rgba(37,211,102,0.25);
+    }
+    .nav-cta:hover { background: var(--green-dk); transform: translateY(-1px); }
+
+    .article-hero {
+      padding: 130px 24px 48px;
+      max-width: 760px; margin: 0 auto; text-align: center;
+    }
+    .article-tag {
+      display: inline-block;
+      background: var(--gold-pale); color: var(--gold-dk);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
+      line-height: 1.25; margin-bottom: 20px;
+    }
+    .article-title em { font-style: italic; color: var(--gold); }
+    .article-meta {
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      color: var(--muted2); font-size: 0.85rem; margin-bottom: 48px;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+    .article-body {
+      max-width: 720px; margin: 0 auto;
+      padding: 0 24px 80px;
+      font-size: 1.05rem; line-height: 1.8; color: var(--text2);
+    }
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--text); margin: 48px 0 16px;
+    }
+    .article-body h3 {
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--text); margin: 32px 0 12px;
+    }
+    .article-body p { margin-bottom: 20px; }
+    .article-body ul, .article-body ol { margin: 0 0 20px 24px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body em { color: var(--gold-dk); font-style: italic; }
+    .article-body blockquote {
+      border-left: 4px solid var(--gold);
+      background: var(--gold-pale);
+      padding: 20px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 28px 0;
+      font-style: italic;
+      color: var(--text2);
+    }
+
+    .cta-box {
+      background: var(--text); color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 40px 36px; text-align: center;
+      margin: 48px 0;
+    }
+    .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 12px; }
+    .cta-box p { color: var(--muted2); margin-bottom: 24px; font-size: 0.95rem; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      padding: 14px 28px; border-radius: 50px;
+      font-weight: 600; text-decoration: none;
+      transition: all .2s; box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+    }
+    .cta-btn:hover { background: var(--green-dk); transform: translateY(-2px); }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      margin-bottom: 40px; transition: color .2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    footer {
+      background: var(--text); color: var(--muted2);
+      text-align: center; padding: 32px 24px; font-size: 0.85rem;
+    }
+    footer a { color: var(--gold-lt); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .article-hero { padding: 110px 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="position:fixed;inset:0;z-index:-1;background:var(--bg);">
+    <div style="position:absolute;top:-200px;left:30%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(201,151,58,.12) 0%,transparent 65%);"></div>
+  </div>
+
+  <nav>
+    <a href="/" class="logo">Softia<em>House</em></a>
+    <div class="nav-links">
+      <a href="/#servicios">Servicios</a>
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/#precios">Precios</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <a href="https://wa.me/34000000000" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.505A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.368l-.358-.213-3.76.893.953-3.653-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+      Contactar
+    </a>
+  </nav>
+
+  <div class="article-hero">
+    <span class="article-tag">IA</span>
+    <h1 class="article-title">IA para restaurantes: cómo automatizar la atención al cliente y <em>no perder reservas</em> en España</h1>
+    <div class="article-meta">
+      <span>📅 8 de junio de 2026</span>
+      <span>⏱ 5 min min de lectura</span>
+      <span>✍️ SoftiaHouse</span>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <a href="/blog/" class="back-link">← Volver al blog</a>
+    <p>Imagina esto: son las 14:00, tu restaurante está a reventar, el camarero corre de mesa en mesa, el teléfono no para de sonar y, en algún lugar del otro lado de la línea, un cliente potencial cuelga después del quinto tono sin respuesta. Esa mesa vacía que podrías haber llenado a las 15:30 se queda vacía. Y no es culpa de nadie — es simplemente que no hay suficientes manos.</p><p>Este escenario se repite cientos de veces al día en bares, restaurantes y chiringuitos de toda España. Pero hay una solución que no requiere contratar más personal: la inteligencia artificial aplicada a la atención al cliente.</p><h2>El problema real de los restaurantes en España</h2><p>Según datos de la Federación Española de Hostelería, más del 60% de las llamadas a restaurantes se producen durante las horas punta de servicio. Es decir, justo cuando el personal está más ocupado. El resultado: llamadas perdidas, clientes frustrados y reservas que nunca se concretan.</p><p>Los principales cuellos de botella son siempre los mismos:</p><ul><li><strong>Gestión de reservas:</strong> preguntas sobre disponibilidad, número de comensales, horarios y confirmaciones</li><li><strong>Preguntas repetitivas:</strong> dónde están, horario, menú del día, si tienen terraza, si aceptan mascotas, si hay gluten free</li><li><strong>Cancelaciones y cambios:</strong> clientes que llaman para modificar o anular y saturan la línea</li><li><strong>Horario de atención limitado:</strong> cuando el restaurante cierra, también cierran las reservas</li></ul><blockquote><em>"Cada llamada perdida no es solo una llamada perdida — es un cliente que llamó a tu competencia inmediatamente después."</em></blockquote><h2>Cómo un asistente con IA transforma la operación de tu restaurante</h2><p>Un asistente de inteligencia artificial no reemplaza al camarero — libera al camarero para que haga lo que mejor sabe hacer: atender bien a quienes ya están en la mesa. El asistente se encarga de todo lo demás.</p><h3>Reservas y gestión de mesas 24/7</h3><p>El cliente escribe por WhatsApp a las 11 de la noche preguntando si hay mesa para cuatro el sábado a las 21:00. El asistente de IA consulta la disponibilidad en tiempo real, confirma la reserva y registra el evento en el calendario del restaurante. Sin intervención humana. Sin llamada perdida. Sin cliente frustrado.</p><p>Y lo mejor: cuando el cliente llega el sábado, el sistema ya sabe que era él quien reservó — nombre, número de comensales, cualquier solicitud especial. La experiencia es fluida y personalizada.</p><h3>Respuesta inmediata a preguntas frecuentes</h3><p>"¿Tienen menú infantil?", "¿A qué hora abren los domingos?", "¿Tienen opciones veganas?", "¿Se puede fumar en la terraza?". Preguntas que el camarero responde 50 veces al día. El asistente de IA responde al instante, en WhatsApp o Instagram, con la información actualizada de tu propio negocio. Sin tiempos de espera, sin errores, sin repeticiones.</p><h3>Captación de clientes desde Instagram</h3><p>Un potencial cliente descubre tu restaurante en Instagram, ve una foto de la paella que le hace agua la boca y escribe un DM: "¿Tenéis mesa para esta noche?". En segundos recibe respuesta automática con disponibilidad y un enlace directo para reservar. Ese cliente no tuvo que buscar tu teléfono, no esperó, no se fue al siguiente resultado de Google. Se quedó.</p><h2>Lo que NO hace la IA en hostelería</h2><p>Vale la pena dejar algo claro: la inteligencia artificial no va a tomar la comanda en la mesa, no va a servir el vino ni va a recomendar el postre con esa calidez humana que hace único a un restaurante. Eso es trabajo de las personas y siempre lo será.</p><p>Lo que la IA hace es quitar de encima del personal todo el ruido operativo: las llamadas repetitivas, las preguntas que se responden igual 200 veces al día, las reservas de madrugada. El equipo humano llega al servicio con las pilas cargadas y se dedica a lo que importa: el cliente que está ahí, delante de ellos.</p><h2>El costo de NO hacer nada</h2><p>Vamos a hacer números rápidos. Si tu restaurante recibe 30 llamadas al día en hora punta y el camarero solo puede atender 20, son 10 llamadas perdidas. Si solo la mitad de esas llamadas eran reservas reales y el ticket medio es de 35 € por persona con grupos de 3 personas de media, estás dejando de ingresar más de 500 € al día. Multiplica por 25 días de operación al mes: más de 12.000 € mensuales en ingresos que se esfuman por no contestar el teléfono a tiempo.</p><p>Un asistente de IA cuesta una fracción de ese número. Y no es un gasto — es una inversión con retorno inmediato.</p><blockquote><em>"La IA en hostelería no es el futuro. Es lo que los restaurantes inteligentes ya están usando mientras otros siguen perdiendo llamadas."</em></blockquote><h2>Por qué SoftiaHouse es el aliado que necesitas</h2><p>En SoftiaHouse no vendemos bots genéricos. Creamos asistentes de IA diseñados específicamente para el sector de la hostelería en España. Configuramos el sistema con los datos de tu restaurante — horarios, menú, mapa de mesas, políticas de cancelación — y lo conectamos a WhatsApp e Instagram para que empiece a trabajar desde el día uno.</p><p>Sin complicaciones técnicas. Sin necesidad de que sepas programar. Nosotros nos encargamos de todo: la integración, el entrenamiento del asistente y el soporte continuo.</p><p>¿Quieres ver cómo funciona? Escríbenos por WhatsApp y te mostramos una demo en vivo con los datos de tu propio restaurante. En 10 minutos entenderás por qué tus competidores ya están automatizando sus reservas.</p><p style="text-align:center; margin-top:32px;"><strong>📲 ¿Hablamos?</strong><br>Contáctanos por WhatsApp y descubre cómo un asistente con IA puede llenar tus mesas mientras tú te ocupas de tu negocio.<br><br><strong>SoftiaHouse — inteligencia artificial para negocios locales en España</strong></p>
+    <div class="cta-box">
+      <h3>¿Listo para automatizar tu negocio?</h3>
+      <p>Instalamos un agente de IA en tu WhatsApp e Instagram en menos de 72 horas.</p>
+      <a href="https://wa.me/34000000000" class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.505A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.368l-.358-.213-3.76.893.953-3.653-.234-.376A9.818 9.818 0 1112 21.818z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 SoftiaHouse · <a href="/">Inicio</a> · <a href="/blog/">Blog</a> · <a href="mailto:hola@softiahouse.com">hola@softiahouse.com</a></p>
+  </footer>
+
+</body>
+</html>
