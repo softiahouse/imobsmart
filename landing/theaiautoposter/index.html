@@ -208,6 +208,74 @@
         }
         .arrow-row svg { width:24px; height:22px; }
 
+        /* AI AGENT SECTION */
+        .agent-section {
+            background:rgba(255,255,255,.03);
+            border:1px solid rgba(108,99,255,.15);
+            border-radius:16px;
+            padding:26px;
+            margin-top:20px;
+        }
+        .agent-section h3 {
+            font-size:15px;
+            font-weight:700;
+            color:#fff;
+            margin-bottom:16px;
+            display:flex;
+            align-items:center;
+            gap:8px;
+        }
+        .agent-cards { display:flex; gap:12px; }
+        .agent-card {
+            flex:1;
+            border-radius:12px;
+            padding:18px;
+            position:relative;
+        }
+        .agent-card h4 { font-size:14px; font-weight:700; margin-bottom:6px; }
+        .agent-card p { font-size:11px; line-height:1.6; opacity:.75; }
+        .agent-card .agent-badge {
+            display:inline-block;
+            font-size:9px;
+            font-weight:700;
+            padding:3px 8px;
+            border-radius:5px;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+            margin-bottom:10px;
+        }
+        .agent-telegram {
+            background:rgba(0,136,204,.08);
+            border:1px solid rgba(0,136,204,.15);
+            color:#64d2ff;
+        }
+        .agent-telegram .agent-badge { background:rgba(0,136,204,.2); color:#64d2ff; }
+        .agent-whatsapp {
+            background:rgba(37,211,102,.06);
+            border:1px solid rgba(37,211,102,.12);
+            color:#81c784;
+        }
+        .agent-whatsapp .agent-badge { background:rgba(37,211,102,.15); color:#69f0ae; }
+        .agent-timeline {
+            display:flex;
+            align-items:center;
+            gap:6px;
+            margin-top:10px;
+            font-size:10px;
+            color:#888;
+        }
+        .agent-timeline .dot {
+            width:6px; height:6px;
+            border-radius:50%;
+            flex-shrink:0;
+        }
+        .dot-live { background:#4caf50; box-shadow:0 0 6px rgba(76,175,80,.5); }
+        .dot-planned { background:#ff9800; }
+
+        @media (max-width:640px) {
+            .agent-cards { flex-direction:column; }
+        }
+
         /* NEXT STEPS */
         .next-steps {
             background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 100%);
@@ -435,6 +503,30 @@
             </div>
         </div>
 
+        <!-- AI AGENTS -->
+        <div class="section-title">AI Sales Agents</div>
+        <div class="agent-section">
+            <h3>&#129302; Intelligent Agents &mdash; Automating Your Sales Pipeline</h3>
+            <div class="agent-cards">
+                <div class="agent-card agent-telegram">
+                    <span class="agent-badge">&#9889; Live &mdash; Testing</span>
+                    <h4>&#128172; Telegram Agent</h4>
+                    <p>Deployed on <strong>June 10</strong>. Shared for a 1-week test period. The agent answers questions about AI Autoposter, qualifies leads, and handles initial conversations 24/7.</p>
+                    <div class="agent-timeline">
+                        <span class="dot dot-live"></span> Live since Jun 10 &middot; 1-week trial
+                    </div>
+                </div>
+                <div class="agent-card agent-whatsapp">
+                    <span class="agent-badge">&#128203; Next Phase</span>
+                    <h4>&#128241; WhatsApp SDR Agent</h4>
+                    <p>After validating the Telegram agent, we deploy a full WhatsApp AI agent acting as <strong>SDR + Closer</strong>: qualifying leads, scheduling meetings on a shared calendar, answering objections, and nurturing prospects until autonomous.</p>
+                    <div class="agent-timeline">
+                        <span class="dot dot-planned"></span> Planned &middot; Post-Telegram validation
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- NEXT STEPS -->
         <div class="next-steps">
             <h3>&#127919; Immediate Next Steps</h3>
@@ -457,6 +549,13 @@
                 <div class="step-content">
                     <h4>Scale What Works</h4>
                     <p>Native lead forms at $12.67/lead outperformed site traffic ($26/lead). All future campaigns will use native forms.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4>WhatsApp Agent Deployment</h4>
+                    <p>Once Telegram agent is validated, deploy WhatsApp AI agent as SDR/Closer &mdash; scheduling meetings, qualifying leads, and nurturing prospects autonomously.</p>
                 </div>
             </div>
         </div>
