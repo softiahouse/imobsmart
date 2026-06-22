@@ -18,11 +18,22 @@ export default function Contato() {
   const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
   const [status, setStatus] = useState<FormState>('idle');
 
+  const openWhatsApp = () => {
+    const parts = [
+      `Hola, me llamo ${form.name}.`,
+      form.service ? `Me interesa: ${form.service}.` : '',
+      form.phone ? `Mi teléfono: ${form.phone}.` : '',
+      form.message ? form.message : '',
+    ].filter(Boolean).join(' ');
+    const url = `https://wa.me/34621661700?text=${encodeURIComponent(parts)}`;
+    window.open(url, '_blank');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`/${locale}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, lang: locale }),
@@ -31,7 +42,9 @@ export default function Contato() {
       setStatus('success');
       setForm({ name: '', phone: '', service: '', message: '' });
     } catch {
-      setStatus('error');
+      openWhatsApp();
+      setStatus('success');
+      setForm({ name: '', phone: '', service: '', message: '' });
     }
   };
 
