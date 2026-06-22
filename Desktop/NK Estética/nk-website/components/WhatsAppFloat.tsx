@@ -2,7 +2,7 @@ export default function WhatsAppFloat() {
   const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '34621661700';
   return (
     <a
-      href={`https://wa.me/${wa}`}
+      href={`https://wa.me/${wa}?text=${encodeURIComponent('Hola! Quiero obtener información sobre los tratamientos de NK Medicina Estética. Vengo desde vuestro sitio web 🌿')}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"

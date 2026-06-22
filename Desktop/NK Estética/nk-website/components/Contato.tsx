@@ -94,7 +94,7 @@ export default function Contato() {
           </div>
 
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP ?? '34621661700'}`}
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP ?? '34621661700'}?text=${encodeURIComponent('Hola! Quiero reservar una cita en NK Medicina Estética. Vengo desde vuestro sitio web 🌿')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-3 bg-[#25D366] text-white text-[11px] tracking-wide uppercase px-7 py-3.5 hover:bg-[#1ebe5d] transition-colors duration-200"
