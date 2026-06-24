@@ -10,8 +10,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:locale(es|en|pt)/escuela',
-        destination: '/escuela',
+        source: '/escuela',
+        destination: '/es/escuela',
         permanent: false,
       },
     ];

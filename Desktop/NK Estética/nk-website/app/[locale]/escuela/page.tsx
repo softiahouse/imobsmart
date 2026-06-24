@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
+'use client';
 
-export default function EscuelaLocaleRedirect() {
-  redirect('/escuela');
-}
+export { default } from '../../escuela/page';
