@@ -7,6 +7,15 @@ const nextConfig = {
   images: {
     formats: ['image/webp'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:locale(es|en|pt)/escuela',
+        destination: '/escuela',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
