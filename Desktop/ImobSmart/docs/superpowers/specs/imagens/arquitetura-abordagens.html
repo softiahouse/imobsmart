@@ -1,0 +1,90 @@
+<h2>Arquitetura ImobSmart MVP — 3 Abordagens</h2>
+<p class="subtitle">Qual stack e arquitetura para o MVP? Cada opção considera sua VPS com EasyPanel + n8n</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>🏆 Next.js Monolito + n8n (Recomendado)</h3>
+      <p><strong>Frontend + Backend:</strong> Next.js (App Router) com Supabase para DB/Auth</p>
+      <p><strong>Automações:</strong> n8n para autopostagem (IG/FB/TikTok), agente IA WhatsApp, workflows</p>
+      <p><strong>Deploy:</strong> 2 containers no EasyPanel (Next.js + n8n, Supabase cloud free tier)</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Prós</h4>
+          <ul>
+            <li>Stack que vocês já dominam (NK, ClaveHogar usam Next.js)</li>
+            <li>n8n já está na VPS — reusa toda a infra de automação</li>
+            <li>Supabase free tier = DB + Auth + Realtime grátis</li>
+            <li>Mais rápido de construir (1 app, 1 deploy)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Contras</h4>
+          <ul>
+            <li>Escala limitada no início (ok para MVP)</li>
+            <li>n8n tem limites em execuções simultâneas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Next.js + API separada (FastAPI/Python)</h3>
+      <p><strong>Frontend:</strong> Next.js</p>
+      <p><strong>Backend API:</strong> FastAPI (Python) para lógica de negócio, IA, scraping</p>
+      <p><strong>Automações:</strong> n8n ou Celery workers</p>
+      <p><strong>Deploy:</strong> 3+ containers no EasyPanel</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Prós</h4>
+          <ul>
+            <li>Python excelente para IA/scraping (o script do filho pode integrar direto)</li>
+            <li>Separação clara frontend/backend</li>
+            <li>Mais flexível para escalar cada parte</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Contras</h4>
+          <ul>
+            <li>2 linguagens para manter (JS + Python)</li>
+            <li>Mais complexo de deployar e debugar</li>
+            <li>Mais lento de construir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Low-code: n8n como backend principal</h3>
+      <p><strong>Frontend:</strong> Next.js (só UI)</p>
+      <p><strong>Backend:</strong> n8n faz tudo — API, automações, IA, CRM</p>
+      <p><strong>DB:</strong> Supabase ou Postgres direto</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Prós</h4>
+          <ul>
+            <li>Mais rápido de prototipar</li>
+            <li>Visual, fácil de modificar workflows</li>
+            <li>Menos código para manter</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Contras</h4>
+          <ul>
+            <li>n8n não foi feito para ser API principal — frágil sob carga</li>
+            <li>Difícil debugar quando cresce</li>
+            <li>Vendor lock-in no n8n</li>
+            <li>Limitações de performance sérias</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<h2>Seção 3 — CRM/Kanban + Agente IA</h2>
+<p class="subtitle">Lead entra → Agente IA atende → CRM classifica → Corretor fecha</p>
+
+<div class="mockup">
+  <div class="mockup-header">Fluxo do Lead — Da entrada ao fechamento</div>
+  <div class="mockup-body" style="padding: 24px; background: #0a0a0a;">
+    <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; font-family: system-ui, sans-serif;">
+
+      <!-- Entry channels -->
+      <text x="130" y="30" text-anchor="middle" fill="#888" font-size="11" font-weight="600">CANAIS DE ENTRADA</text>
+
+      <rect x="20" y="45" width="100" height="50" rx="10" fill="#1a2e1a" stroke="#25D366" stroke-width="1.5"/>
+      <text x="70" y="68" text-anchor="middle" fill="#25D366" font-size="11" font-weight="600">WhatsApp</text>
+      <text x="70" y="82" text-anchor="middle" fill="#5a8a5a" font-size="8">Cloud API</text>
+
+      <rect x="140" y="45" width="100" height="50" rx="10" fill="#1a1a2e" stroke="#5a5aff" stroke-width="1.5"/>
+      <text x="190" y="68" text-anchor="middle" fill="#8a8aff" font-size="11" font-weight="600">Webchat</text>
+      <text x="190" y="82" text-anchor="middle" fill="#5a5aaf" font-size="8">Widget no site</text>
+
+      <rect x="260" y="45" width="100" height="50" rx="10" fill="#2e1a1a" stroke="#E1306C" stroke-width="1.5"/>
+      <text x="310" y="68" text-anchor="middle" fill="#E1306C" font-size="11" font-weight="600">Instagram</text>
+      <text x="310" y="82" text-anchor="middle" fill="#8a5a5a" font-size="8">DM via Meta API</text>
+
+      <!-- Arrows to Agent -->
+      <line x1="70" y1="95" x2="450" y2="145" stroke="#25D366" stroke-width="1" marker-end="url(#arr1)"/>
+      <line x1="190" y1="95" x2="450" y2="145" stroke="#5a5aff" stroke-width="1" marker-end="url(#arr2)"/>
+      <line x1="310" y1="95" x2="450" y2="145" stroke="#E1306C" stroke-width="1" marker-end="url(#arr3)"/>
+
+      <!-- AI Agent box -->
+      <rect x="300" y="130" width="300" height="120" rx="14" fill="#2e1a2e" stroke="#cc66ff" stroke-width="2"/>
+      <text x="450" y="158" text-anchor="middle" fill="#cc66ff" font-size="13" font-weight="700">AGENTE IA (n8n + GPT-4o)</text>
+
+      <rect x="320" y="170" width="120" height="35" rx="6" fill="#3d2d4a" stroke="#9966cc" stroke-width="1"/>
+      <text x="380" y="190" text-anchor="middle" fill="#e0c0ff" font-size="9">Responde perguntas</text>
+      <text x="380" y="200" text-anchor="middle" fill="#9966cc" font-size="8">sobre o imóvel</text>
+
+      <rect x="460" y="170" width="120" height="35" rx="6" fill="#3d2d4a" stroke="#9966cc" stroke-width="1"/>
+      <text x="520" y="190" text-anchor="middle" fill="#e0c0ff" font-size="9">Agenda visita</text>
+      <text x="520" y="200" text-anchor="middle" fill="#9966cc" font-size="8">ou envia mais fotos</text>
+
+      <rect x="320" y="212" width="260" height="28" rx="6" fill="#2a1a3a" stroke="#7744aa" stroke-width="1"/>
+      <text x="450" y="230" text-anchor="middle" fill="#bb88ee" font-size="9">Classifica: Quente 🔥 | Morno 🟡 | Frio ❄️</text>
+
+      <line x1="450" y1="250" x2="450" y2="280" stroke="#cc66ff" stroke-width="2" marker-end="url(#arr4)"/>
+
+      <!-- CRM insertion -->
+      <rect x="300" y="280" width="300" height="50" rx="14" fill="#1a2e1a" stroke="#4aff4a" stroke-width="2"/>
+      <text x="450" y="302" text-anchor="middle" fill="#4aff4a" font-size="12" font-weight="700">INSERE NO CRM AUTOMATICAMENTE</text>
+      <text x="450" y="318" text-anchor="middle" fill="#5a8a5a" font-size="9">Nome, telefone, imóvel de interesse, temperatura, histórico do chat</text>
+
+      <line x1="450" y1="330" x2="450" y2="360" stroke="#4aff4a" stroke-width="2" marker-end="url(#arr5)"/>
+
+      <!-- Kanban board -->
+      <rect x="40" y="360" width="820" height="150" rx="14" fill="#111" stroke="#333" stroke-width="1.5"/>
+      <text x="450" y="385" text-anchor="middle" fill="#aaa" font-size="12" font-weight="700">KANBAN DO CORRETOR</text>
+
+      <!-- Columns -->
+      <rect x="60" y="395" width="150" height="100" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+      <text x="135" y="415" text-anchor="middle" fill="#aaa" font-size="10" font-weight="600">Novo Lead</text>
+      <rect x="75" y="425" width="120" height="30" rx="5" fill="#2a1a1a" stroke="#ff6666" stroke-width="1"/>
+      <text x="135" y="444" text-anchor="middle" fill="#ff9999" font-size="8">Maria - T2 Torrevieja 🔥</text>
+      <rect x="75" y="460" width="120" height="30" rx="5" fill="#2a2a1a" stroke="#ffaa33" stroke-width="1"/>
+      <text x="135" y="479" text-anchor="middle" fill="#ffcc66" font-size="8">João - Casa Alicante 🟡</text>
+
+      <rect x="230" y="395" width="150" height="100" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+      <text x="305" y="415" text-anchor="middle" fill="#aaa" font-size="10" font-weight="600">Contactado</text>
+      <rect x="245" y="425" width="120" height="30" rx="5" fill="#1a2a1a" stroke="#66cc66" stroke-width="1"/>
+      <text x="305" y="444" text-anchor="middle" fill="#99ee99" font-size="8">Pedro - Loja Centro 🔥</text>
+
+      <rect x="400" y="395" width="150" height="100" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+      <text x="475" y="415" text-anchor="middle" fill="#aaa" font-size="10" font-weight="600">Visita Agendada</text>
+      <rect x="415" y="425" width="120" height="30" rx="5" fill="#1a1a2a" stroke="#6666ff" stroke-width="1"/>
+      <text x="475" y="444" text-anchor="middle" fill="#9999ff" font-size="8">Ana - T3 Playa 🔥</text>
+
+      <rect x="570" y="395" width="150" height="100" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+      <text x="645" y="415" text-anchor="middle" fill="#aaa" font-size="10" font-weight="600">Proposta</text>
+
+      <rect x="740" y="395" width="105" height="100" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+      <text x="792" y="415" text-anchor="middle" fill="#4aff4a" font-size="10" font-weight="600">Fechado ✓</text>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arr1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5" fill="#25D366"/></marker>
+        <marker id="arr2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5" fill="#5a5aff"/></marker>
+        <marker id="arr3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5" fill="#E1306C"/></marker>
+        <marker id="arr4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#cc66ff"/></marker>
+        <marker id="arr5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4aff4a"/></marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>O que o Agente IA faz automaticamente</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+    <div style="background: #1a1a2e; border-radius: 8px; padding: 14px; border: 1px solid #3a3a5e;">
+      <span class="label">Atendimento Instantâneo 24/7</span>
+      <ul style="margin: 8px 0 0; padding-left: 16px; color: #c0c0e0; font-size: 13px; line-height: 1.8;">
+        <li>Responde em segundos no WhatsApp/Webchat</li>
+        <li>Sabe todos os detalhes do imóvel (puxa do DB)</li>
+        <li>Envia fotos extras sob demanda</li>
+        <li>Responde em ES, PT, EN, FR automaticamente</li>
+        <li>Tom personalizado por imobiliária</li>
+      </ul>
+    </div>
+    <div style="background: #1a1a2e; border-radius: 8px; padding: 14px; border: 1px solid #3a3a5e;">
+      <span class="label">Qualificação + Ação</span>
+      <ul style="margin: 8px 0 0; padding-left: 16px; color: #c0c0e0; font-size: 13px; line-height: 1.8;">
+        <li>Classifica lead: Quente / Morno / Frio</li>
+        <li>Agenda visita (integra com Google Calendar)</li>
+        <li>Notifica corretor por WhatsApp quando lead quente</li>
+        <li>Escala para humano quando necessário</li>
+        <li>Cria card no Kanban com todo o contexto</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 16px;">
+  <h3>Colunas do Kanban</h3>
+  <div style="display: flex; gap: 8px; margin-top: 12px; overflow-x: auto;">
+    <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; border: 1px solid #333; min-width: 140px; text-align: center;">
+      <div style="color: #ff6666; font-size: 12px; font-weight: 600;">Novo Lead</div>
+      <div style="color: #666; font-size: 9px; margin-top: 4px;">IA acabou de inserir</div>
+    </div>
+    <div style="color: #444; align-self: center;">→</div>
+    <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; border: 1px solid #333; min-width: 140px; text-align: center;">
+      <div style="color: #ffaa33; font-size: 12px; font-weight: 600;">Contactado</div>
+      <div style="color: #666; font-size: 9px; margin-top: 4px;">Corretor falou</div>
+    </div>
+    <div style="color: #444; align-self: center;">→</div>
+    <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; border: 1px solid #333; min-width: 140px; text-align: center;">
+      <div style="color: #6666ff; font-size: 12px; font-weight: 600;">Visita Agendada</div>
+      <div style="color: #666; font-size: 9px; margin-top: 4px;">IA ou corretor agendou</div>
+    </div>
+    <div style="color: #444; align-self: center;">→</div>
+    <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; border: 1px solid #333; min-width: 140px; text-align: center;">
+      <div style="color: #cc66ff; font-size: 12px; font-weight: 600;">Proposta</div>
+      <div style="color: #666; font-size: 9px; margin-top: 4px;">Negociando valor</div>
+    </div>
+    <div style="color: #444; align-self: center;">→</div>
+    <div style="background: #1a1a1a; border-radius: 8px; padding: 12px; border: 1px solid #333; min-width: 140px; text-align: center;">
+      <div style="color: #4aff4a; font-size: 12px; font-weight: 600;">Fechado ✓</div>
+      <div style="color: #666; font-size: 9px; margin-top: 4px;">Vendido/Alugado</div>
+    </div>
+  </div>
+</div>

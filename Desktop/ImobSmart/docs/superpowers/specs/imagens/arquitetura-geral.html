@@ -1,0 +1,153 @@
+<h2>Arquitetura Geral — ImobSmart MVP</h2>
+<p class="subtitle">Visão completa de como os componentes se conectam</p>
+
+<div class="mockup">
+  <div class="mockup-header">Diagrama de Arquitetura</div>
+  <div class="mockup-body" style="padding: 24px; background: #0a0a0a;">
+    <svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" style="width:100%; font-family: system-ui, sans-serif;">
+
+      <!-- Background groups -->
+      <!-- Frontend -->
+      <rect x="20" y="10" width="260" height="180" rx="12" fill="#1a1a2e" stroke="#3a3a5e" stroke-width="1.5"/>
+      <text x="150" y="38" text-anchor="middle" fill="#8b8baf" font-size="11" font-weight="600">FRONTEND (Next.js)</text>
+
+      <rect x="40" y="52" width="100" height="50" rx="8" fill="#2d2d4a" stroke="#5a5a8a" stroke-width="1"/>
+      <text x="90" y="72" text-anchor="middle" fill="#e0e0ff" font-size="10" font-weight="500">Painel</text>
+      <text x="90" y="86" text-anchor="middle" fill="#8b8baf" font-size="9">Corretor</text>
+
+      <rect x="160" y="52" width="100" height="50" rx="8" fill="#2d2d4a" stroke="#5a5a8a" stroke-width="1"/>
+      <text x="210" y="72" text-anchor="middle" fill="#e0e0ff" font-size="10" font-weight="500">Painel</text>
+      <text x="210" y="86" text-anchor="middle" fill="#8b8baf" font-size="9">Admin SaaS</text>
+
+      <rect x="40" y="115" width="100" height="50" rx="8" fill="#2d2d4a" stroke="#5a5a8a" stroke-width="1"/>
+      <text x="90" y="135" text-anchor="middle" fill="#e0e0ff" font-size="10" font-weight="500">CRM</text>
+      <text x="90" y="149" text-anchor="middle" fill="#8b8baf" font-size="9">Kanban</text>
+
+      <rect x="160" y="115" width="100" height="50" rx="8" fill="#2d2d4a" stroke="#5a5a8a" stroke-width="1"/>
+      <text x="210" y="135" text-anchor="middle" fill="#e0e0ff" font-size="10" font-weight="500">Webchat</text>
+      <text x="210" y="149" text-anchor="middle" fill="#8b8baf" font-size="9">Widget</text>
+
+      <!-- Backend / API -->
+      <rect x="320" y="10" width="260" height="180" rx="12" fill="#1a2e1a" stroke="#3a5e3a" stroke-width="1.5"/>
+      <text x="450" y="38" text-anchor="middle" fill="#8baf8b" font-size="11" font-weight="600">BACKEND (Next.js API Routes)</text>
+
+      <rect x="340" y="52" width="100" height="50" rx="8" fill="#2d4a2d" stroke="#5a8a5a" stroke-width="1"/>
+      <text x="390" y="72" text-anchor="middle" fill="#e0ffe0" font-size="10" font-weight="500">API Imoveis</text>
+      <text x="390" y="86" text-anchor="middle" fill="#8baf8b" font-size="9">CRUD + Upload</text>
+
+      <rect x="460" y="52" width="100" height="50" rx="8" fill="#2d4a2d" stroke="#5a8a5a" stroke-width="1"/>
+      <text x="510" y="72" text-anchor="middle" fill="#e0ffe0" font-size="10" font-weight="500">API CRM</text>
+      <text x="510" y="86" text-anchor="middle" fill="#8baf8b" font-size="9">Leads + Kanban</text>
+
+      <rect x="340" y="115" width="100" height="50" rx="8" fill="#2d4a2d" stroke="#5a8a5a" stroke-width="1"/>
+      <text x="390" y="135" text-anchor="middle" fill="#e0ffe0" font-size="10" font-weight="500">Auth</text>
+      <text x="390" y="149" text-anchor="middle" fill="#8baf8b" font-size="9">Supabase Auth</text>
+
+      <rect x="460" y="115" width="100" height="50" rx="8" fill="#2d4a2d" stroke="#5a8a5a" stroke-width="1"/>
+      <text x="510" y="135" text-anchor="middle" fill="#e0ffe0" font-size="10" font-weight="500">Webhooks</text>
+      <text x="510" y="149" text-anchor="middle" fill="#8baf8b" font-size="9">n8n triggers</text>
+
+      <!-- n8n Automations -->
+      <rect x="620" y="10" width="260" height="180" rx="12" fill="#2e1a1a" stroke="#5e3a3a" stroke-width="1.5"/>
+      <text x="750" y="38" text-anchor="middle" fill="#af8b8b" font-size="11" font-weight="600">AUTOMACOES (n8n)</text>
+
+      <rect x="640" y="52" width="100" height="50" rx="8" fill="#4a2d2d" stroke="#8a5a5a" stroke-width="1"/>
+      <text x="690" y="72" text-anchor="middle" fill="#ffe0e0" font-size="10" font-weight="500">Autopostagem</text>
+      <text x="690" y="86" text-anchor="middle" fill="#af8b8b" font-size="9">IG/FB/TikTok</text>
+
+      <rect x="760" y="52" width="100" height="50" rx="8" fill="#4a2d2d" stroke="#8a5a5a" stroke-width="1"/>
+      <text x="810" y="72" text-anchor="middle" fill="#ffe0e0" font-size="10" font-weight="500">Google Ads</text>
+      <text x="810" y="86" text-anchor="middle" fill="#af8b8b" font-size="9">API Campaigns</text>
+
+      <rect x="640" y="115" width="100" height="50" rx="8" fill="#4a2d2d" stroke="#8a5a5a" stroke-width="1"/>
+      <text x="690" y="135" text-anchor="middle" fill="#ffe0e0" font-size="10" font-weight="500">Agente IA</text>
+      <text x="690" y="149" text-anchor="middle" fill="#af8b8b" font-size="9">WhatsApp Bot</text>
+
+      <rect x="760" y="115" width="100" height="50" rx="8" fill="#4a2d2d" stroke="#8a5a5a" stroke-width="1"/>
+      <text x="810" y="72" text-anchor="middle" fill="#ffe0e0" font-size="10" font-weight="500"></text>
+      <text x="810" y="135" text-anchor="middle" fill="#ffe0e0" font-size="10" font-weight="500">Gerador IA</text>
+      <text x="810" y="149" text-anchor="middle" fill="#af8b8b" font-size="9">Texto + Arte</text>
+
+      <!-- Supabase -->
+      <rect x="170" y="240" width="360" height="130" rx="12" fill="#1a1a2e" stroke="#4a4aff" stroke-width="1.5"/>
+      <text x="350" y="268" text-anchor="middle" fill="#7a7aff" font-size="11" font-weight="600">SUPABASE (Cloud Free Tier)</text>
+
+      <rect x="190" y="282" width="95" height="45" rx="8" fill="#2d2d4a" stroke="#5a5aff" stroke-width="1"/>
+      <text x="237" y="302" text-anchor="middle" fill="#c0c0ff" font-size="10" font-weight="500">PostgreSQL</text>
+      <text x="237" y="316" text-anchor="middle" fill="#7a7aff" font-size="9">DB principal</text>
+
+      <rect x="300" y="282" width="95" height="45" rx="8" fill="#2d2d4a" stroke="#5a5aff" stroke-width="1"/>
+      <text x="347" y="302" text-anchor="middle" fill="#c0c0ff" font-size="10" font-weight="500">Auth</text>
+      <text x="347" y="316" text-anchor="middle" fill="#7a7aff" font-size="9">Login/Signup</text>
+
+      <rect x="410" y="282" width="95" height="45" rx="8" fill="#2d2d4a" stroke="#5a5aff" stroke-width="1"/>
+      <text x="457" y="302" text-anchor="middle" fill="#c0c0ff" font-size="10" font-weight="500">Storage</text>
+      <text x="457" y="316" text-anchor="middle" fill="#7a7aff" font-size="9">Fotos imoveis</text>
+
+      <!-- External Services -->
+      <rect x="580" y="240" width="300" height="130" rx="12" fill="#2e2e1a" stroke="#5e5e3a" stroke-width="1.5"/>
+      <text x="730" y="268" text-anchor="middle" fill="#afaf8b" font-size="11" font-weight="600">SERVICOS EXTERNOS</text>
+
+      <rect x="600" y="282" width="80" height="45" rx="8" fill="#4a4a2d" stroke="#8a8a5a" stroke-width="1"/>
+      <text x="640" y="302" text-anchor="middle" fill="#ffffe0" font-size="9" font-weight="500">Meta API</text>
+      <text x="640" y="316" text-anchor="middle" fill="#afaf8b" font-size="8">IG + FB</text>
+
+      <rect x="695" y="282" width="80" height="45" rx="8" fill="#4a4a2d" stroke="#8a8a5a" stroke-width="1"/>
+      <text x="735" y="302" text-anchor="middle" fill="#ffffe0" font-size="9" font-weight="500">WhatsApp</text>
+      <text x="735" y="316" text-anchor="middle" fill="#afaf8b" font-size="8">Cloud API</text>
+
+      <rect x="790" y="282" width="80" height="45" rx="8" fill="#4a4a2d" stroke="#8a8a5a" stroke-width="1"/>
+      <text x="830" y="302" text-anchor="middle" fill="#ffffe0" font-size="9" font-weight="500">OpenAI</text>
+      <text x="830" y="316" text-anchor="middle" fill="#afaf8b" font-size="8">GPT-4o</text>
+
+      <!-- VPS Container -->
+      <rect x="20" y="420" width="860" height="90" rx="12" fill="#0d1a0d" stroke="#2a5e2a" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="450" y="448" text-anchor="middle" fill="#5eaf5e" font-size="11" font-weight="600">VPS HOSTINGER — EasyPanel (46.202.129.29)</text>
+
+      <rect x="60" y="458" width="160" height="38" rx="8" fill="#1a2e1a" stroke="#3a5e3a" stroke-width="1"/>
+      <text x="140" y="482" text-anchor="middle" fill="#a0e0a0" font-size="10">Container: Next.js</text>
+
+      <rect x="260" y="458" width="160" height="38" rx="8" fill="#1a2e1a" stroke="#3a5e3a" stroke-width="1"/>
+      <text x="340" y="482" text-anchor="middle" fill="#a0e0a0" font-size="10">Container: n8n</text>
+
+      <rect x="460" y="458" width="160" height="38" rx="8" fill="#1a2e1a" stroke="#3a5e3a" stroke-width="1"/>
+      <text x="540" y="482" text-anchor="middle" fill="#a0e0a0" font-size="10">Container: OpenClaw</text>
+
+      <rect x="660" y="458" width="160" height="38" rx="8" fill="#1a2e1a" stroke="#3a5e3a" stroke-width="1"/>
+      <text x="740" y="482" text-anchor="middle" fill="#a0e0a0" font-size="10">Nginx (reverse proxy)</text>
+
+      <!-- Arrows -->
+      <!-- Frontend to Backend -->
+      <line x1="280" y1="100" x2="320" y2="100" stroke="#5a8a5a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+      <!-- Backend to n8n -->
+      <line x1="580" y1="100" x2="620" y2="100" stroke="#8a5a5a" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+      <!-- Backend to Supabase -->
+      <line x1="450" y1="190" x2="350" y2="240" stroke="#5a5aff" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+      <!-- n8n to External -->
+      <line x1="750" y1="190" x2="730" y2="240" stroke="#8a8a5a" stroke-width="1.5" marker-end="url(#arrow-yellow)"/>
+      <!-- All to VPS -->
+      <line x1="140" y1="370" x2="140" y2="420" stroke="#3a5e3a" stroke-width="1" stroke-dasharray="4,2"/>
+      <line x1="340" y1="370" x2="340" y2="420" stroke="#3a5e3a" stroke-width="1" stroke-dasharray="4,2"/>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#5a8a5a"/>
+        </marker>
+        <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#8a5a5a"/>
+        </marker>
+        <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#5a5aff"/>
+        </marker>
+        <marker id="arrow-yellow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#8a8a5a"/>
+        </marker>
+      </defs>
+
+      <!-- Flow label -->
+      <text x="450" y="560" text-anchor="middle" fill="#666" font-size="10">Corretor cadastra imovel → API salva no Supabase → Webhook dispara n8n → n8n gera texto/arte com IA → posta nas redes</text>
+
+    </svg>
+  </div>
+</div>
