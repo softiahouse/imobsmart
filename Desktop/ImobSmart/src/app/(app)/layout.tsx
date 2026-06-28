@@ -1,6 +1,7 @@
 import { Sidebar } from "@/components/layout/sidebar";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { AppHeader } from "@/components/layout/app-header";
+import { OnboardingTour } from "@/components/onboarding-tour";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </main>
       <BottomNav />
+      <OnboardingTour />
     </div>
   );
 }
