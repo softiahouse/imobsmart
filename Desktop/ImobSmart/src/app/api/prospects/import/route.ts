@@ -1,4 +1,4 @@
-import { createServiceClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
 function parseCSV(text: string): Record<string, string>[] {
@@ -98,7 +98,7 @@ export async function POST(request: Request) {
     };
   });
 
-  const supabase = await createServiceClient();
+  const supabase = await createClient();
   const { data, error } = await supabase.from("prospects").insert(prospects).select();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

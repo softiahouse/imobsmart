@@ -1,4 +1,4 @@
-import { createServiceClient } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const city = searchParams.get("city");
   const stage = searchParams.get("stage");
 
-  const supabase = await createServiceClient();
+  const supabase = await createClient();
   let query = supabase.from("prospects").select("*").order("created_at", { ascending: false });
 
   if (city) query = query.ilike("city", `%${city}%`);
@@ -18,7 +18,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const supabase = await createServiceClient();
+  const supabase = await createClient();
   const body = await request.json();
 
   if (Array.isArray(body)) {
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 }
 
 export async function PATCH(request: Request) {
-  const supabase = await createServiceClient();
+  const supabase = await createClient();
   const body = await request.json();
   const { id, ...updates } = body;
 
