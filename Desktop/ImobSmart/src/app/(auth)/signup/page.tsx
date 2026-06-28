@@ -4,8 +4,6 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import { slugify } from "@/lib/utils";
-
 export default function SignupPage() {
   const [orgName, setOrgName] = useState("");
   const [name, setName] = useState("");
@@ -22,35 +20,16 @@ export default function SignupPage() {
 
     const supabase = createClient();
 
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const { error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: { org_name: orgName, user_name: name },
+      },
     });
 
-    if (authError || !authData.user) {
-      setError(authError?.message ?? "Erro ao criar conta");
-      setLoading(false);
-      return;
-    }
-
-    const { data: org, error: orgError } = await supabase
-      .from("organizations")
-      .insert({ name: orgName, slug: slugify(orgName) })
-      .select("id")
-      .single();
-
-    if (orgError || !org) {
-      setError("Erro ao criar organização");
-      setLoading(false);
-      return;
-    }
-
-    const { error: userError } = await supabase
-      .from("users")
-      .insert({ id: authData.user.id, org_id: org.id, name, role: "admin" });
-
-    if (userError) {
-      setError("Erro ao criar perfil");
+    if (authError) {
+      setError(authError.message);
       setLoading(false);
       return;
     }

@@ -148,43 +148,47 @@ alter table leads enable row level security;
 alter table conversations enable row level security;
 
 -- Helper: get current user's org_id
-create or replace function auth.user_org_id()
+create or replace function public.user_org_id()
 returns uuid as $$
-  select org_id from users where id = auth.uid()
+  select org_id from public.users where id = auth.uid()
 $$ language sql security definer stable;
 
 -- Organizations: users can only see their own org
 create policy "Users see own org" on organizations
-  for select using (id = auth.user_org_id());
+  for select using (id = public.user_org_id());
 create policy "Admins update own org" on organizations
-  for update using (id = auth.user_org_id());
+  for update using (id = public.user_org_id());
+create policy "Users create org" on organizations
+  for insert with check (true);
 
 -- Users: users can see members of their org
 create policy "Users see org members" on users
-  for select using (org_id = auth.user_org_id());
+  for select using (org_id = public.user_org_id());
+create policy "Users insert own profile" on users
+  for insert with check (id = auth.uid());
 
 -- Properties: users can CRUD properties of their org
 create policy "Users see org properties" on properties
-  for select using (org_id = auth.user_org_id());
+  for select using (org_id = public.user_org_id());
 create policy "Users create org properties" on properties
-  for insert with check (org_id = auth.user_org_id());
+  for insert with check (org_id = public.user_org_id());
 create policy "Users update org properties" on properties
-  for update using (org_id = auth.user_org_id());
+  for update using (org_id = public.user_org_id());
 create policy "Users delete org properties" on properties
-  for delete using (org_id = auth.user_org_id());
+  for delete using (org_id = public.user_org_id());
 
 -- Leads: users can CRUD leads of their org
 create policy "Users see org leads" on leads
-  for select using (org_id = auth.user_org_id());
+  for select using (org_id = public.user_org_id());
 create policy "Users create org leads" on leads
-  for insert with check (org_id = auth.user_org_id());
+  for insert with check (org_id = public.user_org_id());
 create policy "Users update org leads" on leads
-  for update using (org_id = auth.user_org_id());
+  for update using (org_id = public.user_org_id());
 
 -- Conversations: via lead's org
 create policy "Users see org conversations" on conversations
   for select using (
-    exists (select 1 from leads where leads.id = conversations.lead_id and leads.org_id = auth.user_org_id())
+    exists (select 1 from leads where leads.id = conversations.lead_id and leads.org_id = public.user_org_id())
   );
 
 -- Prospects: no RLS (internal table, accessed via service role only)
