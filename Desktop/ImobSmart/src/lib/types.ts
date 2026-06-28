@@ -6,6 +6,7 @@ export type LeadSource = "whatsapp" | "webchat" | "instagram";
 export type LeadTemperature = "hot" | "warm" | "cold";
 export type KanbanStage = "new" | "contacted" | "visit_scheduled" | "proposal" | "closed";
 export type ProspectClassification = "no_site" | "bad_site" | "good_site" | "client";
+export type B2bStage = "new" | "contacted" | "meeting" | "proposal" | "negotiation" | "won" | "lost";
 export type AiTone = "formal" | "casual" | "friendly";
 
 export interface Organization {
@@ -96,8 +97,14 @@ export interface Prospect {
   country: string;
   business_name: string;
   phone: string | null;
+  email: string | null;
+  contact_name: string | null;
   website_url: string | null;
   classification: ProspectClassification;
+  b2b_stage: B2bStage;
+  deal_value: number | null;
+  next_followup: string | null;
+  source: string;
   contacted_at: string | null;
   notes: string | null;
   created_at: string;
