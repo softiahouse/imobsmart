@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { href: "/properties", icon: "🏢", label: "Imóveis" },
   { href: "/properties/new", icon: "+", label: "Novo", isAction: true },
   { href: "/crm", icon: "📋", label: "CRM" },
-  { href: "/settings", icon: "⚙️", label: "Config" },
+  { href: "/prospects", icon: "🔍", label: "B2B" },
 ];
 
 export function BottomNav() {
