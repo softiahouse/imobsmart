@@ -27,6 +27,34 @@ const CLASS_LABELS: Record<ProspectClassification, string> = {
   client: "Cliente",
 };
 
+const MSG_NO_SITE = `Hola 👋 Vi que tu inmobiliaria aún no tiene presencia online. Soy Pablo de *ImobSmart* — creamos sitios web profesionales para inmobiliarias + publicación automática en redes sociales + agente IA que atiende tus leads 24/7.
+
+Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
+
+¿Te gustaría ver cómo funciona en 10 minutos?
+
+🌐 imobsmart.es`;
+
+const MSG_BAD_SITE = `Hola 👋 Soy Pablo de *ImobSmart*, una plataforma que ayuda a inmobiliarias a captar más clientes con:
+
+✅ Publicación automática en Instagram, Facebook y TikTok
+✅ Agente IA 24/7 que atiende leads por WhatsApp
+✅ CRM visual con pipeline de ventas
+
+Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
+
+¿Te interesaría ver una demo rápida de 10 minutos?
+
+🌐 imobsmart.es`;
+
+function formatPhone(phone: string, country: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("34") || digits.startsWith("55")) return digits;
+  if (country === "ES") return `34${digits}`;
+  if (country === "BR") return `55${digits}`;
+  return digits;
+}
+
 export function ProspectPipeline() {
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(true);
@@ -249,13 +277,13 @@ function ProspectCard({
 
       {prospect.phone && (
         <a
-          href={`https://wa.me/${prospect.phone.replace(/\D/g, "")}`}
+          href={`https://wa.me/${formatPhone(prospect.phone, prospect.country)}?text=${encodeURIComponent(prospect.classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE)}`}
           target="_blank"
           rel="noopener"
           onClick={(e) => e.stopPropagation()}
-          className="text-[10px] text-green-400 hover:underline mt-1 block"
+          className="flex items-center gap-1 text-[10px] text-green-400 hover:bg-green-500/10 rounded px-1.5 py-0.5 mt-1 w-fit border border-green-500/20"
         >
-          📱 {prospect.phone}
+          💬 {prospect.phone}
         </a>
       )}
       {prospect.email && (

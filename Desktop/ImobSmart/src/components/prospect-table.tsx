@@ -10,6 +10,34 @@ const CLASS_CONFIG: Record<ProspectClassification, { label: string; color: strin
   client: { label: "CLIENTE", color: "#6666ff", bg: "rgba(68,68,255,0.15)" },
 };
 
+const MSG_NO_SITE = `Hola 👋 Vi que tu inmobiliaria aún no tiene presencia online. Soy Pablo de *ImobSmart* — creamos sitios web profesionales para inmobiliarias + publicación automática en redes sociales + agente IA que atiende tus leads 24/7.
+
+Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
+
+¿Te gustaría ver cómo funciona en 10 minutos?
+
+🌐 imobsmart.es`;
+
+const MSG_BAD_SITE = `Hola 👋 Soy Pablo de *ImobSmart*, una plataforma que ayuda a inmobiliarias a captar más clientes con:
+
+✅ Publicación automática en Instagram, Facebook y TikTok
+✅ Agente IA 24/7 que atiende leads por WhatsApp
+✅ CRM visual con pipeline de ventas
+
+Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
+
+¿Te interesaría ver una demo rápida de 10 minutos?
+
+🌐 imobsmart.es`;
+
+function formatPhone(phone: string, country: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("34") || digits.startsWith("55")) return digits;
+  if (country === "ES") return `34${digits}`;
+  if (country === "BR") return `55${digits}`;
+  return digits;
+}
+
 export function ProspectTable() {
   const [city, setCity] = useState("");
   const [prospects, setProspects] = useState<Prospect[]>([]);
@@ -102,12 +130,12 @@ export function ProspectTable() {
                       <td className="p-3">
                         {p.classification !== "client" && p.phone && (
                           <a
-                            href={`https://wa.me/${p.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`Olá! Somos da ImobSmart, uma plataforma que ajuda imobiliárias a publicar imóveis automaticamente nas redes sociais. Posso explicar como funciona?`)}`}
+                            href={`https://wa.me/${formatPhone(p.phone, p.country)}?text=${encodeURIComponent(p.classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE)}`}
                             target="_blank"
                             rel="noopener"
                             className="text-xs px-3 py-1 rounded-md border border-green-500/40 bg-green-500/10 text-green-400 hover:bg-green-500/20"
                           >
-                            Contactar →
+                            💬 WhatsApp
                           </a>
                         )}
                       </td>
