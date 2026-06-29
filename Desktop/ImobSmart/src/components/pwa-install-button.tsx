@@ -75,16 +75,16 @@ export function PWAInstallButton() {
       <div className="fixed bottom-0 left-0 right-0 z-[90] p-4 animate-in slide-in-from-bottom duration-300">
         <div className="glass rounded-2xl p-4 max-w-md mx-auto space-y-3">
           <div className="flex items-start justify-between">
-            <p className="text-white font-semibold text-sm">Instalar ImobSmart no iPhone</p>
+            <p className="text-white font-semibold text-sm">Instalar ImobSmart en iPhone</p>
             <button onClick={dismiss} className="text-zinc-500 hover:text-white text-lg leading-none">&times;</button>
           </div>
           <div className="space-y-2 text-zinc-400 text-xs">
-            <p>1. Toque no ícone <span className="inline-block px-1.5 py-0.5 bg-white/10 rounded text-white">&#xFEFF;⬆&#xFE0E;</span> (Compartilhar) na barra do Safari</p>
-            <p>2. Role para baixo e toque em <strong className="text-white">"Adicionar à Tela de Início"</strong></p>
-            <p>3. Toque em <strong className="text-white">"Adicionar"</strong></p>
+            <p>1. Toca el icono <span className="inline-block px-1.5 py-0.5 bg-white/10 rounded text-white">&#xFEFF;⬆&#xFE0E;</span> (Compartir) en la barra de Safari</p>
+            <p>2. Desplázate hacia abajo y toca <strong className="text-white">"Añadir a la pantalla de inicio"</strong></p>
+            <p>3. Toca <strong className="text-white">"Añadir"</strong></p>
           </div>
           <button onClick={dismiss} className="w-full text-center text-xs text-zinc-500 hover:text-white py-1">
-            Entendi, fechar
+            Entendido, cerrar
           </button>
         </div>
       </div>
@@ -99,11 +99,11 @@ export function PWAInstallButton() {
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-white text-sm font-semibold">Instalar ImobSmart</p>
-          <p className="text-zinc-400 text-xs">Acesso rápido direto da tela inicial</p>
+          <p className="text-zinc-400 text-xs">Acceso rápido desde la pantalla de inicio</p>
         </div>
         <div className="flex gap-2 flex-shrink-0">
           <button onClick={dismiss} className="text-zinc-500 hover:text-white text-xs px-2 py-1">
-            Depois
+            Luego
           </button>
           <button
             onClick={handleInstall}

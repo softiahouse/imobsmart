@@ -12,52 +12,52 @@ interface Step {
 
 const STEPS: Step[] = [
   {
-    title: "Bem-vindo ao ImobSmart! 👋",
+    title: "¡Bienvenido a ImobSmart! 👋",
     icon: "🏠",
     description:
-      "Sua plataforma completa para automatizar a publicação de imóveis, captar leads e fechar negócios. Vamos fazer um tour rápido?",
+      "Tu plataforma completa para automatizar la publicación de inmuebles, captar leads y cerrar negocios. ¿Hacemos un tour rápido?",
   },
   {
     title: "Dashboard",
     icon: "📊",
     description:
-      "Aqui é sua visão geral: imóveis publicados, leads quentes, posts da semana e visitas agendadas. Tudo num só lugar.",
+      "Aquí tienes tu visión general: inmuebles publicados, leads calientes, posts de la semana y visitas agendadas. Todo en un solo lugar.",
   },
   {
-    title: "Cadastro de Imóveis",
+    title: "Alta de Inmuebles",
     icon: "🏗️",
     description:
-      "Adicione imóveis com fotos, detalhes e preço. O sistema gera automaticamente o anúncio para publicar nas redes sociais.",
+      "Añade inmuebles con fotos, detalles y precio. El sistema genera automáticamente el anuncio para publicar en redes sociales.",
   },
   {
     title: "CRM & Pipeline",
     icon: "📋",
     description:
-      "Gerencie seus leads com o Kanban visual. Arraste os cards entre as colunas: novo → contactado → visita → proposta → fechado.",
+      "Gestiona tus leads con el Kanban visual. Arrastra las tarjetas entre columnas: nuevo → contactado → visita → propuesta → cerrado.",
   },
   {
-    title: "Prospecção B2B",
+    title: "Prospección B2B",
     icon: "🔍",
     description:
-      "Encontre novas imobiliárias por cidade, classifique pela presença digital e importe listas CSV para automatizar a prospecção.",
+      "Encuentra nuevas inmobiliarias por ciudad, clasifícalas por presencia digital e importa listas CSV para automatizar la prospección.",
   },
   {
-    title: "Autopostagem Social",
+    title: "Autopublicación Social",
     icon: "📱",
     description:
-      "Publique automaticamente no Instagram, Facebook, TikTok e Google Ads. Configure uma vez e o ImobSmart cuida do resto.",
+      "Publica automáticamente en Instagram, Facebook, TikTok y Google Ads. Configúralo una vez e ImobSmart se encarga del resto.",
   },
   {
     title: "Agente IA 24/7",
     icon: "🤖",
     description:
-      "Seu assistente virtual atende leads pelo WhatsApp e Webchat, qualifica interessados, agenda visitas e nunca dorme!",
+      "Tu asistente virtual atiende leads por WhatsApp y Webchat, cualifica interesados, agenda visitas y ¡nunca duerme!",
   },
   {
-    title: "Tudo pronto! 🚀",
+    title: "¡Todo listo! 🚀",
     icon: "✅",
     description:
-      "Você está preparado para começar. Use o menu lateral para navegar entre as seções. Bons negócios!",
+      "Estás listo para empezar. Usa el menú lateral para navegar entre las secciones. ¡Buenos negocios!",
   },
 ];
 
@@ -111,7 +111,7 @@ export function OnboardingTour() {
               onClick={dismiss}
               className="text-zinc-500 hover:text-white transition-colors text-sm flex items-center gap-1"
             >
-              <span>Pular</span>
+              <span>Saltar</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -132,7 +132,7 @@ export function OnboardingTour() {
                   onClick={prev}
                   className="glass px-4 py-2 text-sm text-zinc-300 hover:bg-white/10 transition-colors"
                 >
-                  Voltar
+                  Atrás
                 </button>
               )}
               {isFirst && (
@@ -140,14 +140,14 @@ export function OnboardingTour() {
                   onClick={dismiss}
                   className="glass px-4 py-2 text-sm text-zinc-500 hover:bg-white/10 transition-colors"
                 >
-                  Não, obrigado
+                  No, gracias
                 </button>
               )}
               <button
                 onClick={next}
                 className="gradient-button px-5 py-2 text-sm text-white font-semibold"
               >
-                {isLast ? "Começar!" : "Próximo →"}
+                {isLast ? "¡Empezar!" : "Siguiente →"}
               </button>
             </div>
           </div>

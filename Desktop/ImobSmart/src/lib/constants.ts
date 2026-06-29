@@ -5,30 +5,30 @@ export const PLAN_LIMITS = {
 } as const;
 
 export const KANBAN_STAGES = [
-  { key: "new", label: "Novo Lead", color: "#ff6666" },
+  { key: "new", label: "Nuevo Lead", color: "#ff6666" },
   { key: "contacted", label: "Contactado", color: "#ffaa33" },
   { key: "visit_scheduled", label: "Visita Agendada", color: "#5a5aff" },
-  { key: "proposal", label: "Proposta", color: "#cc66ff" },
-  { key: "closed", label: "Fechado ✓", color: "#4aff4a" },
+  { key: "proposal", label: "Propuesta", color: "#cc66ff" },
+  { key: "closed", label: "Cerrado ✓", color: "#4aff4a" },
 ] as const;
 
 export const PROPERTY_TYPES = [
-  { key: "apartment", label: "Apartamento" },
+  { key: "apartment", label: "Piso" },
   { key: "house", label: "Casa" },
   { key: "land", label: "Terreno" },
   { key: "commercial", label: "Comercial" },
 ] as const;
 
 export const OPERATION_TYPES = [
-  { key: "sale", label: "Venda" },
-  { key: "rent", label: "Aluguel" },
+  { key: "sale", label: "Venta" },
+  { key: "rent", label: "Alquiler" },
   { key: "seasonal", label: "Temporada" },
 ] as const;
 
 export const TEMPERATURE_CONFIG = {
-  hot: { emoji: "🔥", label: "Quente", color: "#ff6666" },
-  warm: { emoji: "🟡", label: "Morno", color: "#ffaa33" },
-  cold: { emoji: "❄️", label: "Frio", color: "#66aaff" },
+  hot: { emoji: "🔥", label: "Caliente", color: "#ff6666" },
+  warm: { emoji: "🟡", label: "Tibio", color: "#ffaa33" },
+  cold: { emoji: "❄️", label: "Frío", color: "#66aaff" },
 } as const;
 
 export const CHANNEL_CONFIG = {

@@ -22,7 +22,7 @@ export function PropertyCard({ property }: { property: Property }) {
 
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-white font-semibold text-sm">
-            {property.type === "apartment" ? "Apartamento" : property.type === "house" ? "Casa" : property.type} — {property.city}
+            {property.type === "apartment" ? "Piso" : property.type === "house" ? "Casa" : property.type} — {property.city}
           </p>
           <div className="flex gap-3 mt-1 text-zinc-400 text-xs">
             {property.bedrooms && <span>🛏 {property.bedrooms}</span>}

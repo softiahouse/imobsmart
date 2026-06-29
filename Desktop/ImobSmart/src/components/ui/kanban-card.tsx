@@ -26,7 +26,7 @@ export function KanbanCard({ lead }: { lead: Lead }) {
       {lead.property && (
         <div className="bg-white/5 rounded-lg p-2 mt-2">
           <p className="text-zinc-400 text-xs">
-            🏢 {lead.property.type === "apartment" ? "Apt" : "Casa"} — {lead.property.city}
+            🏢 {lead.property.type === "apartment" ? "Piso" : "Casa"} — {lead.property.city}
           </p>
         </div>
       )}

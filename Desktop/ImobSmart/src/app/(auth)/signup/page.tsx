@@ -44,7 +44,7 @@ export default function SignupPage() {
         <h1 className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-pink bg-clip-text text-transparent">
           ImobSmart
         </h1>
-        <p className="text-zinc-500 text-sm mt-2">Criar conta grátis</p>
+        <p className="text-zinc-500 text-sm mt-2">Crear cuenta gratis</p>
       </div>
 
       {error && (
@@ -55,18 +55,18 @@ export default function SignupPage() {
 
       <div className="space-y-4">
         <div>
-          <label className="text-zinc-500 text-xs block mb-1">Nome da imobiliária</label>
+          <label className="text-zinc-500 text-xs block mb-1">Nombre de la inmobiliaria</label>
           <input
             type="text"
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
-            placeholder="Ex: Costa Sol Imóveis"
+            placeholder="Ej: Costa Sol Inmuebles"
             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent"
             required
           />
         </div>
         <div>
-          <label className="text-zinc-500 text-xs block mb-1">Seu nome</label>
+          <label className="text-zinc-500 text-xs block mb-1">Tu nombre</label>
           <input
             type="text"
             value={name}
@@ -86,7 +86,7 @@ export default function SignupPage() {
           />
         </div>
         <div>
-          <label className="text-zinc-500 text-xs block mb-1">Senha</label>
+          <label className="text-zinc-500 text-xs block mb-1">Contraseña</label>
           <input
             type="password"
             value={password}
@@ -103,12 +103,12 @@ export default function SignupPage() {
         disabled={loading}
         className="w-full gradient-button py-3 text-white font-semibold disabled:opacity-50"
       >
-        {loading ? "Criando..." : "Criar conta grátis"}
+        {loading ? "Creando..." : "Crear cuenta gratis"}
       </button>
 
       <p className="text-center text-zinc-500 text-sm">
-        Já tem conta?{" "}
-        <Link href="/login" className="text-accent hover:underline">Entrar</Link>
+        ¿Ya tienes cuenta?{" "}
+        <Link href="/login" className="text-accent hover:underline">Acceder</Link>
       </p>
     </form>
   );

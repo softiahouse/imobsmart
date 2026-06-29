@@ -17,7 +17,7 @@ export default async function CrmPage() {
           if (hotCount === 0) return null;
           return (
             <span className="bg-red-500/15 border border-red-500/30 px-3 py-1 rounded-lg text-red-400 text-xs font-semibold">
-              {hotCount} quentes 🔥
+              {hotCount} calientes 🔥
             </span>
           );
         })()}

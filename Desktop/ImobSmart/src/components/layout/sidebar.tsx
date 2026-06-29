@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", icon: "🏠", label: "Home" },
-  { href: "/properties", icon: "🏢", label: "Imóveis" },
+  { href: "/dashboard", icon: "🏠", label: "Inicio" },
+  { href: "/properties", icon: "🏢", label: "Inmuebles" },
   { href: "/crm", icon: "📋", label: "CRM" },
-  { href: "/prospects", icon: "🔍", label: "Prospecção" },
-  { href: "/settings", icon: "⚙️", label: "Config" },
+  { href: "/prospects", icon: "🔍", label: "Prospección" },
+  { href: "/settings", icon: "⚙️", label: "Ajustes" },
 ];
 
 export function Sidebar() {
@@ -45,7 +45,7 @@ export function Sidebar() {
           href="/properties/new"
           className="flex items-center justify-center gap-2 gradient-button py-3 text-white font-semibold text-sm"
         >
-          + Novo Imóvel
+          + Nuevo Inmueble
         </Link>
       </div>
     </aside>

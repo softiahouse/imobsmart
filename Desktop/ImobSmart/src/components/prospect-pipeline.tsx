@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import type { Prospect, B2bStage, ProspectClassification } from "@/lib/types";
 
 const STAGES: { key: B2bStage; label: string; color: string }[] = [
-  { key: "new", label: "Novo", color: "#8b8bff" },
+  { key: "new", label: "Nuevo", color: "#8b8bff" },
   { key: "contacted", label: "Contactado", color: "#ffcc66" },
-  { key: "meeting", label: "Reunião", color: "#66ccff" },
-  { key: "proposal", label: "Proposta", color: "#ff99cc" },
-  { key: "negotiation", label: "Negociação", color: "#ffaa44" },
-  { key: "won", label: "Fechado ✓", color: "#66ee66" },
+  { key: "meeting", label: "Reunión", color: "#66ccff" },
+  { key: "proposal", label: "Propuesta", color: "#ff99cc" },
+  { key: "negotiation", label: "Negociación", color: "#ffaa44" },
+  { key: "won", label: "Cerrado ✓", color: "#66ee66" },
   { key: "lost", label: "Perdido", color: "#ff6666" },
 ];
 
@@ -21,9 +21,9 @@ const CLASS_COLORS: Record<ProspectClassification, string> = {
 };
 
 const CLASS_LABELS: Record<ProspectClassification, string> = {
-  no_site: "Sem site",
-  bad_site: "Site ruim",
-  good_site: "Site bom",
+  no_site: "Sin web",
+  bad_site: "Web mala",
+  good_site: "Web buena",
   client: "Cliente",
 };
 
@@ -94,7 +94,7 @@ export function ProspectPipeline() {
   }
 
   if (loading) {
-    return <div className="text-zinc-500 text-sm p-8 text-center">Carregando pipeline...</div>;
+    return <div className="text-zinc-500 text-sm p-8 text-center">Cargando pipeline...</div>;
   }
 
   const grouped = STAGES.map((stage) => ({
@@ -199,7 +199,7 @@ function ProspectCard({
       <div className="glass p-3 rounded-xl space-y-2" style={{ borderLeft: `3px solid ${stageColor}` }}>
         <p className="text-white text-sm font-semibold">{prospect.business_name}</p>
         <div>
-          <label className="text-zinc-500 text-[10px]">Valor do deal (€)</label>
+          <label className="text-zinc-500 text-[10px]">Valor del deal (€)</label>
           <input
             type="number"
             value={dealValue}
@@ -236,7 +236,7 @@ function ProspectCard({
             }
             className="text-[10px] px-3 py-1 rounded bg-accent/20 text-accent border border-accent/30 hover:bg-accent/30"
           >
-            Salvar
+            Guardar
           </button>
           <button onClick={onCancel} className="text-[10px] px-3 py-1 rounded bg-white/5 text-zinc-400 border border-white/10">
             Cancelar
@@ -294,7 +294,7 @@ function ProspectCard({
       )}
       {prospect.next_followup && (
         <p className="text-[10px] text-yellow-500 mt-1">
-          📅 {new Date(prospect.next_followup).toLocaleDateString("pt-BR")}
+          📅 {new Date(prospect.next_followup).toLocaleDateString("es-ES")}
         </p>
       )}
     </div>

@@ -28,7 +28,7 @@ export function CsvImportModal({ onClose, onImported }: Props) {
     const data = await res.json();
 
     if (!res.ok) {
-      setError(data.error || "Erro ao importar");
+      setError(data.error || "Error al importar");
       setLoading(false);
       return;
     }
@@ -58,8 +58,8 @@ export function CsvImportModal({ onClose, onImported }: Props) {
         ) : (
           <>
             <p className="text-zinc-400 text-xs">
-              Faça upload de um CSV com colunas como: <strong>nome, telefone, email, site, cidade, classificacao</strong>.
-              O sistema mapeia automaticamente os campos.
+              Sube un CSV con columnas como: <strong>nombre, teléfono, email, web, ciudad, clasificación</strong>.
+              El sistema mapea automáticamente los campos.
             </p>
 
             <div
@@ -73,8 +73,8 @@ export function CsvImportModal({ onClose, onImported }: Props) {
                 </div>
               ) : (
                 <div>
-                  <p className="text-zinc-400 text-sm">Clique para selecionar arquivo CSV</p>
-                  <p className="text-zinc-600 text-xs mt-1">ou arraste e solte aqui</p>
+                  <p className="text-zinc-400 text-sm">Haz clic para seleccionar archivo CSV</p>
+                  <p className="text-zinc-600 text-xs mt-1">o arrastra y suelta aquí</p>
                 </div>
               )}
               <input
@@ -87,7 +87,7 @@ export function CsvImportModal({ onClose, onImported }: Props) {
             </div>
 
             <div>
-              <label className="text-zinc-500 text-xs">Cidade padrão (se não houver no CSV)</label>
+              <label className="text-zinc-500 text-xs">Ciudad predeterminada (si no aparece en el CSV)</label>
               <input
                 type="text"
                 value={city}

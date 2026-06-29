@@ -68,34 +68,34 @@ export function PropertyForm({ orgId }: PropertyFormProps) {
       <PhotoUploader orgId={orgId} photos={photos} onChange={setPhotos} />
 
       <PillSelect label="Tipo" options={PROPERTY_TYPES} value={type} onChange={setType} />
-      <PillSelect label="Operação" options={OPERATION_TYPES} value={operation} onChange={setOperation} activeColor="rgba(74,255,74,0.2)" />
+      <PillSelect label="Operación" options={OPERATION_TYPES} value={operation} onChange={setOperation} activeColor="rgba(74,255,74,0.2)" />
 
       <div className="grid grid-cols-2 gap-3">
         <div className="glass p-4">
-          <label className="text-zinc-500 text-xs">Preço (€)</label>
+          <label className="text-zinc-500 text-xs">Precio (€)</label>
           <input type="number" value={form.price} onChange={(e) => updateField("price", e.target.value)} className="w-full bg-transparent text-white text-lg font-semibold mt-1 focus:outline-none" placeholder="185.000" required />
         </div>
         <div className="glass p-4">
-          <label className="text-zinc-500 text-xs">Área (m²)</label>
+          <label className="text-zinc-500 text-xs">Superficie (m²)</label>
           <input type="number" value={form.area_m2} onChange={(e) => updateField("area_m2", e.target.value)} className="w-full bg-transparent text-white text-lg font-semibold mt-1 focus:outline-none" placeholder="78" />
         </div>
       </div>
 
       <div className="glass p-4">
-        <label className="text-zinc-500 text-xs">Cidade</label>
+        <label className="text-zinc-500 text-xs">Ciudad</label>
         <input type="text" value={form.city} onChange={(e) => updateField("city", e.target.value)} className="w-full bg-transparent text-white mt-1 focus:outline-none" placeholder="Torrevieja" required />
       </div>
 
       <div className="glass p-4">
-        <label className="text-zinc-500 text-xs">Bairro</label>
+        <label className="text-zinc-500 text-xs">Barrio</label>
         <input type="text" value={form.neighborhood} onChange={(e) => updateField("neighborhood", e.target.value)} className="w-full bg-transparent text-white mt-1 focus:outline-none" placeholder="Playa del Cura" />
       </div>
 
       <div className="grid grid-cols-3 gap-3">
         {[
-          { key: "bedrooms", label: "Quartos", placeholder: "2" },
-          { key: "bathrooms", label: "Banheiros", placeholder: "1" },
-          { key: "floor", label: "Andar", placeholder: "3" },
+          { key: "bedrooms", label: "Habitaciones", placeholder: "2" },
+          { key: "bathrooms", label: "Baños", placeholder: "1" },
+          { key: "floor", label: "Planta", placeholder: "3" },
         ].map(({ key, label, placeholder }) => (
           <div key={key} className="glass p-3 text-center">
             <label className="text-zinc-500 text-[10px]">{label}</label>
@@ -105,12 +105,12 @@ export function PropertyForm({ orgId }: PropertyFormProps) {
       </div>
 
       <div className="glass p-4">
-        <label className="text-zinc-500 text-xs">Descrição (opcional — IA complementa)</label>
-        <textarea value={form.description} onChange={(e) => updateField("description", e.target.value)} rows={3} className="w-full bg-transparent text-white mt-1 focus:outline-none resize-none" placeholder="Vista mar, reformado recentemente..." />
+        <label className="text-zinc-500 text-xs">Descripción (opcional — la IA complementa)</label>
+        <textarea value={form.description} onChange={(e) => updateField("description", e.target.value)} rows={3} className="w-full bg-transparent text-white mt-1 focus:outline-none resize-none" placeholder="Vistas al mar, reformado recientemente..." />
       </div>
 
       <button type="submit" disabled={loading || photos.length === 0} className="w-full gradient-button py-4 text-white font-bold text-base tracking-wide disabled:opacity-50">
-        {loading ? "Publicando..." : "Publicar em Todas as Redes →"}
+        {loading ? "Publicando..." : "Publicar en Todas las Redes →"}
       </button>
     </form>
   );

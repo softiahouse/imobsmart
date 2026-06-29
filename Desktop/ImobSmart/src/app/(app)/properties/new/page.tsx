@@ -13,7 +13,7 @@ export default async function NewPropertyPage() {
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-lg font-bold">Novo Imóvel</h2>
+        <h2 className="text-lg font-bold">Nuevo Inmueble</h2>
       </div>
       <PropertyForm orgId={profile.org_id} />
     </div>

@@ -8,12 +8,12 @@ export async function AppHeader() {
 
   const orgs = user?.organizations as { name: string } | { name: string }[] | null | undefined;
   const orgName = (Array.isArray(orgs) ? orgs[0]?.name : orgs?.name) ?? "ImobSmart";
-  const userName = user?.name ?? "Usuário";
+  const userName = user?.name ?? "Usuario";
 
   return (
     <header className="flex items-center justify-between px-4 md:px-6 py-4">
       <div>
-        <p className="text-zinc-500 text-xs">Boa tarde,</p>
+        <p className="text-zinc-500 text-xs">Bienvenido,</p>
         <h2 className="text-lg font-bold text-white">{orgName}</h2>
       </div>
       <div className="w-10 h-10 rounded-xl gradient-button flex items-center justify-center text-sm font-bold">

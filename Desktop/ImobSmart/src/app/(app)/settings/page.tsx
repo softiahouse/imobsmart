@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { PLAN_LIMITS } from "@/lib/constants";
+import { LogoutButton } from "@/components/logout-button";
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -13,25 +14,25 @@ export default async function SettingsPage() {
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h2 className="text-lg font-bold">Configurações</h2>
+      <h2 className="text-lg font-bold">Ajustes</h2>
 
       <div className="glass p-6 space-y-4">
-        <h3 className="text-sm font-semibold text-zinc-400">Organização</h3>
+        <h3 className="text-sm font-semibold text-zinc-400">Organización</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <p className="text-zinc-500 text-xs">Nome</p>
+            <p className="text-zinc-500 text-xs">Nombre</p>
             <p className="text-white">{org.name as string}</p>
           </div>
           <div>
-            <p className="text-zinc-500 text-xs">Plano</p>
-            <p className="text-white capitalize">{plan} — até {limits.maxProperties === Infinity ? "∞" : limits.maxProperties} imóveis</p>
+            <p className="text-zinc-500 text-xs">Plan</p>
+            <p className="text-white capitalize">{plan} — hasta {limits.maxProperties === Infinity ? "∞" : limits.maxProperties} inmuebles</p>
           </div>
         </div>
       </div>
 
       <div className="glass p-6 space-y-4">
-        <h3 className="text-sm font-semibold text-zinc-400">Redes Sociais Conectadas</h3>
-        <p className="text-zinc-500 text-xs">Conecte suas contas para autopostagem. A configuração dos tokens é feita via n8n.</p>
+        <h3 className="text-sm font-semibold text-zinc-400">Redes Sociales Conectadas</h3>
+        <p className="text-zinc-500 text-xs">Conecta tus cuentas para autopublicación. La configuración de tokens se hace vía n8n.</p>
         <div className="grid grid-cols-2 gap-3">
           {[
             { name: "Instagram", color: "#E1306C", key: "instagram" },
@@ -56,12 +57,17 @@ export default async function SettingsPage() {
                   {network.name}
                 </p>
                 <p className="text-xs text-zinc-500 mt-1">
-                  {locked ? `Requer plano ${network.needsBusiness ? "Business" : "Pro"}` : connected ? "Conectado ✓" : "Não conectado"}
+                  {locked ? `Requiere plan ${network.needsBusiness ? "Business" : "Pro"}` : connected ? "Conectado ✓" : "No conectado"}
                 </p>
               </div>
             );
           })}
         </div>
+      </div>
+
+      <div className="glass p-6">
+        <h3 className="text-sm font-semibold text-zinc-400 mb-4">Sesión</h3>
+        <LogoutButton />
       </div>
     </div>
   );

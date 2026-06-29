@@ -4,9 +4,9 @@ import { useState } from "react";
 import type { Prospect, ProspectClassification } from "@/lib/types";
 
 const CLASS_CONFIG: Record<ProspectClassification, { label: string; color: string; bg: string }> = {
-  no_site: { label: "SEM SITE", color: "#ff6666", bg: "rgba(255,68,68,0.15)" },
-  bad_site: { label: "SITE RUIM", color: "#ffcc66", bg: "rgba(255,170,51,0.15)" },
-  good_site: { label: "SITE BOM", color: "#66ee66", bg: "rgba(68,204,68,0.15)" },
+  no_site: { label: "SIN WEB", color: "#ff6666", bg: "rgba(255,68,68,0.15)" },
+  bad_site: { label: "WEB MALA", color: "#ffcc66", bg: "rgba(255,170,51,0.15)" },
+  good_site: { label: "WEB BUENA", color: "#66ee66", bg: "rgba(68,204,68,0.15)" },
   client: { label: "CLIENTE", color: "#6666ff", bg: "rgba(68,68,255,0.15)" },
 };
 
@@ -63,13 +63,13 @@ export function ProspectTable() {
     <div className="space-y-4">
       <div className="glass p-4 flex gap-3 items-end flex-wrap">
         <div className="flex-1 min-w-[200px]">
-          <label className="text-zinc-500 text-xs">Cidade</label>
+          <label className="text-zinc-500 text-xs">Ciudad</label>
           <input
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && search()}
-            placeholder="Torrevieja, Espanha"
+            placeholder="Torrevieja, España"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm mt-1 focus:outline-none focus:border-accent"
           />
         </div>
@@ -82,7 +82,7 @@ export function ProspectTable() {
         <>
           <div className="glass p-3 flex items-center gap-3 flex-wrap">
             <span className="text-zinc-400 text-sm">
-              Encontradas: <strong className="text-white">{prospects.length}</strong>
+              Encontrados: <strong className="text-white">{prospects.length}</strong>
             </span>
             {(Object.entries(counts) as [ProspectClassification, number][]).map(([key, count]) => {
               if (count === 0) return null;
@@ -99,11 +99,11 @@ export function ProspectTable() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/5">
-                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Nome</th>
-                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Telefone</th>
-                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Site</th>
-                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Classificação</th>
-                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Ação</th>
+                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Nombre</th>
+                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Teléfono</th>
+                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Web</th>
+                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Clasificación</th>
+                  <th className="text-left p-3 text-zinc-500 text-xs font-semibold">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,7 +119,7 @@ export function ProspectTable() {
                             {p.website_url.replace(/^https?:\/\//, "")}
                           </a>
                         ) : (
-                          <span className="text-red-400 text-xs">Não tem</span>
+                          <span className="text-red-400 text-xs">No tiene</span>
                         )}
                       </td>
                       <td className="p-3">

@@ -14,8 +14,8 @@ export default function ProspectsPage() {
     <div>
       <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-lg font-bold">Prospecção B2B</h2>
-          <p className="text-zinc-500 text-xs mt-1">Pipeline de vendas e gestão de prospects</p>
+          <h2 className="text-lg font-bold">Prospección B2B</h2>
+          <p className="text-zinc-500 text-xs mt-1">Pipeline de ventas y gestión de prospects</p>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -35,7 +35,7 @@ export default function ProspectsPage() {
               onClick={() => setView("table")}
               className={`px-3 py-2 text-xs ${view === "table" ? "bg-accent/20 text-accent" : "bg-white/5 text-zinc-400 hover:bg-white/10"}`}
             >
-              Tabela
+              Tabla
             </button>
           </div>
         </div>

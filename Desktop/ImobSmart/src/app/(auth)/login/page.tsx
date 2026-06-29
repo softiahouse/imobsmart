@@ -21,7 +21,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-      setError("Email ou senha incorretos");
+      setError("Email o contraseña incorrectos");
       setLoading(false);
       return;
     }
@@ -36,7 +36,7 @@ export default function LoginPage() {
         <h1 className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-pink bg-clip-text text-transparent">
           ImobSmart
         </h1>
-        <p className="text-zinc-500 text-sm mt-2">Entrar no painel</p>
+        <p className="text-zinc-500 text-sm mt-2">Acceder al panel</p>
       </div>
 
       {error && (
@@ -57,7 +57,7 @@ export default function LoginPage() {
           />
         </div>
         <div>
-          <label className="text-zinc-500 text-xs block mb-1">Senha</label>
+          <label className="text-zinc-500 text-xs block mb-1">Contraseña</label>
           <input
             type="password"
             value={password}
@@ -73,12 +73,12 @@ export default function LoginPage() {
         disabled={loading}
         className="w-full gradient-button py-3 text-white font-semibold disabled:opacity-50"
       >
-        {loading ? "Entrando..." : "Entrar"}
+        {loading ? "Entrando..." : "Acceder"}
       </button>
 
       <p className="text-center text-zinc-500 text-sm">
-        Não tem conta?{" "}
-        <Link href="/signup" className="text-accent hover:underline">Criar conta</Link>
+        ¿No tienes cuenta?{" "}
+        <Link href="/signup" className="text-accent hover:underline">Crear cuenta</Link>
       </p>
     </form>
   );
