@@ -1,15 +1,44 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
+function splitCSVLine(line: string): string[] {
+  const fields: string[] = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"' && line[i + 1] === '"') {
+        current += '"';
+        i++;
+      } else if (ch === '"') {
+        inQuotes = false;
+      } else {
+        current += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === "," || ch === ";") {
+      fields.push(current.trim());
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+  fields.push(current.trim());
+  return fields;
+}
+
 function parseCSV(text: string): Record<string, string>[] {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
 
-  const headers = lines[0].split(/[;,]/).map((h) => h.trim().toLowerCase().replace(/["\s]/g, ""));
+  const headers = splitCSVLine(lines[0]).map((h) => h.toLowerCase().replace(/\s+/g, ""));
   const rows: Record<string, string>[] = [];
 
   for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(/[;,]/).map((v) => v.trim().replace(/^"|"$/g, ""));
+    const values = splitCSVLine(lines[i]);
     if (values.every((v) => !v)) continue;
     const row: Record<string, string> = {};
     headers.forEach((h, idx) => {
@@ -42,6 +71,9 @@ const FIELD_MAP: Record<string, string> = {
   contact_name: "contact_name",
   classificacao: "classification",
   classification: "classification",
+  endereco: "notes",
+  direccion: "notes",
+  address: "notes",
   notas: "notes",
   notes: "notes",
 };
@@ -51,8 +83,12 @@ const CLASSIFICATION_MAP: Record<string, string> = {
   "no site": "no_site",
   no_site: "no_site",
   "site ruim": "bad_site",
+  "site fraco": "bad_site",
   "bad site": "bad_site",
   bad_site: "bad_site",
+  "site não acessível": "bad_site",
+  "site nao acessivel": "bad_site",
+  "site inaccessible": "bad_site",
   "site bom": "good_site",
   "good site": "good_site",
   good_site: "good_site",
