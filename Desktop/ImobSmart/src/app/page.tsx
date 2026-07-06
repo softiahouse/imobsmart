@@ -12,7 +12,7 @@ const NETWORKS = [
   { name: "Google Ads", color: "var(--color-gads)" },
 ];
 
-const STAT_VALUES = ["5+", "24/7", "< 1min", "0€"];
+const STAT_VALUES = ["5+", "24/7", "< 1min", "9,90€"];
 
 function LangSwitcher({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [open, setOpen] = useState(false);

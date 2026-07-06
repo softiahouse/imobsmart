@@ -123,11 +123,11 @@ const es: LandingTexts = {
     popular: "Más popular",
     plans: [
       {
-        name: "Free",
-        price: "0€",
-        priceNote: "para siempre",
+        name: "Starter",
+        price: "9,90€",
+        priceNote: "/mes",
         features: [
-          "Hasta 10 inmuebles",
+          "Hasta 20 inmuebles",
           "1 red social",
           "CRM Kanban",
           "Dashboard básico",
@@ -174,7 +174,7 @@ const es: LandingTexts = {
     title: "¿Listo para automatizar tu inmobiliaria?",
     subtitle: "Únete a las inmobiliarias que están captando más leads con menos esfuerzo.",
     button: "Empieza gratis ahora →",
-    note: "Plan gratuito disponible. Upgrade cuando quieras.",
+    note: "Desde 9,90€/mes. Upgrade cuando quieras.",
   },
   footer: { rights: "Todos los derechos reservados.", login: "Entrar", signup: "Crear cuenta" },
 };
@@ -253,11 +253,11 @@ const pt: LandingTexts = {
     popular: "Mais popular",
     plans: [
       {
-        name: "Free",
-        price: "0€",
-        priceNote: "para sempre",
+        name: "Starter",
+        price: "9,90€",
+        priceNote: "/mês",
         features: [
-          "Até 10 imóveis",
+          "Até 20 imóveis",
           "1 rede social",
           "CRM Kanban",
           "Dashboard básico",
@@ -304,7 +304,7 @@ const pt: LandingTexts = {
     title: "Pronto para automatizar sua imobiliária?",
     subtitle: "Junte-se às imobiliárias que estão captando mais leads com menos esforço.",
     button: "Começar grátis agora →",
-    note: "Plano gratuito disponível. Upgrade quando quiser.",
+    note: "A partir de 9,90€/mês. Upgrade quando quiser.",
   },
   footer: { rights: "Todos os direitos reservados.", login: "Entrar", signup: "Criar conta" },
 };
@@ -383,11 +383,11 @@ const en: LandingTexts = {
     popular: "Most popular",
     plans: [
       {
-        name: "Free",
-        price: "€0",
-        priceNote: "forever",
+        name: "Starter",
+        price: "€9.90",
+        priceNote: "/mo",
         features: [
-          "Up to 10 properties",
+          "Up to 20 properties",
           "1 social network",
           "CRM Kanban",
           "Basic dashboard",
@@ -434,7 +434,7 @@ const en: LandingTexts = {
     title: "Ready to automate your agency?",
     subtitle: "Join the agencies capturing more leads with less effort.",
     button: "Start free now →",
-    note: "Free plan available. Upgrade anytime.",
+    note: "Starting at €9.90/mo. Upgrade anytime.",
   },
   footer: { rights: "All rights reserved.", login: "Sign in", signup: "Create account" },
 };
