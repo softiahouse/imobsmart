@@ -165,6 +165,58 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section id="precios" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">{t.pricing.title}</h2>
+            <p className="text-zinc-500 text-lg">{t.pricing.subtitle}</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {t.pricing.plans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative glass p-8 flex flex-col ${
+                  plan.highlighted
+                    ? "border-accent/50 bg-accent/[0.03] scale-[1.02] md:scale-105"
+                    : ""
+                }`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-button px-4 py-1 text-[10px] text-white font-bold rounded-full uppercase tracking-wider">
+                    {t.pricing.popular}
+                  </div>
+                )}
+                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold bg-gradient-to-r from-accent to-accent-pink bg-clip-text text-transparent">
+                    {plan.price}
+                  </span>
+                  <span className="text-zinc-500 text-sm ml-1">{plan.priceNote}</span>
+                </div>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-zinc-400">
+                      <span className="text-accent mt-0.5">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/signup"
+                  className={`block text-center py-3 rounded-xl font-semibold text-sm transition-colors ${
+                    plan.highlighted
+                      ? "gradient-button text-white"
+                      : "glass text-zinc-300 hover:bg-white/10"
+                  }`}
+                >
+                  {plan.highlighted ? t.pricing.ctaPro : t.pricing.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.networks.title}</h2>

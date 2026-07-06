@@ -35,6 +35,15 @@ interface LandingTexts {
     subtitle: string;
     steps: { num: string; title: string; desc: string }[];
   };
+  pricing: {
+    title: string;
+    subtitle: string;
+    monthly: string;
+    cta: string;
+    ctaPro: string;
+    popular: string;
+    plans: { name: string; price: string; priceNote: string; features: string[]; highlighted?: boolean }[];
+  };
   networks: { title: string; subtitle: string };
   cta: { title: string; subtitle: string; button: string; note: string };
   footer: { rights: string; login: string; signup: string };
@@ -103,6 +112,58 @@ const es: LandingTexts = {
       { num: "2", title: "Añade inmuebles", desc: "Registra con fotos y detalles. El sistema genera el anuncio." },
       { num: "3", title: "Activa las redes", desc: "Conecta Instagram, Facebook y WhatsApp. Publica con 1 clic." },
       { num: "4", title: "Recibe leads", desc: "El agente IA atiende, cualifica y organiza en el CRM automático." },
+    ],
+  },
+  pricing: {
+    title: "Planes y precios",
+    subtitle: "Elige el plan perfecto para tu inmobiliaria",
+    monthly: "/mes",
+    cta: "Empezar gratis",
+    ctaPro: "Empezar ahora",
+    popular: "Más popular",
+    plans: [
+      {
+        name: "Free",
+        price: "0€",
+        priceNote: "para siempre",
+        features: [
+          "Hasta 10 inmuebles",
+          "1 red social",
+          "CRM Kanban",
+          "Dashboard básico",
+          "Soporte por email",
+        ],
+      },
+      {
+        name: "Pro",
+        price: "39,90€",
+        priceNote: "/mes",
+        highlighted: true,
+        features: [
+          "Hasta 50 inmuebles",
+          "4 redes sociales",
+          "CRM Kanban + Pipeline",
+          "Agente IA WhatsApp 24/7",
+          "Autopublicación TikTok",
+          "Dashboard inteligente",
+          "Soporte prioritario",
+        ],
+      },
+      {
+        name: "Turbo",
+        price: "59,90€",
+        priceNote: "/mes",
+        features: [
+          "Inmuebles ilimitados",
+          "Todas las redes sociales",
+          "Agente IA WhatsApp + Webchat",
+          "Google Ads integrado",
+          "Dominio personalizado",
+          "Prospección B2B",
+          "Dashboard avanzado",
+          "Soporte VIP",
+        ],
+      },
     ],
   },
   networks: {
@@ -183,6 +244,58 @@ const pt: LandingTexts = {
       { num: "4", title: "Receba leads", desc: "O agente IA atende, qualifica e organiza no CRM automático." },
     ],
   },
+  pricing: {
+    title: "Planos e preços",
+    subtitle: "Escolha o plano ideal para sua imobiliária",
+    monthly: "/mês",
+    cta: "Começar grátis",
+    ctaPro: "Começar agora",
+    popular: "Mais popular",
+    plans: [
+      {
+        name: "Free",
+        price: "0€",
+        priceNote: "para sempre",
+        features: [
+          "Até 10 imóveis",
+          "1 rede social",
+          "CRM Kanban",
+          "Dashboard básico",
+          "Suporte por email",
+        ],
+      },
+      {
+        name: "Pro",
+        price: "39,90€",
+        priceNote: "/mês",
+        highlighted: true,
+        features: [
+          "Até 50 imóveis",
+          "4 redes sociais",
+          "CRM Kanban + Pipeline",
+          "Agente IA WhatsApp 24/7",
+          "Autopublicação TikTok",
+          "Dashboard inteligente",
+          "Suporte prioritário",
+        ],
+      },
+      {
+        name: "Turbo",
+        price: "59,90€",
+        priceNote: "/mês",
+        features: [
+          "Imóveis ilimitados",
+          "Todas as redes sociais",
+          "Agente IA WhatsApp + Webchat",
+          "Google Ads integrado",
+          "Domínio personalizado",
+          "Prospecção B2B",
+          "Dashboard avançado",
+          "Suporte VIP",
+        ],
+      },
+    ],
+  },
   networks: {
     title: "Publique em todas as redes",
     subtitle: "Um imóvel cadastrado, publicado automaticamente em todas as plataformas.",
@@ -259,6 +372,58 @@ const en: LandingTexts = {
       { num: "2", title: "Add properties", desc: "Register with photos and details. The system generates the ad." },
       { num: "3", title: "Activate networks", desc: "Connect Instagram, Facebook and WhatsApp. Publish with 1 click." },
       { num: "4", title: "Receive leads", desc: "The AI agent serves, qualifies and organizes in the automatic CRM." },
+    ],
+  },
+  pricing: {
+    title: "Plans & Pricing",
+    subtitle: "Choose the perfect plan for your agency",
+    monthly: "/mo",
+    cta: "Start free",
+    ctaPro: "Get started",
+    popular: "Most popular",
+    plans: [
+      {
+        name: "Free",
+        price: "€0",
+        priceNote: "forever",
+        features: [
+          "Up to 10 properties",
+          "1 social network",
+          "CRM Kanban",
+          "Basic dashboard",
+          "Email support",
+        ],
+      },
+      {
+        name: "Pro",
+        price: "€39.90",
+        priceNote: "/mo",
+        highlighted: true,
+        features: [
+          "Up to 50 properties",
+          "4 social networks",
+          "CRM Kanban + Pipeline",
+          "WhatsApp AI Agent 24/7",
+          "TikTok auto-posting",
+          "Smart dashboard",
+          "Priority support",
+        ],
+      },
+      {
+        name: "Turbo",
+        price: "€59.90",
+        priceNote: "/mo",
+        features: [
+          "Unlimited properties",
+          "All social networks",
+          "AI Agent WhatsApp + Webchat",
+          "Google Ads integrated",
+          "Custom domain",
+          "B2B Prospecting",
+          "Advanced dashboard",
+          "VIP support",
+        ],
+      },
     ],
   },
   networks: {
