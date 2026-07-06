@@ -246,9 +246,19 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto glass-accent p-10 md:p-14 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.cta.title}</h2>
           <p className="text-zinc-400 text-lg mb-8">{t.cta.subtitle}</p>
-          <Link href="/signup" className="gradient-button px-10 py-4 text-white font-bold text-lg inline-block">
-            {t.cta.button}
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/signup" className="gradient-button px-10 py-4 text-white font-bold text-lg">
+              {t.cta.button}
+            </Link>
+            <a
+              href="https://wa.me/34602427508"
+              target="_blank"
+              rel="noopener"
+              className="glass px-8 py-4 text-green-400 font-semibold text-lg hover:bg-green-500/10 transition-colors flex items-center gap-2"
+            >
+              💬 WhatsApp
+            </a>
+          </div>
           <p className="text-zinc-600 text-xs mt-4">{t.cta.note}</p>
         </div>
       </section>
@@ -261,7 +271,10 @@ export default function LandingPage() {
           <p className="text-zinc-600 text-xs">
             &copy; 2026 ImobSmart — SoftiaHouse. {t.footer.rights}
           </p>
-          <div className="flex gap-4 text-zinc-500 text-xs">
+          <div className="flex items-center gap-4 text-zinc-500 text-xs">
+            <a href="https://wa.me/34602427508" target="_blank" rel="noopener" className="hover:text-green-400 flex items-center gap-1">
+              💬 +34 602 427 508
+            </a>
             <Link href="/login" className="hover:text-white">{t.footer.login}</Link>
             <Link href="/signup" className="hover:text-white">{t.footer.signup}</Link>
           </div>
