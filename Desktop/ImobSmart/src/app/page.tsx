@@ -76,8 +76,13 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1923] via-[#0f1923]/80 to-[#0f1923]" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-block glass-accent px-4 py-1.5 rounded-full text-xs text-accent-light mb-6">
             {t.hero.badge}
           </div>
@@ -187,12 +192,18 @@ export default function LandingPage() {
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                <div className="mb-6">
+                <div className="mb-2">
                   <span className="text-4xl font-bold bg-gradient-to-r from-accent to-accent-pink bg-clip-text text-transparent">
                     {plan.price}
                   </span>
                   <span className="text-zinc-500 text-sm ml-1">{plan.priceNote}</span>
                 </div>
+                {plan.trial && (
+                  <div className="mb-4 inline-block bg-green-500/15 border border-green-500/30 px-3 py-1 rounded-full text-green-400 text-xs font-semibold">
+                    🎁 {t.pricing.trialNote}
+                  </div>
+                )}
+                {!plan.trial && <div className="mb-4" />}
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-zinc-400">

@@ -42,7 +42,8 @@ interface LandingTexts {
     cta: string;
     ctaPro: string;
     popular: string;
-    plans: { name: string; price: string; priceNote: string; features: string[]; highlighted?: boolean }[];
+    trialNote: string;
+    plans: { name: string; price: string; priceNote: string; features: string[]; highlighted?: boolean; trial?: boolean }[];
   };
   networks: { title: string; subtitle: string };
   cta: { title: string; subtitle: string; button: string; note: string };
@@ -60,7 +61,7 @@ const es: LandingTexts = {
       "Automatiza la publicación de inmuebles en redes sociales, atiende leads con IA 24/7 y gestiona todo el embudo de ventas en un solo lugar.",
     cta: "Crear cuenta gratis →",
     secondary: "Ver funcionalidades",
-    note: "Sin tarjeta de crédito. Configura en minutos.",
+    note: "1 mes gratis · sin tarjeta de crédito. Configura en minutos.",
   },
   stats: {
     networks: "Redes sociales",
@@ -121,11 +122,13 @@ const es: LandingTexts = {
     cta: "Empezar gratis",
     ctaPro: "Empezar ahora",
     popular: "Más popular",
+    trialNote: "1 mes gratis · sin tarjeta de crédito",
     plans: [
       {
         name: "Starter",
         price: "9,90€",
         priceNote: "/mes",
+        trial: true,
         features: [
           "Hasta 20 inmuebles",
           "1 red social",
@@ -251,11 +254,13 @@ const pt: LandingTexts = {
     cta: "Começar grátis",
     ctaPro: "Começar agora",
     popular: "Mais popular",
+    trialNote: "1 mês grátis · sem cartão de crédito",
     plans: [
       {
         name: "Starter",
         price: "9,90€",
         priceNote: "/mês",
+        trial: true,
         features: [
           "Até 20 imóveis",
           "1 rede social",
@@ -381,11 +386,13 @@ const en: LandingTexts = {
     cta: "Start free",
     ctaPro: "Get started",
     popular: "Most popular",
+    trialNote: "1 month free · no credit card required",
     plans: [
       {
         name: "Starter",
         price: "€9.90",
         priceNote: "/mo",
+        trial: true,
         features: [
           "Up to 20 properties",
           "1 social network",
