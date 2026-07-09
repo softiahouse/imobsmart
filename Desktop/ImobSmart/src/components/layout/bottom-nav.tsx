@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { createBrowserClient } from "@supabase/ssr";
+import { isProspectsAllowed } from "@/lib/prospects-access";
 
-const NAV_ITEMS = [
+const ALL_NAV_ITEMS = [
   { href: "/dashboard", icon: "🏠", label: "Inicio" },
   { href: "/properties", icon: "🏢", label: "Inmuebles" },
   { href: "/properties/new", icon: "+", label: "Nuevo", isAction: true },
@@ -13,10 +16,25 @@ const NAV_ITEMS = [
 
 export function BottomNav() {
   const pathname = usePathname();
+  const [navItems, setNavItems] = useState(
+    ALL_NAV_ITEMS.filter((i) => i.href !== "/prospects")
+  );
+
+  useEffect(() => {
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (isProspectsAllowed(user?.email)) {
+        setNavItems(ALL_NAV_ITEMS);
+      }
+    });
+  }, []);
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[rgba(10,10,20,0.9)] backdrop-blur-xl border-t border-white/5 flex justify-around py-2 pb-6 z-50">
-      {NAV_ITEMS.map((item) => {
+      {navItems.map((item) => {
         const active = pathname.startsWith(item.href);
 
         if (item.isAction) {

@@ -30,6 +30,33 @@ Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
 
 🌐 imobsmart.es`;
 
+const MSG_NO_SITE_BR = `Olá 👋 Vi que sua imobiliária ainda não tem presença online. Sou o Paulo da *ImobSmart* — criamos sites profissionais para imobiliárias + publicação automática nas redes sociais + agente IA que atende seus leads 24/7.
+
+Temos planos *a partir de R$49/mês*.
+
+Gostaria de ver como funciona em 10 minutos?
+
+🌐 imobsmart.es`;
+
+const MSG_BAD_SITE_BR = `Olá 👋 Sou o Paulo da *ImobSmart*, uma plataforma que ajuda imobiliárias a captar mais clientes com:
+
+✅ Publicação automática no Instagram, Facebook e TikTok
+✅ Agente IA 24/7 que atende leads pelo WhatsApp
+✅ CRM visual com pipeline de vendas
+
+Temos planos *a partir de R$49/mês*.
+
+Gostaria de ver uma demo rápida de 10 minutos?
+
+🌐 imobsmart.es`;
+
+function getWhatsAppMessage(classification: ProspectClassification, country: string): string {
+  if (country === "BR") {
+    return classification === "no_site" ? MSG_NO_SITE_BR : MSG_BAD_SITE_BR;
+  }
+  return classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE;
+}
+
 function formatPhone(phone: string, country: string): string {
   const digits = phone.replace(/\D/g, "");
   if (digits.startsWith("34") || digits.startsWith("55")) return digits;
@@ -130,7 +157,7 @@ export function ProspectTable() {
                       <td className="p-3">
                         {p.classification !== "client" && p.phone && (
                           <a
-                            href={`https://wa.me/${formatPhone(p.phone, p.country)}?text=${encodeURIComponent(p.classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE)}`}
+                            href={`https://wa.me/${formatPhone(p.phone, p.country)}?text=${encodeURIComponent(getWhatsAppMessage(p.classification, p.country))}`}
                             target="_blank"
                             rel="noopener"
                             className="text-xs px-3 py-1 rounded-md border border-green-500/40 bg-green-500/10 text-green-400 hover:bg-green-500/20"

@@ -47,6 +47,37 @@ Tenemos un *plan gratuito permanente hasta 10 inmuebles*.
 
 🌐 imobsmart.es`;
 
+const MSG_NO_SITE_BR = `Olá 👋 Vi que sua imobiliária ainda não tem presença online. Sou o Paulo da *ImobSmart* — criamos sites profissionais para imobiliárias + publicação automática nas redes sociais + agente IA que atende seus leads 24/7.
+
+Temos planos *a partir de R$49/mês*.
+
+Gostaria de ver como funciona em 10 minutos?
+
+🌐 imobsmart.es`;
+
+const MSG_BAD_SITE_BR = `Olá 👋 Sou o Paulo da *ImobSmart*, uma plataforma que ajuda imobiliárias a captar mais clientes com:
+
+✅ Publicação automática no Instagram, Facebook e TikTok
+✅ Agente IA 24/7 que atende leads pelo WhatsApp
+✅ CRM visual com pipeline de vendas
+
+Temos planos *a partir de R$49/mês*.
+
+Gostaria de ver uma demo rápida de 10 minutos?
+
+🌐 imobsmart.es`;
+
+function getWhatsAppMessage(classification: ProspectClassification, country: string): string {
+  if (country === "BR") {
+    return classification === "no_site" ? MSG_NO_SITE_BR : MSG_BAD_SITE_BR;
+  }
+  return classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE;
+}
+
+function currencySymbol(country: string): string {
+  return country === "BR" ? "R$" : "€";
+}
+
 function formatPhone(phone: string, country: string): string {
   const digits = phone.replace(/\D/g, "");
   if (digits.startsWith("34") || digits.startsWith("55")) return digits;
@@ -114,7 +145,7 @@ export function ProspectPipeline() {
         </span>
         {totalDealValue > 0 && (
           <span className="text-zinc-400 text-sm">
-            Pipeline: <strong className="text-green-400">€{totalDealValue.toLocaleString()}</strong>
+            Pipeline: <strong className="text-green-400">{totalDealValue.toLocaleString()}</strong>
           </span>
         )}
         {STAGES.slice(0, -1).map((stage) => {
@@ -271,13 +302,13 @@ function ProspectCard({
           <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400">CSV</span>
         )}
         {prospect.deal_value && (
-          <span className="text-[10px] text-green-400 ml-auto">€{prospect.deal_value}</span>
+          <span className="text-[10px] text-green-400 ml-auto">{currencySymbol(prospect.country)}{prospect.deal_value}</span>
         )}
       </div>
 
       {prospect.phone && (
         <a
-          href={`https://wa.me/${formatPhone(prospect.phone, prospect.country)}?text=${encodeURIComponent(prospect.classification === "no_site" ? MSG_NO_SITE : MSG_BAD_SITE)}`}
+          href={`https://wa.me/${formatPhone(prospect.phone, prospect.country)}?text=${encodeURIComponent(getWhatsAppMessage(prospect.classification, prospect.country))}`}
           target="_blank"
           rel="noopener"
           onClick={(e) => e.stopPropagation()}

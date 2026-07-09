@@ -126,7 +126,7 @@ export async function POST(request: Request) {
       contact_name: mapped.contact_name || null,
       website_url: mapped.website_url || null,
       city: mapped.city || defaultCity,
-      country: mapped.country || "ES",
+      country: mapped.country || (formData.get("country") as string) || "ES",
       classification,
       b2b_stage: "new" as const,
       source: "csv_import",
