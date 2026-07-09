@@ -82,7 +82,7 @@ export default function LandingPage() {
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{ backgroundImage: "url('/hero-bg.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1923] via-[#0f1923]/80 to-[#0f1923]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1923]/80 via-[#0f1923]/50 to-[#0f1923]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-block glass-accent px-4 py-1.5 rounded-full text-xs text-accent-light mb-6">
             {t.hero.badge}
