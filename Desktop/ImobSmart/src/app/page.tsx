@@ -12,7 +12,8 @@ const NETWORKS = [
   { name: "Google Ads", color: "var(--color-gads)" },
 ];
 
-const STAT_VALUES = ["5+", "24/7", "< 1min", "9,90€"];
+const STAT_VALUES_BASE = ["5+", "24/7", "< 1min"];
+const STAT_START: Record<Lang, string> = { es: "9,90€", pt: "R$49", en: "€9.90" };
 
 function LangSwitcher({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [open, setOpen] = useState(false);
@@ -120,7 +121,7 @@ export default function LandingPage() {
           {[t.stats.networks, t.stats.agent, t.stats.publish, t.stats.start].map((label, i) => (
             <div key={label} className="glass p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent to-accent-pink bg-clip-text text-transparent">
-                {STAT_VALUES[i]}
+                {[...STAT_VALUES_BASE, STAT_START[lang]][i]}
               </p>
               <p className="text-zinc-500 text-xs mt-1">{label}</p>
             </div>

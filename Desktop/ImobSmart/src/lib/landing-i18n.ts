@@ -258,7 +258,7 @@ const pt: LandingTexts = {
     plans: [
       {
         name: "Starter",
-        price: "9,90€",
+        price: "R$49",
         priceNote: "/mês",
         trial: true,
         features: [
@@ -271,7 +271,7 @@ const pt: LandingTexts = {
       },
       {
         name: "Pro",
-        price: "39,90€",
+        price: "R$99,90",
         priceNote: "/mês",
         highlighted: true,
         features: [
@@ -286,7 +286,7 @@ const pt: LandingTexts = {
       },
       {
         name: "Turbo",
-        price: "59,90€",
+        price: "R$299,90",
         priceNote: "/mês",
         features: [
           "Imóveis ilimitados",
@@ -309,7 +309,7 @@ const pt: LandingTexts = {
     title: "Pronto para automatizar sua imobiliária?",
     subtitle: "Junte-se às imobiliárias que estão captando mais leads com menos esforço.",
     button: "Começar grátis agora →",
-    note: "A partir de 9,90€/mês. Upgrade quando quiser.",
+    note: "A partir de R$49/mês. Upgrade quando quiser.",
   },
   footer: { rights: "Todos os direitos reservados.", login: "Entrar", signup: "Criar conta" },
 };
