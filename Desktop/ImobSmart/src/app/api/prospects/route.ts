@@ -1,11 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { getProspectsCountryFilter } from "@/lib/prospects-access";
+import { getProspectsFilter } from "@/lib/prospects-access";
 
-async function getUserCountryFilter() {
+async function getUserFilter() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  return getProspectsCountryFilter(user?.email);
+  return getProspectsFilter(user?.email);
 }
 
 export async function GET(request: Request) {
@@ -14,11 +14,12 @@ export async function GET(request: Request) {
   const stage = searchParams.get("stage");
 
   const supabase = await createClient();
-  const countryFilter = await getUserCountryFilter();
+  const filter = await getUserFilter();
 
   let query = supabase.from("prospects").select("*").order("created_at", { ascending: false });
 
-  if (countryFilter) query = query.eq("country", countryFilter);
+  if (filter.country) query = query.eq("country", filter.country);
+  if (filter.state) query = query.eq("state", filter.state);
   if (city) query = query.ilike("city", `%${city}%`);
   if (stage) query = query.eq("b2b_stage", stage);
 

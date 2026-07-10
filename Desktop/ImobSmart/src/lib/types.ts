@@ -95,6 +95,7 @@ export interface Prospect {
   id: string;
   city: string;
   country: string;
+  state: string | null;
   business_name: string;
   phone: string | null;
   email: string | null;
