@@ -5,12 +5,13 @@ import { isProspectsAllowed } from "@/lib/prospects-access";
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    "https://povmcgwlrfhzdcavxqah.supabase.co";
 
-  if (!supabaseUrl || !supabaseKey) {
-    return supabaseResponse;
-  }
+  const supabaseKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvdm1jZ3dscmZoemRjYXZ4cWFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2NDg4NjQsImV4cCI6MjA5ODIyNDg2NH0.AijytmUXKQOjZ2NZQhz4BUnVmJbOTNbdrB19Pcu38Cg";
 
   const supabase = createServerClient(
     supabaseUrl,
