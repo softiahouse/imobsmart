@@ -20,3 +20,19 @@ export function getProspectsFilter(email: string | undefined | null): { country:
   const user = PROSPECTS_WHITELIST.find((u) => u.email === email.toLowerCase());
   return { country: user?.country ?? null, state: user?.state ?? null };
 }
+
+export function isProspectsAdmin(email: string | undefined | null): boolean {
+  if (!email) return false;
+  const user = PROSPECTS_WHITELIST.find((u) => u.email === email.toLowerCase());
+  return !!user && !user.state;
+}
+
+export function getRepStates(): { state: string; label: string; rep: string }[] {
+  return PROSPECTS_WHITELIST
+    .filter((u) => u.state)
+    .map((u) => ({
+      state: u.state!,
+      label: u.state!,
+      rep: u.email.split("@")[0],
+    }));
+}

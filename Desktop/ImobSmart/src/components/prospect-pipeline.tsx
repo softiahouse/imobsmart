@@ -86,20 +86,22 @@ function formatPhone(phone: string, country: string): string {
   return digits;
 }
 
-export function ProspectPipeline() {
+export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(true);
   const [dragging, setDragging] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/prospects")
+    const url = stateFilter ? `/api/prospects?state=${stateFilter}` : "/api/prospects";
+    setLoading(true);
+    fetch(url)
       .then((r) => r.json())
       .then((data) => {
         if (Array.isArray(data)) setProspects(data);
         setLoading(false);
       });
-  }, []);
+  }, [stateFilter]);
 
   async function moveToStage(prospectId: string, newStage: B2bStage) {
     setProspects((prev) =>

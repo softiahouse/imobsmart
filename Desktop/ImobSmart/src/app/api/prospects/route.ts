@@ -12,6 +12,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const city = searchParams.get("city");
   const stage = searchParams.get("stage");
+  const stateParam = searchParams.get("state");
 
   const supabase = await createClient();
   const filter = await getUserFilter();
@@ -19,7 +20,11 @@ export async function GET(request: Request) {
   let query = supabase.from("prospects").select("*").order("created_at", { ascending: false });
 
   if (filter.country) query = query.eq("country", filter.country);
-  if (filter.state) query = query.eq("state", filter.state);
+  if (filter.state) {
+    query = query.eq("state", filter.state);
+  } else if (stateParam) {
+    query = query.eq("state", stateParam);
+  }
   if (city) query = query.ilike("city", `%${city}%`);
   if (stage) query = query.eq("b2b_stage", stage);
 

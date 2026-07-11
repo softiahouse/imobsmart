@@ -1,14 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProspectTable } from "@/components/prospect-table";
 import { ProspectPipeline } from "@/components/prospect-pipeline";
 import { CsvImportModal } from "@/components/csv-import-modal";
+import { createClient } from "@/lib/supabase/client";
+import { isProspectsAdmin, getRepStates } from "@/lib/prospects-access";
+
+const STATE_LABELS: Record<string, string> = {
+  RS: "RS — Layara",
+  SC: "SC — Samuel",
+};
 
 export default function ProspectsPage() {
   const [view, setView] = useState<"table" | "pipeline">("pipeline");
   const [showImport, setShowImport] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [repStates, setRepStates] = useState<{ state: string; label: string }[]>([]);
+  const [stateFilter, setStateFilter] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (isProspectsAdmin(user?.email)) {
+        setIsAdmin(true);
+        setRepStates(
+          getRepStates().map((r) => ({
+            state: r.state,
+            label: STATE_LABELS[r.state] || r.state,
+          }))
+        );
+      }
+    });
+  }, []);
 
   return (
     <div>
@@ -41,10 +66,39 @@ export default function ProspectsPage() {
         </div>
       </div>
 
+      {isAdmin && repStates.length > 0 && (
+        <div className="mb-4 flex items-center gap-2">
+          <span className="text-zinc-500 text-xs mr-1">Filtrar:</span>
+          <button
+            onClick={() => { setStateFilter(undefined); setRefreshKey((k) => k + 1); }}
+            className={`px-3 py-1.5 text-xs rounded-lg transition-colors ${
+              !stateFilter
+                ? "bg-accent/20 text-accent border border-accent/30"
+                : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+            }`}
+          >
+            Todos
+          </button>
+          {repStates.map((rs) => (
+            <button
+              key={rs.state}
+              onClick={() => { setStateFilter(rs.state); setRefreshKey((k) => k + 1); }}
+              className={`px-3 py-1.5 text-xs rounded-lg transition-colors ${
+                stateFilter === rs.state
+                  ? "bg-accent/20 text-accent border border-accent/30"
+                  : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+              }`}
+            >
+              {rs.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {view === "pipeline" ? (
-        <ProspectPipeline key={refreshKey} />
+        <ProspectPipeline key={`${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
       ) : (
-        <ProspectTable key={refreshKey} />
+        <ProspectTable key={`${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
       )}
 
       {showImport && (

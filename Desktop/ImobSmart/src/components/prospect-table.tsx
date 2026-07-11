@@ -65,7 +65,7 @@ function formatPhone(phone: string, country: string): string {
   return digits;
 }
 
-export function ProspectTable() {
+export function ProspectTable({ stateFilter }: { stateFilter?: string }) {
   const [city, setCity] = useState("");
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(false);
@@ -73,7 +73,9 @@ export function ProspectTable() {
   async function search() {
     if (!city.trim()) return;
     setLoading(true);
-    const res = await fetch(`/api/prospects?city=${encodeURIComponent(city)}`);
+    const params = new URLSearchParams({ city });
+    if (stateFilter) params.set("state", stateFilter);
+    const res = await fetch(`/api/prospects?${params}`);
     const data = await res.json();
     setProspects(data);
     setLoading(false);
