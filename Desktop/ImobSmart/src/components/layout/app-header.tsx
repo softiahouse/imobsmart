@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { getInitials } from "@/lib/utils";
+import { UserMenu } from "@/components/user-menu";
 
 export async function AppHeader() {
   const supabase = await createClient();
@@ -16,9 +17,7 @@ export async function AppHeader() {
         <p className="text-zinc-500 text-xs">Bienvenido,</p>
         <h2 className="text-lg font-bold text-white">{orgName}</h2>
       </div>
-      <div className="w-10 h-10 rounded-xl gradient-button flex items-center justify-center text-sm font-bold">
-        {getInitials(userName)}
-      </div>
+      <UserMenu initials={getInitials(userName)} />
     </header>
   );
 }
