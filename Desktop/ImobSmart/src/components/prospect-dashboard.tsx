@@ -9,6 +9,7 @@ interface Stats {
   byClassification: Record<string, number>;
   lossReasons: Record<string, number>;
   pipelineValue: number;
+  wonValue: number;
   totalDispatches: number;
   dailyDispatches: Record<string, number>;
   repStats: { email: string; dispatches: number; contacted: number; won: number }[];
@@ -184,14 +185,37 @@ export function ProspectDashboard({ stateFilter }: { stateFilter?: string }) {
 
   const inNegotiation = (stats.byStage["meeting"] || 0) + (stats.byStage["proposal"] || 0) + (stats.byStage["negotiation"] || 0);
 
+  const closedValue = stats.wonValue ?? 0;
+  const commission = closedValue * 0.3;
+  const cur = "R$";
+
   return (
     <div className="space-y-6">
-      {/* KPI Cards */}
+      {/* KPI Cards — row 1 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCard label="Disparos (7d)" value={stats.totalDispatches} sub={`${engagementRate}% engajamento`} color="#3b82f6" />
         <KpiCard label="Contactados" value={stats.contacted + inNegotiation} sub={`de ${stats.total} prospects`} color="#10b981" />
         <KpiCard label="Vendas Fechadas" value={stats.won} sub={`Taxa: ${conversionRate}%`} color="#66ee66" />
-        <KpiCard label="Em Negociação" value={inNegotiation} sub={stats.pipelineValue > 0 ? `R$ ${stats.pipelineValue.toLocaleString()}` : undefined} color="#ffaa44" />
+        <KpiCard label="Em Negociação" value={inNegotiation} sub={stats.pipelineValue > 0 ? `${cur} ${stats.pipelineValue.toLocaleString()}` : undefined} color="#ffaa44" />
+      </div>
+
+      {/* KPI Cards — row 2: revenue */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="glass p-5 rounded-xl text-center">
+          <p className="text-zinc-500 text-[10px] font-medium uppercase tracking-wider">Valor Fechado</p>
+          <h3 className="text-2xl font-bold text-white mt-1">{closedValue > 0 ? `${cur} ${closedValue.toLocaleString()}` : "—"}</h3>
+          <span className="text-[10px] text-zinc-500">total de contratos</span>
+        </div>
+        <div className="glass p-5 rounded-xl text-center border border-green-500/30">
+          <p className="text-zinc-500 text-[10px] font-medium uppercase tracking-wider">Comissão 30%</p>
+          <h3 className="text-2xl font-bold text-green-400 mt-1">{closedValue > 0 ? `${cur} ${commission.toLocaleString()}` : "—"}</h3>
+          <span className="text-[10px] text-green-500/60">recorrente / mês</span>
+        </div>
+        <div className="glass p-5 rounded-xl text-center">
+          <p className="text-zinc-500 text-[10px] font-medium uppercase tracking-wider">Pipeline Ativo</p>
+          <h3 className="text-2xl font-bold text-amber-400 mt-1">{stats.pipelineValue > 0 ? `${cur} ${stats.pipelineValue.toLocaleString()}` : "—"}</h3>
+          <span className="text-[10px] text-zinc-500">em negociação</span>
+        </div>
       </div>
 
       {/* Charts Row */}

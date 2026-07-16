@@ -26,11 +26,13 @@ export async function GET(request: Request) {
   const byClassification: Record<string, number> = {};
   const lossReasons: Record<string, number> = {};
   let pipelineValue = 0;
+  let wonValue = 0;
 
   for (const p of prospects ?? []) {
     byStage[p.b2b_stage] = (byStage[p.b2b_stage] || 0) + 1;
     byClassification[p.classification] = (byClassification[p.classification] || 0) + 1;
-    if (p.b2b_stage !== "lost" && p.deal_value) pipelineValue += p.deal_value;
+    if (p.b2b_stage === "won" && p.deal_value) wonValue += p.deal_value;
+    if (p.b2b_stage !== "lost" && p.b2b_stage !== "won" && p.deal_value) pipelineValue += p.deal_value;
     if (p.b2b_stage === "lost" && p.loss_reason) {
       lossReasons[p.loss_reason] = (lossReasons[p.loss_reason] || 0) + 1;
     }
@@ -90,6 +92,7 @@ export async function GET(request: Request) {
     byClassification,
     lossReasons,
     pipelineValue,
+    wonValue,
     totalDispatches: events?.length ?? 0,
     dailyDispatches,
     repStats,
