@@ -159,15 +159,39 @@ export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
     .filter((p) => p.b2b_stage !== "lost")
     .reduce((sum, p) => sum + (p.deal_value || 0), 0);
 
+  const wonProspects = prospects.filter((p) => p.b2b_stage === "won");
+  const wonCount = wonProspects.length;
+  const wonValue = wonProspects.reduce((sum, p) => sum + (p.deal_value || 0), 0);
+  const commission = wonValue * 0.3;
+  const cur = prospects[0]?.country === "BR" ? "R$" : "€";
+
   return (
     <div className="space-y-4">
+      {/* KPI bar */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="glass p-3 text-center">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-wider">Total Prospects</p>
+          <p className="text-white text-xl font-bold">{prospects.length}</p>
+        </div>
+        <div className="glass p-3 text-center">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-wider">Fechamentos</p>
+          <p className="text-green-400 text-xl font-bold">{wonCount}</p>
+        </div>
+        <div className="glass p-3 text-center">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-wider">Valor Fechado</p>
+          <p className="text-green-400 text-xl font-bold">{wonValue > 0 ? `${cur} ${wonValue.toLocaleString()}` : "—"}</p>
+        </div>
+        <div className="glass p-3 text-center border-green-500/30 border">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-wider">Comissão 30%</p>
+          <p className="text-green-300 text-xl font-bold">{wonValue > 0 ? `${cur} ${commission.toLocaleString()}` : "—"}</p>
+        </div>
+      </div>
+
+      {/* Stage pills */}
       <div className="glass p-3 flex items-center gap-4 flex-wrap">
-        <span className="text-zinc-400 text-sm">
-          Total: <strong className="text-white">{prospects.length}</strong> prospects
-        </span>
         {totalDealValue > 0 && (
           <span className="text-zinc-400 text-sm">
-            Pipeline: <strong className="text-green-400">{totalDealValue.toLocaleString()}</strong>
+            Pipeline: <strong className="text-green-400">{cur} {totalDealValue.toLocaleString()}</strong>
           </span>
         )}
         {STAGES.slice(0, -1).map((stage) => {
