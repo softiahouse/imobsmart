@@ -162,6 +162,13 @@ export function ProspectTable({ stateFilter }: { stateFilter?: string }) {
                             href={`https://wa.me/${formatPhone(p.phone, p.country)}?text=${encodeURIComponent(getWhatsAppMessage(p.classification, p.country))}`}
                             target="_blank"
                             rel="noopener"
+                            onClick={() => {
+                              fetch("/api/prospects/events", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ prospect_id: p.id, event_type: "whatsapp_sent" }),
+                              });
+                            }}
                             className="text-xs px-3 py-1 rounded-md border border-green-500/40 bg-green-500/10 text-green-400 hover:bg-green-500/20"
                           >
                             💬 WhatsApp

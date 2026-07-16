@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Prospect, B2bStage, ProspectClassification } from "@/lib/types";
+import { LOSS_REASONS } from "@/lib/types";
 
 const STAGES: { key: B2bStage; label: string; color: string }[] = [
   { key: "new", label: "Nuevo", color: "#8b8bff" },
@@ -91,6 +92,7 @@ export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
   const [loading, setLoading] = useState(true);
   const [dragging, setDragging] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [lossModal, setLossModal] = useState<{ prospectId: string; name: string } | null>(null);
 
   useEffect(() => {
     const url = stateFilter ? `/api/prospects?state=${stateFilter}` : "/api/prospects";
@@ -104,6 +106,11 @@ export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
   }, [stateFilter]);
 
   async function moveToStage(prospectId: string, newStage: B2bStage) {
+    if (newStage === "lost") {
+      const prospect = prospects.find((p) => p.id === prospectId);
+      setLossModal({ prospectId, name: prospect?.business_name ?? "" });
+      return;
+    }
     setProspects((prev) =>
       prev.map((p) => (p.id === prospectId ? { ...p, b2b_stage: newStage } : p))
     );
@@ -112,6 +119,19 @@ export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: prospectId, b2b_stage: newStage }),
     });
+  }
+
+  async function confirmLoss(reason: string) {
+    if (!lossModal) return;
+    setProspects((prev) =>
+      prev.map((p) => (p.id === lossModal.prospectId ? { ...p, b2b_stage: "lost" as B2bStage, loss_reason: reason } : p))
+    );
+    await fetch("/api/prospects", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: lossModal.prospectId, b2b_stage: "lost", loss_reason: reason }),
+    });
+    setLossModal(null);
   }
 
   async function updateProspect(id: string, updates: Partial<Prospect>) {
@@ -202,6 +222,29 @@ export function ProspectPipeline({ stateFilter }: { stateFilter?: string }) {
           </div>
         ))}
       </div>
+
+      {lossModal && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setLossModal(null)}>
+          <div className="glass p-6 rounded-2xl w-full max-w-sm space-y-4" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-white font-bold text-sm">Motivo da perda</h3>
+            <p className="text-zinc-400 text-xs">{lossModal.name}</p>
+            <div className="space-y-2">
+              {LOSS_REASONS.map((r) => (
+                <button
+                  key={r.key}
+                  onClick={() => confirmLoss(r.key)}
+                  className="w-full text-left px-4 py-2.5 text-xs rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:bg-white/10 hover:text-white transition-colors"
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <button onClick={() => setLossModal(null)} className="w-full text-center text-zinc-500 text-xs hover:text-zinc-300 pt-1">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -313,7 +356,14 @@ function ProspectCard({
           href={`https://wa.me/${formatPhone(prospect.phone, prospect.country)}?text=${encodeURIComponent(getWhatsAppMessage(prospect.classification, prospect.country))}`}
           target="_blank"
           rel="noopener"
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+            fetch("/api/prospects/events", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ prospect_id: prospect.id, event_type: "whatsapp_sent" }),
+            });
+          }}
           className="flex items-center gap-1 text-[10px] text-green-400 hover:bg-green-500/10 rounded px-1.5 py-0.5 mt-1 w-fit border border-green-500/20"
         >
           💬 {prospect.phone}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ProspectTable } from "@/components/prospect-table";
 import { ProspectPipeline } from "@/components/prospect-pipeline";
+import { ProspectDashboard } from "@/components/prospect-dashboard";
 import { CsvImportModal } from "@/components/csv-import-modal";
 import { createClient } from "@/lib/supabase/client";
 import { isProspectsAdmin, getRepStates } from "@/lib/prospects-access";
@@ -13,7 +14,7 @@ const STATE_LABELS: Record<string, string> = {
 };
 
 export default function ProspectsPage() {
-  const [view, setView] = useState<"table" | "pipeline">("pipeline");
+  const [view, setView] = useState<"dashboard" | "pipeline" | "table">("dashboard");
   const [showImport, setShowImport] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -31,6 +32,8 @@ export default function ProspectsPage() {
             label: STATE_LABELS[r.state] || r.state,
           }))
         );
+      } else {
+        setView("pipeline");
       }
     });
   }, []);
@@ -50,6 +53,14 @@ export default function ProspectsPage() {
             📄 Importar CSV
           </button>
           <div className="flex rounded-lg border border-white/10 overflow-hidden">
+            {isAdmin && (
+              <button
+                onClick={() => setView("dashboard")}
+                className={`px-3 py-2 text-xs ${view === "dashboard" ? "bg-accent/20 text-accent" : "bg-white/5 text-zinc-400 hover:bg-white/10"}`}
+              >
+                📊 Dashboard
+              </button>
+            )}
             <button
               onClick={() => setView("pipeline")}
               className={`px-3 py-2 text-xs ${view === "pipeline" ? "bg-accent/20 text-accent" : "bg-white/5 text-zinc-400 hover:bg-white/10"}`}
@@ -95,10 +106,12 @@ export default function ProspectsPage() {
         </div>
       )}
 
-      {view === "pipeline" ? (
-        <ProspectPipeline key={`${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
+      {view === "dashboard" ? (
+        <ProspectDashboard key={`d-${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
+      ) : view === "pipeline" ? (
+        <ProspectPipeline key={`p-${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
       ) : (
-        <ProspectTable key={`${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
+        <ProspectTable key={`t-${refreshKey}-${stateFilter}`} stateFilter={stateFilter} />
       )}
 
       {showImport && (

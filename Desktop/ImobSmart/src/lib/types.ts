@@ -108,5 +108,25 @@ export interface Prospect {
   source: string;
   contacted_at: string | null;
   notes: string | null;
+  loss_reason: string | null;
+  created_at: string;
+}
+
+export type LossReason = "no_interest" | "too_expensive" | "has_good_site" | "no_response" | "other";
+
+export const LOSS_REASONS: { key: LossReason; label: string }[] = [
+  { key: "no_interest", label: "Sem interesse" },
+  { key: "too_expensive", label: "Achou caro" },
+  { key: "has_good_site", label: "Já tem site bom" },
+  { key: "no_response", label: "Não respondeu" },
+  { key: "other", label: "Outro motivo" },
+];
+
+export interface ProspectEvent {
+  id: string;
+  prospect_id: string;
+  event_type: string;
+  user_email: string | null;
+  metadata: Record<string, unknown>;
   created_at: string;
 }
