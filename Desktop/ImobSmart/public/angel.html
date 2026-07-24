@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImobSmart — Projeção de Crescimento</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+<style>
+:root {
+  --bg: #07080f;
+  --bg2: #0d1117;
+  --card: rgba(255,255,255,0.04);
+  --card-border: rgba(255,255,255,0.08);
+  --text: #e6e8f0;
+  --text2: #8b8fa8;
+  --text3: #4a4e68;
+  --accent: #8b5cf6;
+  --accent2: #a78bfa;
+  --green: #22c55e;
+  --green2: #4ade80;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --cyan: #06b6d4;
+  --pink: #ec4899;
+  --radius: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  position: relative;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .conf { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); padding: 0.3em 1em; border-radius: 100px; display: inline-block; margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; }
+.hero h1 .g { background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .sub { color: var(--text2); font-size: 1rem; margin-top: 0.75rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+.hero .val { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; background: var(--card); border: 1px solid var(--card-border); border-radius: 100px; padding: 0.5em 1.5em; font-size: 0.85rem; color: var(--text2); }
+.hero .val strong { color: var(--green); font-size: 1.1rem; }
+
+/* Section */
+section { margin-bottom: 3rem; }
+.section-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.5rem; }
+.section-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 1.5rem; }
+
+/* KPI Grid */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.kpi { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 1rem; text-align: center; }
+.kpi .label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); }
+.kpi .value { font-size: 1.5rem; font-weight: 800; margin-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.kpi .sub { font-size: 0.65rem; color: var(--text3); margin-top: 0.1rem; }
+
+/* Equity */
+.equity-wrap { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: center; }
+.equity-donut { flex-shrink: 0; }
+.equity-legend { display: flex; flex-direction: column; gap: 0.75rem; }
+.equity-item { display: flex; align-items: center; gap: 0.75rem; }
+.equity-dot { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+.equity-name { font-weight: 700; font-size: 0.85rem; }
+.equity-role { font-size: 0.7rem; color: var(--text2); }
+.equity-pct { font-size: 1.1rem; font-weight: 800; margin-left: auto; }
+
+/* States grid */
+.states-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 4px; margin: 1rem 0; }
+.state-cell { text-align: center; padding: 0.4rem 0.2rem; border-radius: 6px; font-size: 0.6rem; font-weight: 700; border: 1px solid transparent; }
+.state-cell.active { background: rgba(34,197,94,0.15); color: var(--green); border-color: rgba(34,197,94,0.3); }
+.state-cell.planned { background: rgba(139,92,246,0.1); color: var(--accent2); border-color: rgba(139,92,246,0.2); }
+.state-cell .st-rep { font-size: 0.45rem; font-weight: 600; color: var(--text3); display: block; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Chart containers */
+.chart-container { position: relative; width: 100%; margin: 1rem 0; }
+.chart-container canvas { width: 100% !important; height: auto !important; }
+
+/* Revenue table */
+.rev-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.rev-table th { text-align: left; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--card-border); }
+.rev-table td { padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.03); color: var(--text2); }
+.rev-table tr:last-child td { border-bottom: none; font-weight: 700; color: var(--text); }
+.rev-table .highlight { color: var(--green); font-weight: 700; }
+
+/* Intl grid */
+.intl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+.intl-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 1rem; text-align: center; }
+.intl-flag { font-size: 2rem; margin-bottom: 0.25rem; }
+.intl-name { font-weight: 700; font-size: 0.85rem; }
+.intl-sub { font-size: 0.65rem; color: var(--text2); }
+.intl-mkt { font-size: 0.6rem; color: var(--accent2); margin-top: 0.25rem; font-weight: 600; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--green), var(--cyan)); border-radius: 2px; }
+.tl-item { position: relative; margin-bottom: 1.5rem; }
+.tl-item::before { content: ""; position: absolute; left: -2rem; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid; }
+.tl-item:nth-child(1)::before { border-color: var(--green); background: rgba(34,197,94,0.3); }
+.tl-item:nth-child(2)::before { border-color: var(--accent); background: rgba(139,92,246,0.3); }
+.tl-item:nth-child(3)::before { border-color: var(--amber); background: rgba(245,158,11,0.3); }
+.tl-item:nth-child(4)::before { border-color: var(--cyan); background: rgba(6,182,212,0.3); }
+.tl-item:nth-child(5)::before { border-color: var(--pink); background: rgba(236,72,153,0.3); }
+.tl-date { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.tl-title { font-weight: 700; font-size: 0.9rem; margin-top: 0.15rem; }
+.tl-desc { font-size: 0.75rem; color: var(--text2); }
+
+/* Unit economics */
+.unit-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.82rem; }
+.unit-row:last-child { border-bottom: none; }
+.unit-label { color: var(--text2); }
+.unit-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Footer */
+.footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--card-border); margin-top: 2rem; }
+.footer p { font-size: 0.7rem; color: var(--text3); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .equity-wrap { flex-direction: column; }
+  .states-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="conf">Documento confidencial</div>
+    <h1>Projeção de Crescimento<br><span class="g">ImobSmart 2026–2027</span></h1>
+    <p class="sub">SaaS de automação para imobiliárias com receita recorrente mensal, modelo de expansão por representantes regionais e internacionalização.</p>
+    <div class="val">Investimento angel: <strong>€10.000</strong> por 33,3% equity</div>
+  </div>
+
+  <!-- EQUITY -->
+  <section>
+    <div class="section-label">Estrutura Societária</div>
+    <div class="section-title">Divisão de Equity</div>
+    <div class="card">
+      <div class="equity-wrap">
+        <div class="equity-donut">
+          <svg width="180" height="180" viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="65" fill="none" stroke="#8b5cf6" stroke-width="22"
+              stroke-dasharray="136.1 272.2" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+            <circle cx="90" cy="90" r="65" fill="none" stroke="#22c55e" stroke-width="22"
+              stroke-dasharray="136.1 272.2" stroke-dashoffset="-136.1" transform="rotate(-90 90 90)"/>
+            <circle cx="90" cy="90" r="65" fill="none" stroke="#3b82f6" stroke-width="22"
+              stroke-dasharray="136.1 272.2" stroke-dashoffset="-272.2" transform="rotate(-90 90 90)"/>
+            <text x="90" y="86" text-anchor="middle" fill="white" font-size="18" font-weight="800">33,3%</text>
+            <text x="90" y="104" text-anchor="middle" fill="#4a4e68" font-size="9">cada sócio</text>
+          </svg>
+        </div>
+        <div class="equity-legend">
+          <div class="equity-item">
+            <div class="equity-dot" style="background:#8b5cf6"></div>
+            <div><div class="equity-name">Paulo</div><div class="equity-role">Fundador / CTO</div></div>
+            <div class="equity-pct" style="color:#8b5cf6">33,3%</div>
+          </div>
+          <div class="equity-item">
+            <div class="equity-dot" style="background:#22c55e"></div>
+            <div><div class="equity-name">Nathalyê</div><div class="equity-role">CEO / Operações</div></div>
+            <div class="equity-pct" style="color:#22c55e">33,3%</div>
+          </div>
+          <div class="equity-item">
+            <div class="equity-dot" style="background:#3b82f6"></div>
+            <div><div class="equity-name">Investidor Angel</div><div class="equity-role">€10.000 capital</div></div>
+            <div class="equity-pct" style="color:#3b82f6">33,3%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs ATUAIS -->
+  <section>
+    <div class="section-label">Situação Atual — Julho 2026</div>
+    <div class="section-title">Onde estamos hoje</div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="label">Reps ativos</div>
+        <div class="value" style="color:var(--accent2)">5</div>
+        <div class="sub">em 5 estados</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Leads no CRM</div>
+        <div class="value" style="color:var(--blue)">150+</div>
+        <div class="sub">prospects qualificados</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Ticket Médio</div>
+        <div class="value" style="color:var(--green)">R$149</div>
+        <div class="sub">por mês / cliente</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Custo de Operação</div>
+        <div class="value" style="color:var(--amber)">R$97</div>
+        <div class="sub">VPS + Supabase</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPANSÃO BR -->
+  <section>
+    <div class="section-label">Meta Dezembro 2026</div>
+    <div class="section-title">1 Representante em Cada Estado do Brasil</div>
+    <p style="color:var(--text2); font-size:0.85rem; margin-bottom:1rem;">27 estados + DF = 27 representantes regionais. Cada um prospecta imobiliárias locais, fecha contratos e ganha <strong style="color:var(--green)">30% de comissão recorrente</strong>.</p>
+
+    <div class="states-grid">
+      <div class="state-cell active">RS<span class="st-rep">Layara</span></div>
+      <div class="state-cell active">SC<span class="st-rep">Samuel</span></div>
+      <div class="state-cell active">MG<span class="st-rep">Evania</span></div>
+      <div class="state-cell active">SP<span class="st-rep">Nathalyê</span></div>
+      <div class="state-cell active">RJ<span class="st-rep">Pablo</span></div>
+      <div class="state-cell planned">PR<span class="st-rep">—</span></div>
+      <div class="state-cell planned">BA<span class="st-rep">—</span></div>
+      <div class="state-cell planned">CE<span class="st-rep">—</span></div>
+      <div class="state-cell planned">PE<span class="st-rep">—</span></div>
+      <div class="state-cell planned">GO<span class="st-rep">—</span></div>
+      <div class="state-cell planned">DF<span class="st-rep">—</span></div>
+      <div class="state-cell planned">PA<span class="st-rep">—</span></div>
+      <div class="state-cell planned">MA<span class="st-rep">—</span></div>
+      <div class="state-cell planned">MT<span class="st-rep">—</span></div>
+      <div class="state-cell planned">MS<span class="st-rep">—</span></div>
+      <div class="state-cell planned">AM<span class="st-rep">—</span></div>
+      <div class="state-cell planned">ES<span class="st-rep">—</span></div>
+      <div class="state-cell planned">PB<span class="st-rep">—</span></div>
+      <div class="state-cell planned">RN<span class="st-rep">—</span></div>
+      <div class="state-cell planned">AL<span class="st-rep">—</span></div>
+      <div class="state-cell planned">SE<span class="st-rep">—</span></div>
+      <div class="state-cell planned">PI<span class="st-rep">—</span></div>
+      <div class="state-cell planned">TO<span class="st-rep">—</span></div>
+      <div class="state-cell planned">RO<span class="st-rep">—</span></div>
+      <div class="state-cell planned">AC<span class="st-rep">—</span></div>
+      <div class="state-cell planned">AP<span class="st-rep">—</span></div>
+      <div class="state-cell planned">RR<span class="st-rep">—</span></div>
+    </div>
+
+    <div style="display:flex; gap:1rem; font-size:0.7rem; color:var(--text3); margin-top:0.5rem; flex-wrap:wrap;">
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:rgba(34,197,94,0.3);border:1px solid rgba(34,197,94,0.5);vertical-align:middle;margin-right:4px;"></span> Ativo (5)</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);vertical-align:middle;margin-right:4px;"></span> Planejado (22)</span>
+    </div>
+  </section>
+
+  <!-- PROJEÇÃO DE RECEITA -->
+  <section>
+    <div class="section-label">Projeção Financeira</div>
+    <div class="section-title">Receita Recorrente Mensal (MRR)</div>
+    <p style="color:var(--text2); font-size:0.85rem; margin-bottom:1rem;">Premissa conservadora: cada rep fecha <strong>mínimo 8 clientes/mês</strong> a R$149 ticket médio. Churn de 5%. Receita é <strong style="color:var(--green)">recorrente</strong> — clientes pagam todo mês.</p>
+
+    <div class="card" style="overflow-x:auto;">
+      <table class="rev-table">
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Reps</th>
+            <th>Novos Clientes</th>
+            <th>Clientes Total</th>
+            <th>MRR Bruto</th>
+            <th>MRR Líquido (70%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Jul/26</td><td>5</td><td>40</td><td>40</td><td>R$ 5.960</td><td>R$ 4.172</td></tr>
+          <tr><td>Ago/26</td><td>8</td><td>64</td><td>102</td><td>R$ 15.198</td><td>R$ 10.639</td></tr>
+          <tr><td>Set/26</td><td>12</td><td>96</td><td>193</td><td>R$ 28.757</td><td>R$ 20.130</td></tr>
+          <tr><td>Out/26</td><td>17</td><td>136</td><td>319</td><td>R$ 47.531</td><td>R$ 33.272</td></tr>
+          <tr><td>Nov/26</td><td>22</td><td>176</td><td>479</td><td>R$ 71.371</td><td>R$ 49.960</td></tr>
+          <tr><td style="font-weight:700">Dez/26</td><td style="font-weight:700">27</td><td>216</td><td style="font-weight:700">671</td><td class="highlight">R$ 99.979</td><td class="highlight">R$ 69.985</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Revenue chart (canvas) -->
+    <div class="chart-container">
+      <canvas id="revenueChart" width="860" height="320"></canvas>
+    </div>
+
+    <div class="kpi-grid" style="margin-top:1rem;">
+      <div class="kpi" style="border-color:rgba(34,197,94,0.3);">
+        <div class="label">ARR Dez/2026</div>
+        <div class="value" style="color:var(--green)">R$ 1.2M</div>
+        <div class="sub">receita anualizada</div>
+      </div>
+      <div class="kpi" style="border-color:rgba(139,92,246,0.3);">
+        <div class="label">Clientes Ativos</div>
+        <div class="value" style="color:var(--accent2)">671</div>
+        <div class="sub">em 27 estados</div>
+      </div>
+      <div class="kpi" style="border-color:rgba(6,182,212,0.3);">
+        <div class="label">ARR Jun/2027</div>
+        <div class="value" style="color:var(--cyan)">R$ 3.2M</div>
+        <div class="sub">com expansão intl</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIT ECONOMICS -->
+  <section>
+    <div class="section-label">Modelo de Negócio</div>
+    <div class="section-title">Unit Economics por Cliente</div>
+    <div class="card">
+      <div class="unit-row">
+        <span class="unit-label">Ticket médio mensal</span>
+        <span class="unit-val" style="color:var(--text)">R$ 149</span>
+      </div>
+      <div class="unit-row">
+        <span class="unit-label">Comissão do rep (30%)</span>
+        <span class="unit-val" style="color:var(--red)">- R$ 44,70</span>
+      </div>
+      <div class="unit-row">
+        <span class="unit-label">Custo infra por cliente</span>
+        <span class="unit-val" style="color:var(--red)">- R$ 0,15</span>
+      </div>
+      <div class="unit-row" style="border-bottom:none; padding-top:0.8rem; border-top:1px solid var(--card-border);">
+        <span class="unit-label" style="color:var(--text); font-weight:700;">Margem líquida / cliente</span>
+        <span class="unit-val" style="color:var(--green); font-size:1.1rem;">R$ 104,15</span>
+      </div>
+      <div class="unit-row" style="border-bottom:none; padding-top:0;">
+        <span class="unit-label">Margem %</span>
+        <span class="unit-val" style="color:var(--green);">69,9%</span>
+      </div>
+      <div class="unit-row" style="border-bottom:none; padding-top:0;">
+        <span class="unit-label">LTV estimado (18 meses)</span>
+        <span class="unit-val" style="color:var(--accent2);">R$ 1.874</span>
+      </div>
+      <div class="unit-row" style="border-bottom:none; padding-top:0;">
+        <span class="unit-label">CAC (custo de aquisição)</span>
+        <span class="unit-val" style="color:var(--text2);">R$ 0</span>
+      </div>
+      <div class="unit-row" style="border-bottom:none; padding-top:0;">
+        <span class="unit-label">LTV / CAC</span>
+        <span class="unit-val" style="color:var(--green); font-size:1.1rem;">∞</span>
+      </div>
+    </div>
+    <p style="color:var(--text3); font-size:0.7rem; margin-top:0.5rem;">* CAC zero porque os reps trabalham 100% por comissão. Sem custo fixo de equipe de vendas.</p>
+  </section>
+
+  <!-- INTERNACIONALIZAÇÃO -->
+  <section>
+    <div class="section-label">2027 — Expansão Internacional</div>
+    <div class="section-title">Replicar o modelo em 5 países</div>
+    <p style="color:var(--text2); font-size:0.85rem; margin-bottom:1rem;">O mesmo sistema e modelo de reps regionais, adaptado por idioma. Infraestrutura compartilhada (custo marginal próximo de zero).</p>
+
+    <div class="intl-grid">
+      <div class="intl-card" style="border-color:rgba(34,197,94,0.3);">
+        <div class="intl-flag">🇧🇷</div>
+        <div class="intl-name">Brasil</div>
+        <div class="intl-sub">27 estados</div>
+        <div class="intl-mkt">~46.000 imobiliárias</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇪🇸</div>
+        <div class="intl-name">Espanha</div>
+        <div class="intl-sub">17 comunidades</div>
+        <div class="intl-mkt">~32.000 inmobiliarias</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇵🇹</div>
+        <div class="intl-name">Portugal</div>
+        <div class="intl-sub">18 distritos</div>
+        <div class="intl-mkt">~8.000 imobiliárias</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇲🇽</div>
+        <div class="intl-name">México</div>
+        <div class="intl-sub">32 estados</div>
+        <div class="intl-mkt">~35.000 inmobiliarias</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇨🇴</div>
+        <div class="intl-name">Colômbia</div>
+        <div class="intl-sub">32 departamentos</div>
+        <div class="intl-mkt">~15.000 inmobiliarias</div>
+      </div>
+      <div class="intl-card">
+        <div class="intl-flag">🇦🇷</div>
+        <div class="intl-name">Argentina</div>
+        <div class="intl-sub">23 províncias</div>
+        <div class="intl-mkt">~20.000 inmobiliarias</div>
+      </div>
+    </div>
+
+    <!-- Donut: revenue by country 2027 -->
+    <div class="card" style="margin-top:1rem;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:1.5rem;">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#22c55e" stroke-width="18"
+            stroke-dasharray="138.2 345.6" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#f59e0b" stroke-width="18"
+            stroke-dasharray="69.1 345.6" stroke-dashoffset="-138.2" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#3b82f6" stroke-width="18"
+            stroke-dasharray="51.8 345.6" stroke-dashoffset="-207.3" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#ec4899" stroke-width="18"
+            stroke-dasharray="45.0 345.6" stroke-dashoffset="-259.2" transform="rotate(-90 80 80)"/>
+          <circle cx="80" cy="80" r="55" fill="none" stroke="#06b6d4" stroke-width="18"
+            stroke-dasharray="41.4 345.6" stroke-dashoffset="-304.1" transform="rotate(-90 80 80)"/>
+          <text x="80" y="76" text-anchor="middle" fill="white" font-size="14" font-weight="800">R$ 3.2M</text>
+          <text x="80" y="92" text-anchor="middle" fill="#4a4e68" font-size="8">ARR 2027</text>
+        </svg>
+        <div style="display:grid; gap:0.4rem; font-size:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:10px;height:10px;border-radius:3px;background:#22c55e;"></span> 🇧🇷 Brasil — 40%</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:10px;height:10px;border-radius:3px;background:#f59e0b;"></span> 🇪🇸 Espanha — 20%</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:10px;height:10px;border-radius:3px;background:#3b82f6;"></span> 🇲🇽 México — 15%</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:10px;height:10px;border-radius:3px;background:#ec4899;"></span> 🇨🇴 Colômbia — 13%</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:10px;height:10px;border-radius:3px;background:#06b6d4;"></span> 🇵🇹🇦🇷 Outros — 12%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUATION -->
+  <section>
+    <div class="section-label">Valuation Projetado</div>
+    <div class="section-title">Retorno para o Investidor Angel</div>
+
+    <div class="kpi-grid">
+      <div class="kpi" style="border-color:rgba(59,130,246,0.3);">
+        <div class="label">Investimento</div>
+        <div class="value" style="color:var(--blue)">€10k</div>
+        <div class="sub">por 33,3%</div>
+      </div>
+      <div class="kpi" style="border-color:rgba(245,158,11,0.3);">
+        <div class="label">Valuation Dez/26</div>
+        <div class="value" style="color:var(--amber)">€200k</div>
+        <div class="sub">5x ARR</div>
+      </div>
+      <div class="kpi" style="border-color:rgba(34,197,94,0.3);">
+        <div class="label">Valuation Jun/27</div>
+        <div class="value" style="color:var(--green)">€530k</div>
+        <div class="sub">5x ARR intl</div>
+      </div>
+      <div class="kpi" style="border-color:rgba(236,72,153,0.3);">
+        <div class="label">Retorno 33%</div>
+        <div class="value" style="color:var(--pink)">€176k</div>
+        <div class="sub">17.6x em 12 meses</div>
+      </div>
+    </div>
+
+    <!-- Valuation growth chart -->
+    <div class="chart-container">
+      <canvas id="valuationChart" width="860" height="260"></canvas>
+    </div>
+
+    <p style="color:var(--text3); font-size:0.7rem; margin-top:0.5rem;">* Valuation calculado com múltiplo conservador de 5x ARR, padrão para SaaS B2B early-stage em LATAM.</p>
+  </section>
+
+  <!-- TIMELINE -->
+  <section>
+    <div class="section-label">Roadmap</div>
+    <div class="section-title">Cronograma de Execução</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date" style="color:var(--green)">Jul – Ago 2026</div>
+        <div class="tl-title">Fase 1 — Validação Brasil</div>
+        <div class="tl-desc">5 reps ativos (RS, SC, MG, SP, RJ). Refinar processo de onboarding e script de vendas. Primeiros fechamentos recorrentes.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date" style="color:var(--accent2)">Set – Out 2026</div>
+        <div class="tl-title">Fase 2 — Escalar Brasil</div>
+        <div class="tl-desc">Recrutar reps para PR, BA, CE, PE, GO, DF e mais 6 estados. Meta: 17 reps. Automatizar onboarding com guia + treinamento.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date" style="color:var(--amber)">Nov – Dez 2026</div>
+        <div class="tl-title">Fase 3 — Cobertura Nacional</div>
+        <div class="tl-desc">27 estados cobertos. 670+ clientes ativos. MRR acima de R$99k. Preparar infraestrutura multi-idioma.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date" style="color:var(--cyan)">Jan – Mar 2027</div>
+        <div class="tl-title">Fase 4 — Espanha + Portugal</div>
+        <div class="tl-desc">Lançar ImobSmart em ES e PT. Recrutar reps locais. Base operacional em Torrevieja já existente.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date" style="color:var(--pink)">Abr – Jun 2027</div>
+        <div class="tl-title">Fase 5 — LATAM</div>
+        <div class="tl-desc">México, Colômbia, Argentina. Replicar modelo de reps. Meta: R$3.2M ARR. Preparar para rodada Seed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE INVESTIR -->
+  <section>
+    <div class="section-label">Tese de Investimento</div>
+    <div class="section-title">Por que ImobSmart?</div>
+    <div style="display:grid; gap:0.75rem;">
+      <div class="card" style="border-left:3px solid var(--green);">
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.25rem;">CAC Zero</div>
+        <div style="font-size:0.8rem; color:var(--text2);">Reps trabalham 100% por comissão. Sem custo de aquisição. Cada rep é um "micro-franqueado" que cresce com a plataforma.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent);">
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.25rem;">Receita Recorrente (MRR)</div>
+        <div style="font-size:0.8rem; color:var(--text2);">Modelo SaaS com assinatura mensal. Cada cliente novo aumenta a base permanentemente. Efeito bola de neve.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--cyan);">
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.25rem;">Custo Marginal ~Zero</div>
+        <div style="font-size:0.8rem; color:var(--text2);">Infra compartilhada: 1 VPS a R$97/mês serve milhares de clientes. Cada novo cliente custa centavos de infra.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--amber);">
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.25rem;">Mercado Gigante e Fragmentado</div>
+        <div style="font-size:0.8rem; color:var(--text2);">156.000+ imobiliárias nos 6 países-alvo. Maioria sem presença digital. Não há líder SaaS dominante no segmento.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--pink);">
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.25rem;">Produto Funcionando</div>
+        <div style="font-size:0.8rem; color:var(--text2);">Não é uma ideia — o produto está no ar, com clientes reais, CRM operacional, prospecção automatizada e reps vendendo.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p style="font-size:1rem; font-weight:800; color:var(--accent2); margin-bottom:0.25rem;">ImobSmart</p>
+    <p>Documento confidencial — Julho 2026</p>
+    <p style="margin-top:0.5rem;">Paulo Da Rosa · softiahouse@gmail.com</p>
+  </div>
+
+</div>
+
+<script>
+// Revenue Chart
+(function() {
+  const canvas = document.getElementById('revenueChart');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = 860 * dpr;
+  canvas.height = 320 * dpr;
+  ctx.scale(dpr, dpr);
+
+  const W = 860, H = 320;
+  const pad = { top: 30, right: 20, bottom: 40, left: 70 };
+  const months = ['Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+  const mrr = [5960, 15198, 28757, 47531, 71371, 99979];
+  const net = [4172, 10639, 20130, 33272, 49960, 69985];
+  const maxVal = 110000;
+
+  function x(i) { return pad.left + (i / (months.length - 1)) * (W - pad.left - pad.right); }
+  function y(v) { return pad.top + (1 - v / maxVal) * (H - pad.top - pad.bottom); }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for (let v = 0; v <= maxVal; v += 20000) {
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y(v));
+    ctx.lineTo(W - pad.right, y(v));
+    ctx.stroke();
+    ctx.fillStyle = '#4a4e68';
+    ctx.font = '10px system-ui';
+    ctx.textAlign = 'right';
+    ctx.fillText('R$ ' + (v / 1000).toFixed(0) + 'k', pad.left - 8, y(v) + 3);
+  }
+
+  // Month labels
+  ctx.textAlign = 'center';
+  months.forEach((m, i) => {
+    ctx.fillStyle = '#4a4e68';
+    ctx.font = '11px system-ui';
+    ctx.fillText(m, x(i), H - pad.bottom + 20);
+  });
+
+  // Area fill — MRR
+  ctx.beginPath();
+  ctx.moveTo(x(0), y(0));
+  mrr.forEach((v, i) => ctx.lineTo(x(i), y(v)));
+  ctx.lineTo(x(mrr.length - 1), y(0));
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, pad.top, 0, H - pad.bottom);
+  grad.addColorStop(0, 'rgba(139,92,246,0.25)');
+  grad.addColorStop(1, 'rgba(139,92,246,0.02)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Area fill — Net
+  ctx.beginPath();
+  ctx.moveTo(x(0), y(0));
+  net.forEach((v, i) => ctx.lineTo(x(i), y(v)));
+  ctx.lineTo(x(net.length - 1), y(0));
+  ctx.closePath();
+  const grad2 = ctx.createLinearGradient(0, pad.top, 0, H - pad.bottom);
+  grad2.addColorStop(0, 'rgba(34,197,94,0.2)');
+  grad2.addColorStop(1, 'rgba(34,197,94,0.01)');
+  ctx.fillStyle = grad2;
+  ctx.fill();
+
+  // Line — MRR
+  ctx.beginPath();
+  mrr.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), y(v)) : ctx.lineTo(x(i), y(v)));
+  ctx.strokeStyle = '#8b5cf6';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Line — Net
+  ctx.beginPath();
+  net.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), y(v)) : ctx.lineTo(x(i), y(v)));
+  ctx.strokeStyle = '#22c55e';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Dots + values
+  mrr.forEach((v, i) => {
+    ctx.beginPath();
+    ctx.arc(x(i), y(v), 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#8b5cf6';
+    ctx.fill();
+    if (i === mrr.length - 1) {
+      ctx.fillStyle = '#a78bfa';
+      ctx.font = 'bold 11px system-ui';
+      ctx.textAlign = 'right';
+      ctx.fillText('R$ ' + (v / 1000).toFixed(0) + 'k MRR', x(i) - 8, y(v) - 10);
+    }
+  });
+  net.forEach((v, i) => {
+    ctx.beginPath();
+    ctx.arc(x(i), y(v), 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#22c55e';
+    ctx.fill();
+    if (i === net.length - 1) {
+      ctx.fillStyle = '#4ade80';
+      ctx.font = 'bold 11px system-ui';
+      ctx.textAlign = 'right';
+      ctx.fillText('R$ ' + (v / 1000).toFixed(0) + 'k Líquido', x(i) - 8, y(v) - 10);
+    }
+  });
+
+  // Legend
+  ctx.fillStyle = '#8b5cf6';
+  ctx.fillRect(pad.left, 8, 10, 10);
+  ctx.fillStyle = '#8b8fa8';
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('MRR Bruto', pad.left + 14, 17);
+
+  ctx.fillStyle = '#22c55e';
+  ctx.fillRect(pad.left + 100, 8, 10, 10);
+  ctx.fillStyle = '#8b8fa8';
+  ctx.fillText('MRR Líquido (70%)', pad.left + 114, 17);
+})();
+
+// Valuation Chart
+(function() {
+  const canvas = document.getElementById('valuationChart');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = 860 * dpr;
+  canvas.height = 260 * dpr;
+  ctx.scale(dpr, dpr);
+
+  const W = 860, H = 260;
+  const pad = { top: 30, right: 20, bottom: 40, left: 70 };
+  const labels = ['Hoje', 'Set/26', 'Dez/26', 'Mar/27', 'Jun/27'];
+  const vals = [30, 80, 200, 350, 530]; // in k€
+  const maxVal = 600;
+
+  function x(i) { return pad.left + (i / (labels.length - 1)) * (W - pad.left - pad.right); }
+  function y(v) { return pad.top + (1 - v / maxVal) * (H - pad.top - pad.bottom); }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for (let v = 0; v <= maxVal; v += 100) {
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y(v));
+    ctx.lineTo(W - pad.right, y(v));
+    ctx.stroke();
+    ctx.fillStyle = '#4a4e68';
+    ctx.font = '10px system-ui';
+    ctx.textAlign = 'right';
+    ctx.fillText('€' + v + 'k', pad.left - 8, y(v) + 3);
+  }
+
+  // Labels
+  ctx.textAlign = 'center';
+  labels.forEach((l, i) => {
+    ctx.fillStyle = '#4a4e68';
+    ctx.font = '11px system-ui';
+    ctx.fillText(l, x(i), H - pad.bottom + 20);
+  });
+
+  // Area
+  ctx.beginPath();
+  ctx.moveTo(x(0), y(0));
+  vals.forEach((v, i) => ctx.lineTo(x(i), y(v)));
+  ctx.lineTo(x(vals.length - 1), y(0));
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, pad.top, 0, H - pad.bottom);
+  grad.addColorStop(0, 'rgba(245,158,11,0.2)');
+  grad.addColorStop(1, 'rgba(245,158,11,0.01)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  vals.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), y(v)) : ctx.lineTo(x(i), y(v)));
+  ctx.strokeStyle = '#f59e0b';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Dots + labels
+  vals.forEach((v, i) => {
+    ctx.beginPath();
+    ctx.arc(x(i), y(v), 5, 0, Math.PI * 2);
+    ctx.fillStyle = i === 0 ? '#3b82f6' : '#f59e0b';
+    ctx.fill();
+    ctx.fillStyle = '#e6e8f0';
+    ctx.font = 'bold 11px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText('€' + v + 'k', x(i), y(v) - 12);
+  });
+
+  // Investment line
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(pad.left, y(10));
+  ctx.lineTo(W - pad.right, y(10));
+  ctx.strokeStyle = '#3b82f6';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#3b82f6';
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('← Investimento €10k', pad.left + 4, y(10) - 6);
+})();
+</script>
+</body>
+</html>
