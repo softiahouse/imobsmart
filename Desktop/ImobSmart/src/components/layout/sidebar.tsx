@@ -11,6 +11,8 @@ const ALL_NAV_ITEMS = [
   { href: "/properties", icon: "🏢", label: "Inmuebles" },
   { href: "/crm", icon: "📋", label: "CRM" },
   { href: "/prospects", icon: "🔍", label: "Prospección" },
+  { href: "/candidaturas", icon: "🤝", label: "Parceiros" },
+  { href: "/curso-interessados", icon: "🎓", label: "Curso" },
   { href: "/settings", icon: "⚙️", label: "Ajustes" },
 ];
 

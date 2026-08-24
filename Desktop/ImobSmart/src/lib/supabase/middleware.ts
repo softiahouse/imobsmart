@@ -41,7 +41,10 @@ export async function updateSession(request: NextRequest) {
   const isPublicPage =
     request.nextUrl.pathname === "/" ||
     request.nextUrl.pathname.startsWith("/login") ||
-    request.nextUrl.pathname.startsWith("/signup");
+    request.nextUrl.pathname.startsWith("/signup") ||
+    request.nextUrl.pathname.startsWith("/parceiros") ||
+    request.nextUrl.pathname === "/curso" ||
+    request.nextUrl.pathname.startsWith("/curso/");
 
   if (!user && !isPublicPage) {
     const url = request.nextUrl.clone();
@@ -49,7 +52,14 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (user && isPublicPage && request.nextUrl.pathname !== "/") {
+  if (
+    user &&
+    isPublicPage &&
+    request.nextUrl.pathname !== "/" &&
+    !request.nextUrl.pathname.startsWith("/parceiros") &&
+    request.nextUrl.pathname !== "/curso" &&
+    !request.nextUrl.pathname.startsWith("/curso/")
+  ) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     return NextResponse.redirect(url);
